@@ -224,6 +224,18 @@ export async function run({ assetPaths, input = {}, environment, title, version 
     "assets/img/signs/TEXTILE_WASTE/TEXTILE_WASTE_rgb_72dpi.jpg",
   ];
 
+  let waste_fraction_signs_black = [
+    "assets/img/signs/CARDBOARD/CARDBOARD_rgb_72dpi_black.jpg",
+    "assets/img/signs/FOOD_WASTE/FOOD_WASTE_rgb_72dpi_black.jpg",
+    "assets/img/signs/GLASS/GLASS_rgb_72dpi_black.jpg",
+    "assets/img/signs/HAZARDOUS_WASTE/HAZARDOUS_WASTE_rgb_72dpi_black.jpg",
+    "assets/img/signs/METAL/METAL_rgb_72dpi_black.jpg",
+    "assets/img/signs/PAPER/PAPER_rgb_72dpi_black.jpg",
+    "assets/img/signs/PLASTICS/PLASTICS_rgb_72dpi_black.jpg",
+    "assets/img/signs/RESIDUAL_WASTE/RESIDUAL_WASTE_rgb_72dpi.jpg",
+    "assets/img/signs/TEXTILE_WASTE/TEXTILE_WASTE_rgb_72dpi_black.jpg",
+  ];
+
   var waste_fraction_signs_as_items = [];
   waste_fraction_signs.forEach(function(val) {
     waste_fraction_signs_as_items.push(
@@ -319,6 +331,9 @@ export async function run({ assetPaths, input = {}, environment, title, version 
   // Prototypicality 0.0.1
   // ExamplenessTrial(jsPsych, timeline, HtmlSliderResponsePlugin, stimuliAll, waste_fraction_signs);
 
+  // Categorisation 0.0.6
+  // CategorisationTrial(jsPsych, timeline, ImageChoicePlugin, waste_fraction_signs_black, stimuliAllAsItem);
+  
   // Categorisation 0.0.5
   // CategorisationWithArrowsTrial(jsPsych, timeline, ImageChoicePlugin, waste_fraction_signs, stimuliAllAsItem);
 
