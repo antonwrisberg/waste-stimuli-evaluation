@@ -94,13 +94,13 @@ This is at the bottom, so that PP finds this bit quickly ;)
 
 Currently, I would like to run studies using these measures:
 
-- Familiarity **v0.0.2** ([example](https://antonwrisberg.github.io/waste-stimuli-evaluation/dist/experiment/index.html?version=familiarity.0.0.2) | [context](#familiarity))
-- Frequency **v0.0.2** ([example](https://antonwrisberg.github.io/waste-stimuli-evaluation/dist/experiment/index.html?version=frequency.0.0.2) | [context](#frequency))
-- Prototypicality **v0.0.2** ([example](https://antonwrisberg.github.io/waste-stimuli-evaluation/dist/experiment/index.html?version=prototypicality.0.0.2) | [context](#prototypicality))
-- Odd-one-out **v0.0.2** ([example](https://antonwrisberg.github.io/waste-stimuli-evaluation/dist/experiment/index.html?version=odd-one-out.0.0.2) | [context](#odd-one-out))
+- Familiarity **v0.0.2** [ [example](https://antonwrisberg.github.io/waste-stimuli-evaluation/dist/experiment/index.html?version=familiarity.0.0.2) | [context](#familiarity) ]
+- Frequency **v0.0.2** [ [example](https://antonwrisberg.github.io/waste-stimuli-evaluation/dist/experiment/index.html?version=frequency.0.0.2) | [context](#frequency) ]
+- Prototypicality **v0.0.2** [ [example](https://antonwrisberg.github.io/waste-stimuli-evaluation/dist/experiment/index.html?version=prototypicality.0.0.2) | [context](#prototypicality) ]
+- Odd-one-out **v0.0.2** [ [example](https://antonwrisberg.github.io/waste-stimuli-evaluation/dist/experiment/index.html?version=odd-one-out.0.0.2) | [context](#odd-one-out) ]
 
 I am not yet sure, if all should be run with the same participants.
 
 Potentially, the study could also include:
 
-- Categorisation **v0.0.1** ([example](https://antonwrisberg.github.io/waste-stimuli-evaluation/dist/experiment/index.html?version=categorisation.0.0.1) | [context](#categorisation))
+- Categorisation **v0.0.1** [ [example](https://antonwrisberg.github.io/waste-stimuli-evaluation/dist/experiment/index.html?version=categorisation.0.0.1) | [context](#categorisation) ]
