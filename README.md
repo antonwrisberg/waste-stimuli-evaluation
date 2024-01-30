@@ -16,18 +16,18 @@ These links contain examples of how these evaluations could look like:
 
 **Recognition**
 
-- [v0.0.1](packaged/experiment/index.html?version=familiarity.0.0.1)
-- [v0.0.2](packaged/experiment/index.html?version=familiarity.0.0.2)
+- [v0.0.1](dist/experiment/index.html?version=familiarity.0.0.1)
+- [v0.0.2](dist/experiment/index.html?version=familiarity.0.0.2)
  
  **Frequency**
 
-- [v0.0.1](packaged/experiment/index.html?version=frequency.0.0.1)
-- [v0.0.2](packaged/experiment/index.html?version=frequency.0.0.2)
+- [v0.0.1](dist/experiment/index.html?version=frequency.0.0.1)
+- [v0.0.2](dist/experiment/index.html?version=frequency.0.0.2)
 
  **Prototypicality**
 
-- [v0.0.1](packaged/experiment/index.html?version=prototypicality.0.0.1)
-- [v0.0.2](packaged/experiment/index.html?version=prototypicality.0.0.2)
+- [v0.0.1](dist/experiment/index.html?version=prototypicality.0.0.1)
+- [v0.0.2](dist/experiment/index.html?version=prototypicality.0.0.2)
 
 ## Other evaluations
 
@@ -44,21 +44,21 @@ These links contain exmples of how these other evaluations could look like:
 
 **Categorisation**
 
-- [v0.0.1](packaged/experiment/index.html?version=categorisation.0.0.1)
-- [v0.0.2](packaged/experiment/index.html?version=categorisation.0.0.2)
-- [v0.0.3](packaged/experiment/index.html?version=categorisation.0.0.3)
-- [v0.0.4](packaged/experiment/index.html?version=categorisation.0.0.4)
-- [v0.0.5](packaged/experiment/index.html?version=categorisation.0.0.5)
+- [v0.0.1](dist/experiment/index.html?version=categorisation.0.0.1)
+- [v0.0.2](dist/experiment/index.html?version=categorisation.0.0.2)
+- [v0.0.3](dist/experiment/index.html?version=categorisation.0.0.3)
+- [v0.0.4](dist/experiment/index.html?version=categorisation.0.0.4)
+- [v0.0.5](dist/experiment/index.html?version=categorisation.0.0.5)
 
 **Commonality**
 
-- [v0.0.1](packaged/experiment/index.html?version=common-uncommon.0.0.1)
+- [v0.0.1](dist/experiment/index.html?version=common-uncommon.0.0.1)
 
 **Odd-one-out**
 
-- [v0.0.1](packaged/experiment/index.html?version=odd-one-out.0.0.1)
-- [v0.0.2](packaged/experiment/index.html?version=odd-one-out.0.0.2)
+- [v0.0.1](dist/experiment/index.html?version=odd-one-out.0.0.1)
+- [v0.0.2](dist/experiment/index.html?version=odd-one-out.0.0.2)
 
 **Signage familiarity**
 
-- [v0.0.1](packaged/experiment/index.html?version=signage-familiarity.0.0.1)
+- [v0.0.1](dist/experiment/index.html?version=signage-familiarity.0.0.1)
