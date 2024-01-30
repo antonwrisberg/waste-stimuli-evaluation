@@ -90,7 +90,7 @@ Finally, I have developed a few measurement setups for measuring other aspects t
 
 # Version of current favourites
 
-This is at the bottom, so that PP finds this bit quickly ;)
+This is at the bottom, so that PP finds this bit quickly 😇
 
 Currently, I would like to run studies using these measures:
 
