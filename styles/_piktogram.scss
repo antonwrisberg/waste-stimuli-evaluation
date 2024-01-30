@@ -1,0 +1,191 @@
+/*
+** Piktogram design to be re-used
+*/
+
+.piktogram {
+  background-color: black;
+  width: 100%;
+  padding-bottom: 100%;
+  height: 0;
+  position: relative;
+
+  .icon {
+    display: block;
+    height: 50%;
+    width: 50%;
+    margin: auto;
+    top: 15%;
+    left: 25%;
+    right: 20%;
+    position: absolute;
+    background-image: url(/assets/img/fractions/residual.png);
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    font-size: 5vh;
+    line-height: 100%;
+
+    &::after {
+      bottom: -50%;
+      left: -50%;
+      right: -50%;
+      content: "Fraktion";
+      display: block;
+      font-family: 'Hind', 'Futura', sans-serif;
+      font-weight: 500;
+      position: absolute;
+      color: white;
+      text-align: center;
+      text-transform: uppercase;
+    }
+  }
+
+  &.bio {
+    background-color: #00a04b;
+  
+    .icon {
+      background-image: url(/assets/img/fractions/bio.png);
+  
+      &::after {
+        content: "foodwaste";
+      }
+    }
+  
+    &.da .icon::after {
+      content: "madaffald";
+    }
+  
+    &.se .icon::after {
+      content: "matavfall";
+    }
+  }
+
+  &.cardboard {
+    background-color: #bea064;
+  
+    .icon {
+      background-image: url(/assets/img/fractions/cardboard.png);
+  
+      &::after {
+        content: "cardboard";
+      }
+    }
+  
+    &.da .icon::after {
+      content: "pap";
+    }
+  }
+
+  &.dangerous {
+    background-color: #e10f1e;
+  
+    .icon {
+      background-image: url(/assets/img/fractions/dangerous.png);
+  
+      &::after {
+        content: "hazardous waste";
+      }    
+    }
+  
+    &.da .icon::after {
+      content: "farligt affald";
+    } 
+    
+    &.se .icon::after {
+      content: "farligt avfall";
+    } 
+  }
+
+  &.glass {
+    background-color: #21b685;
+  
+    .icon {
+      background-image: url(/assets/img/fractions/glass.png);
+
+      &::after {
+        content: "glass";
+      }
+    }
+  
+    &.da .icon::after {
+      content: "glas";
+    }
+
+    &.se .icon::after {
+      content: "glasförpackningar";
+    }
+  }
+
+  &.metal {
+    background-color: #5a6e78;
+  
+    .icon {
+      background-image: url(/assets/img/fractions/metal.png);
+  
+      &::after {
+        content: "metal";
+      }    
+    }
+  
+    &.da .icon::after {
+      content: "metal";
+    } 
+    
+    &.se .icon::after {
+      content: "metallförpackningar";
+    } 
+  }
+  
+  &.paper {
+    background-color: #0082be;
+  
+    .icon {
+      background-image: url(/assets/img/fractions/paper.png);
+  
+      &::after {
+        content: "paper";
+      }    
+    }
+  
+    &.da .icon::after {
+      content: "papir";
+    }  
+  }
+
+  &.plastic {
+    background-color: #961e82;
+  
+    .icon {
+      background-image: url(/assets/img/fractions/plastic.png);
+  
+      &::after {
+        content: "plastics";
+      }
+    }
+    
+    &.da .icon::after {
+      content: "plast";
+    }
+  }
+
+  &.residual {
+    background-color: #141414;
+  
+    .icon {
+      background-image: url(/assets/img/fractions/residual.png);
+  
+      &::after {
+        content: "residual waste";
+      }
+      
+    }
+  
+    &.da .icon::after {
+      content: "restaffald";
+    }
+
+    &.se .icon::after {
+      content: "restavfall";
+    }
+  }
+}
