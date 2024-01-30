@@ -87,3 +87,18 @@ Finally, I have developed a few measurement setups for measuring other aspects t
 **Signage familiarity**
 
 - **[v0.0.1](https://antonwrisberg.github.io/waste-stimuli-evaluation/dist/experiment/index.html?version=signage-familiarity.0.0.1)**. This setup is a mirroring of the v0.0.1 of the waste item familiarity evaluation presented above using waste fractions instead of waste items as stimuli. While it might be smart to have a measure of signage familiarity, I am not sure if this way of asking is very good. It would be nice to have a somewhat more concrete answer scale (or even, and preferably, buttoned options).
+
+# Version of current favourites
+
+Currently, I would like to run studies using these measures:
+
+- Familiarity **[v0.0.2](https://antonwrisberg.github.io/waste-stimuli-evaluation/dist/experiment/index.html?version=familiarity.0.0.2)**. **Current favourite**
+- Frequency **[v0.0.2](https://antonwrisberg.github.io/waste-stimuli-evaluation/dist/experiment/index.html?version=frequency.0.0.2)**. **Current favourite**
+- Prototypicality **[v0.0.2](https://antonwrisberg.github.io/waste-stimuli-evaluation/dist/experiment/index.html?version=prototypicality.0.0.2)**
+- Odd-one-out **[v0.0.2](https://antonwrisberg.github.io/waste-stimuli-evaluation/dist/experiment/index.html?version=odd-one-out.0.0.2)**
+
+I am not yet sure, if all should be run with the same participants.
+
+Potentially, the study could also include:
+
+- Categorisation **[v0.0.1](https://antonwrisberg.github.io/waste-stimuli-evaluation/dist/experiment/index.html?version=categorisation.0.0.1)**. **Current favourite**
