@@ -92,8 +92,8 @@ Finally, I have developed a few measurement setups for measuring other aspects t
 
 Currently, I would like to run studies using these measures:
 
-- Familiarity **[v0.0.2](https://antonwrisberg.github.io/waste-stimuli-evaluation/dist/experiment/index.html?version=familiarity.0.0.2)**. **Current favourite**
-- Frequency **[v0.0.2](https://antonwrisberg.github.io/waste-stimuli-evaluation/dist/experiment/index.html?version=frequency.0.0.2)**. **Current favourite**
+- Familiarity **[v0.0.2](https://antonwrisberg.github.io/waste-stimuli-evaluation/dist/experiment/index.html?version=familiarity.0.0.2)**
+- Frequency **[v0.0.2](https://antonwrisberg.github.io/waste-stimuli-evaluation/dist/experiment/index.html?version=frequency.0.0.2)**
 - Prototypicality **[v0.0.2](https://antonwrisberg.github.io/waste-stimuli-evaluation/dist/experiment/index.html?version=prototypicality.0.0.2)**
 - Odd-one-out **[v0.0.2](https://antonwrisberg.github.io/waste-stimuli-evaluation/dist/experiment/index.html?version=odd-one-out.0.0.2)**
 
