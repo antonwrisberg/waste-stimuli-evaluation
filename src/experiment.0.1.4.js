@@ -41,6 +41,8 @@ import OddOneOutWithReasonTrial from "./trials/odd-one-out-with-reason";
 import RecognitionTrial from "./trials/recognition";
 import FamiliarityTrial from "./trials/familiarity";
 import FrequencyNumericInputTrial from "./trials/frequency-numeric-input";
+import FrequencyNumericInputTrialNewText from "./trials/frequency-numeric-input.2";
+import PrototypicalityFromOwnReferenceTrialNewText from "./trials/prototypicality-own-reference.2";
 import PrototypicalityFromWonReferenceTrial from "./trials/prototypicality-own-reference";
 import ExamplenessTrial from "./trials/exampleness";
 import CategorisationTrial from "./trials/categorisation";
@@ -52,8 +54,6 @@ import FrequencyWithOptionsTrial from "./trials/frequency-options";
 import SignageFamiliarityTrial from "./trials/familiarity-signage";
 import ShowcaseAllTrial from "./trials/showcase";
 import CommonAndUncommonWasteItemsTrial from "./trials/common-uncommon";
-
-import test from "./test";
 
 import { initJsPsych } from "jspsych";
 
@@ -82,6 +82,9 @@ export async function run({ assetPaths, input = {}, environment, title, version 
   experiment.addTrial = function(trialModule) {
     trialModule(this);
   }
+
+  experiment.frequencyTrialCount = frequencyTrialCount;
+  experiment.prototypicalityFractionCount = prototypicalityFractionCount;
 
   // experiment.addTrial();
 
@@ -169,6 +172,9 @@ export async function run({ assetPaths, input = {}, environment, title, version 
     },
   ]
 
+  experiment.stimuli = {};
+  experiment.stimuli.fractions = fractions;
+
   // Populate stimuli array
   let stimuliCounts = {
     bio: 29,
@@ -207,6 +213,9 @@ export async function run({ assetPaths, input = {}, environment, title, version 
       // });
     }
   }
+
+  experiment.stimuli.all = stimuliAll;
+  experiment.stimuli.allAsItem = stimuliAllAsItem;
 
   var stimuliSet = fractions;
   stimuliSet.forEach(function(val, i) {
@@ -286,6 +295,8 @@ export async function run({ assetPaths, input = {}, environment, title, version 
     );
   });
 
+  experiment.stimuli.congruencymix = congruencymix;
+
   let detectLanguage = function() {
     let detectedLanguage = jsPsych.data.get().trials[0].lang;
     if (["en", "sv", "da"].includes(detectedLanguage)) {
@@ -305,7 +316,7 @@ export async function run({ assetPaths, input = {}, environment, title, version 
   //LanguageSelectionTrial(jsPsych, timeline, HtmlChoicePlugin); // Necessary for running detectLanguage!!
 
   // Switch to full screen
-  experiment.addTrial(FullScreenTrial);
+  // experiment.addTrial(FullScreenTrial);
   // FullScreenTrial(jsPsych, timeline, FullscreenPlugin, detectLanguage);
 
   // Odd-one-out 0.0.2
@@ -320,12 +331,18 @@ export async function run({ assetPaths, input = {}, environment, title, version 
   // Familarity 0.0.1
   // FamiliarityTrial(jsPsych, timeline, HtmlSliderResponsePlugin, stimuliAllAsItem);
 
+  // Frequency 0.0.3
+  // experiment.addTrial(FrequencyNumericInputTrialNewText);
+
   // Frequency 0.0.2
   // FrequencyNumericInputTrial(jsPsych, timeline, HtmlButtonResponsePlugin, SurveyHtmlFormPlugin, detectLanguage, frequencyTrialCount, stimuliAllAsItem);
 
   // Frequency 0.0.1
   // FrequencyWithOptionsTrial(jsPsych, timeline, HtmlButtonResponsePlugin, stimuliAllAsItem);
   
+  // Prototypicality 0.0.3
+  experiment.addTrial(PrototypicalityFromOwnReferenceTrialNewText);
+
   // Prototypicality 0.0.2
   // PrototypicalityFromWonReferenceTrial(jsPsych, timeline, HtmlButtonResponsePlugin, HtmlSliderResponsePlugin, detectLanguage, prototypicalityFractionCount, congruencymix, fractions);
 
