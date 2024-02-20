@@ -41,6 +41,17 @@ video {
 .hidden {
   opacity: 0;
   // pointer-events: none;
+  transition: opacity 0s;
+}
+
+* {
+  transition: opacity .4s ease;
+}
+
+.text-with-input {
+  #mental-image-response {
+    text-align: center;
+  }
 }
 
 .slider-with-stimulus,

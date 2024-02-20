@@ -38,11 +38,14 @@ import LanguageSelectionTrial from "./trials/select-language";
 import FullScreenTrial from "./trials/full-screen";
 import OddOneOutTrial from "./trials/odd-one-out-trial";
 import OddOneOutWithReasonTrial from "./trials/odd-one-out-with-reason";
+import OddOneOutSimplifiedTrial from "./trials/odd-one-out-trial-simplified";
 import RecognitionTrial from "./trials/recognition";
 import FamiliarityTrial from "./trials/familiarity";
 import FrequencyNumericInputTrial from "./trials/frequency-numeric-input";
 import FrequencyNumericInputTrialNewText from "./trials/frequency-numeric-input.2";
+import FrequencyNumericInputTrialNewText2 from "./trials/frequency-numeric-input.3";
 import PrototypicalityFromOwnReferenceTrialNewText from "./trials/prototypicality-own-reference.2";
+import PrototypicalityFromOwnReferenceWithPromptTrial from "./trials/prototypicality-own-reference-with-prompt";
 import PrototypicalityFromWonReferenceTrial from "./trials/prototypicality-own-reference";
 import ExamplenessTrial from "./trials/exampleness";
 import CategorisationTrial from "./trials/categorisation";
@@ -52,6 +55,7 @@ import CategorisationSubsetNegative from "./trials/categorisation-subset-negativ
 import CategorisationWithArrowsTrial from "./trials/categorisation-arrows";
 import FrequencyWithOptionsTrial from "./trials/frequency-options";
 import SignageFamiliarityTrial from "./trials/familiarity-signage";
+import SignageFamiliarityWithExplanationTrial from "./trials/familiarity-signage-explanation";
 import ShowcaseAllTrial from "./trials/showcase";
 import CommonAndUncommonWasteItemsTrial from "./trials/common-uncommon";
 
@@ -85,6 +89,7 @@ export async function run({ assetPaths, input = {}, environment, title, version 
 
   experiment.frequencyTrialCount = frequencyTrialCount;
   experiment.prototypicalityFractionCount = prototypicalityFractionCount;
+  experiment.oddOneOutTrialCount = oddOneOutTrialCount;
 
   // experiment.addTrial();
 
@@ -244,12 +249,27 @@ export async function run({ assetPaths, input = {}, environment, title, version 
     "assets/img/signs/TEXTILE_WASTE/TEXTILE_WASTE_rgb_72dpi.jpg",
   ];
 
+  // let waste_fraction_signs_sv = [
+  //   "assets/img/signs/CARDBOARD/CARDBOARD_rgb_72dpi.jpg",
+  //   "assets/img/signs/FOOD_WASTE/FOOD_WASTE_rgb_72dpi.jpg",
+  //   "assets/img/signs/GLASS/GLASS_rgb_72rgb.jpg",
+  //   "assets/img/signs/HAZARDOUS_WASTE/HAZARDOUS_WASTE_rgb_72dpi.jpg",
+  //   "assets/img/signs/METAL/METAL_rgb_72dpi.jpg",
+  //   "assets/img/signs/PAPER/PAPER_rgb_72dpi.jpg",
+  //   "assets/img/signs/PLASTICS/PLASTICS_rgb_72dpi.jpg",
+  //   "assets/img/signs/RESIDUAL_WASTE/RESIDUAL_WASTE_rgb_72dpi.jpg",
+  //   "assets/img/signs/TEXTILE_WASTE/TEXTILE_WASTE_rgb_72dpi.jpg",
+  // ];
+
   var waste_fraction_signs_as_items = [];
   waste_fraction_signs.forEach(function(val) {
     waste_fraction_signs_as_items.push(
       {item: val}
     );
   })
+
+  experiment.stimuli.signs = {};
+  experiment.stimuli.signs.asItems = waste_fraction_signs_as_items;
 
   // Functionality to show a mixture of fraction-congruent and -incongruent stimuli
   let congruencyRecipe = [
@@ -319,6 +339,9 @@ export async function run({ assetPaths, input = {}, environment, title, version 
   // experiment.addTrial(FullScreenTrial);
   // FullScreenTrial(jsPsych, timeline, FullscreenPlugin, detectLanguage);
 
+  // Odd-one-out 0.0.3
+  // experiment.addTrial(OddOneOutSimplifiedTrial);
+
   // Odd-one-out 0.0.2
   // OddOneOutTrial(jsPsych, timeline, HtmlButtonResponsePlugin, ImageChoicePlugin, detectLanguage, oddOneOutTrialCount, stimuliAll);
 
@@ -331,6 +354,9 @@ export async function run({ assetPaths, input = {}, environment, title, version 
   // Familarity 0.0.1
   // FamiliarityTrial(jsPsych, timeline, HtmlSliderResponsePlugin, stimuliAllAsItem);
 
+  // Frequency 0.0.4
+  // experiment.addTrial(FrequencyNumericInputTrialNewText2);
+  
   // Frequency 0.0.3
   // experiment.addTrial(FrequencyNumericInputTrialNewText);
 
@@ -340,8 +366,11 @@ export async function run({ assetPaths, input = {}, environment, title, version 
   // Frequency 0.0.1
   // FrequencyWithOptionsTrial(jsPsych, timeline, HtmlButtonResponsePlugin, stimuliAllAsItem);
   
+  // Prototypicality 0.0.4
+  // experiment.addTrial(PrototypicalityFromOwnReferenceWithPromptTrial);
+
   // Prototypicality 0.0.3
-  experiment.addTrial(PrototypicalityFromOwnReferenceTrialNewText);
+  // experiment.addTrial(PrototypicalityFromOwnReferenceTrialNewText);
 
   // Prototypicality 0.0.2
   // PrototypicalityFromWonReferenceTrial(jsPsych, timeline, HtmlButtonResponsePlugin, HtmlSliderResponsePlugin, detectLanguage, prototypicalityFractionCount, congruencymix, fractions);
@@ -364,6 +393,9 @@ export async function run({ assetPaths, input = {}, environment, title, version 
   // Categorisation 0.0.1
   // CategorisationTrial(jsPsych, timeline, ImageChoicePlugin, waste_fraction_signs, stimuliAllAsItem);
 
+  // Signage familiarity 0.0.2
+  experiment.addTrial(SignageFamiliarityWithExplanationTrial);
+  
   // Signage familiarity 0.0.1
   // SignageFamiliarityTrial(jsPsych, timeline, HtmlSliderResponsePlugin, waste_fraction_signs_as_items);
   
