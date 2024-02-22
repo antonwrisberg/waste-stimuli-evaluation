@@ -44,8 +44,10 @@ import FamiliarityTrial from "./trials/familiarity";
 import FrequencyNumericInputTrial from "./trials/frequency-numeric-input";
 import FrequencyNumericInputTrialNewText from "./trials/frequency-numeric-input.2";
 import FrequencyNumericInputTrialNewText2 from "./trials/frequency-numeric-input.3";
-import PrototypicalityFromOwnReferenceTrialNewText from "./trials/prototypicality-own-reference.2";
+import FrequencyNumericInputTrialNewText3 from "./trials/frequency-numeric-input.4";
+import PrototypicalityFromOwnReferenceWithPromptAndExamplesTrial from "./trials/prototypicality-own-reference-with-prompt-and-examples";
 import PrototypicalityFromOwnReferenceWithPromptTrial from "./trials/prototypicality-own-reference-with-prompt";
+import PrototypicalityFromOwnReferenceTrialNewText from "./trials/prototypicality-own-reference.2";
 import PrototypicalityFromWonReferenceTrial from "./trials/prototypicality-own-reference";
 import ExamplenessTrial from "./trials/exampleness";
 import CategorisationTrial from "./trials/categorisation";
@@ -219,6 +221,7 @@ export async function run({ assetPaths, input = {}, environment, title, version 
     }
   }
 
+  experiment.stimuli.inFractions = stimuli;
   experiment.stimuli.all = stimuliAll;
   experiment.stimuli.allAsItem = stimuliAllAsItem;
 
@@ -354,6 +357,9 @@ export async function run({ assetPaths, input = {}, environment, title, version 
   // Familarity 0.0.1
   // FamiliarityTrial(jsPsych, timeline, HtmlSliderResponsePlugin, stimuliAllAsItem);
 
+  // Frequency 0.0.5
+  //  experiment.addTrial(FrequencyNumericInputTrialNewText3);
+
   // Frequency 0.0.4
   // experiment.addTrial(FrequencyNumericInputTrialNewText2);
   
@@ -365,6 +371,9 @@ export async function run({ assetPaths, input = {}, environment, title, version 
 
   // Frequency 0.0.1
   // FrequencyWithOptionsTrial(jsPsych, timeline, HtmlButtonResponsePlugin, stimuliAllAsItem);
+  
+  // Prototypicality 0.0.5
+  experiment.addTrial(PrototypicalityFromOwnReferenceWithPromptAndExamplesTrial);
   
   // Prototypicality 0.0.4
   // experiment.addTrial(PrototypicalityFromOwnReferenceWithPromptTrial);
@@ -394,7 +403,7 @@ export async function run({ assetPaths, input = {}, environment, title, version 
   // CategorisationTrial(jsPsych, timeline, ImageChoicePlugin, waste_fraction_signs, stimuliAllAsItem);
 
   // Signage familiarity 0.0.2
-  experiment.addTrial(SignageFamiliarityWithExplanationTrial);
+  // experiment.addTrial(SignageFamiliarityWithExplanationTrial);
   
   // Signage familiarity 0.0.1
   // SignageFamiliarityTrial(jsPsych, timeline, HtmlSliderResponsePlugin, waste_fraction_signs_as_items);
