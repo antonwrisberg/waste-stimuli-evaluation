@@ -113,8 +113,8 @@ Only stimuli that participants can recognise will be included in the following s
 
 Study 2 will be using these measures (in that order):
 
-- Prototypicality v**0.0.5** [ [example](https://antonwrisberg.github.io/waste-stimuli-evaluation/dist/experiment/index.html?version=prototypicality.0.0.5) &#124; [context](#prototypicality) ]
 - Frequency v**0.0.4** [ [example](https://antonwrisberg.github.io/waste-stimuli-evaluation/dist/experiment/index.html?version=frequency.0.0.4) &#124; [context](#frequency) ]
+- Prototypicality v**0.0.5** [ [example](https://antonwrisberg.github.io/waste-stimuli-evaluation/dist/experiment/index.html?version=prototypicality.0.0.5) &#124; [context](#prototypicality) ]
 - Signage familiarity v**0.0.2** [ [example](https://antonwrisberg.github.io/waste-stimuli-evaluation/dist/experiment/index.html?version=signage-familiarity.0.0.2) &#124; [context](#signage-familiarity) ]
 - Categorisation v**0.0.1** [ [example](https://antonwrisberg.github.io/waste-stimuli-evaluation/dist/experiment/index.html?version=categorisation.0.0.1) &#124; [context](#categorisation) ]
 

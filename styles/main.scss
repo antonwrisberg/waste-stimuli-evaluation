@@ -54,6 +54,13 @@ video {
   }
 }
 
+.text-with-thumbnails {
+  img {
+    width: 70px;
+    margin: auto 5px;
+  }
+}
+
 .slider-with-stimulus,
 .buttons-with-stimulus,
 .slider-with-stimulus-and-prompt {

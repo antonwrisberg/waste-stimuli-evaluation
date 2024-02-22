@@ -15,6 +15,7 @@ let frequencyTrialCount = 8;
 let prototypicalityTrialPerFractionCount = 12;
 let prototypicalityFractionCount = 1;
 let oddOneOutTrialCount = 20;
+let categorisationCount = 12;
 
 // You can import stylesheets (.scss or .css).
 import "../styles/main.scss";
@@ -55,6 +56,7 @@ import CategorisationWithCertaintyTrial from "./trials/categorisation-with-certa
 import CategorisationSubset from "./trials/categorisation-subset";
 import CategorisationSubsetNegative from "./trials/categorisation-subset-negative";
 import CategorisationWithArrowsTrial from "./trials/categorisation-arrows";
+import CategorisationTrialWithIntroduction from "./trials/categorisation.i18n";
 import FrequencyWithOptionsTrial from "./trials/frequency-options";
 import SignageFamiliarityTrial from "./trials/familiarity-signage";
 import SignageFamiliarityWithExplanationTrial from "./trials/familiarity-signage-explanation";
@@ -92,6 +94,7 @@ export async function run({ assetPaths, input = {}, environment, title, version 
   experiment.frequencyTrialCount = frequencyTrialCount;
   experiment.prototypicalityFractionCount = prototypicalityFractionCount;
   experiment.oddOneOutTrialCount = oddOneOutTrialCount;
+  experiment.categorisationCount = categorisationCount;
 
   // experiment.addTrial();
 
@@ -272,6 +275,7 @@ export async function run({ assetPaths, input = {}, environment, title, version 
   })
 
   experiment.stimuli.signs = {};
+  experiment.stimuli.signs.asLinks = waste_fraction_signs;
   experiment.stimuli.signs.asItems = waste_fraction_signs_as_items;
 
   // Functionality to show a mixture of fraction-congruent and -incongruent stimuli
@@ -339,26 +343,11 @@ export async function run({ assetPaths, input = {}, environment, title, version 
   //LanguageSelectionTrial(jsPsych, timeline, HtmlChoicePlugin); // Necessary for running detectLanguage!!
 
   // Switch to full screen
-  // experiment.addTrial(FullScreenTrial);
+  experiment.addTrial(FullScreenTrial);
   // FullScreenTrial(jsPsych, timeline, FullscreenPlugin, detectLanguage);
 
-  // Odd-one-out 0.0.3
-  // experiment.addTrial(OddOneOutSimplifiedTrial);
-
-  // Odd-one-out 0.0.2
-  // OddOneOutTrial(jsPsych, timeline, HtmlButtonResponsePlugin, ImageChoicePlugin, detectLanguage, oddOneOutTrialCount, stimuliAll);
-
-  // Odd-one-out 0.0.1
-  // OddOneOutWithReasonTrial(jsPsych, timeline, ImageChoicePlugin, SurveyTextPlugin, stimuliAll, oddOneOutTrialCount);
-
-  // Familiarity v0.0.2
-  // RecognitionTrial(jsPsych, timeline, HtmlButtonResponsePlugin, detectLanguage, recognitionTrialCount, stimuliAllAsItem);
-
-  // Familarity 0.0.1
-  // FamiliarityTrial(jsPsych, timeline, HtmlSliderResponsePlugin, stimuliAllAsItem);
-
   // Frequency 0.0.5
-  //  experiment.addTrial(FrequencyNumericInputTrialNewText3);
+  experiment.addTrial(FrequencyNumericInputTrialNewText3);
 
   // Frequency 0.0.4
   // experiment.addTrial(FrequencyNumericInputTrialNewText2);
@@ -387,6 +376,12 @@ export async function run({ assetPaths, input = {}, environment, title, version 
   // Prototypicality 0.0.1
   // ExamplenessTrial(jsPsych, timeline, HtmlSliderResponsePlugin, stimuliAll, waste_fraction_signs);
 
+  // Signage familiarity 0.0.2
+  experiment.addTrial(SignageFamiliarityWithExplanationTrial);
+  
+  // Signage familiarity 0.0.1
+  // SignageFamiliarityTrial(jsPsych, timeline, HtmlSliderResponsePlugin, waste_fraction_signs_as_items);
+
   // Categorisation 0.0.5
   // CategorisationWithArrowsTrial(jsPsych, timeline, ImageChoicePlugin, waste_fraction_signs, stimuliAllAsItem);
 
@@ -400,13 +395,23 @@ export async function run({ assetPaths, input = {}, environment, title, version 
   // CategorisationWithCertaintyTrial(jsPsych, timeline, ImageChoicePlugin, HtmlSliderResponsePlugin, waste_fraction_signs, stimuliAllAsItem);
 
   // Categorisation 0.0.1
+  experiment.addTrial(CategorisationTrialWithIntroduction);
   // CategorisationTrial(jsPsych, timeline, ImageChoicePlugin, waste_fraction_signs, stimuliAllAsItem);
 
-  // Signage familiarity 0.0.2
-  // experiment.addTrial(SignageFamiliarityWithExplanationTrial);
-  
-  // Signage familiarity 0.0.1
-  // SignageFamiliarityTrial(jsPsych, timeline, HtmlSliderResponsePlugin, waste_fraction_signs_as_items);
+  // Odd-one-out 0.0.3
+  experiment.addTrial(OddOneOutSimplifiedTrial);
+
+  // Odd-one-out 0.0.2
+  // OddOneOutTrial(jsPsych, timeline, HtmlButtonResponsePlugin, ImageChoicePlugin, detectLanguage, oddOneOutTrialCount, stimuliAll);
+
+  // Odd-one-out 0.0.1
+  // OddOneOutWithReasonTrial(jsPsych, timeline, ImageChoicePlugin, SurveyTextPlugin, stimuliAll, oddOneOutTrialCount);
+
+  // Familiarity v0.0.2
+  // RecognitionTrial(jsPsych, timeline, HtmlButtonResponsePlugin, detectLanguage, recognitionTrialCount, stimuliAllAsItem);
+
+  // Familarity 0.0.1
+  // FamiliarityTrial(jsPsych, timeline, HtmlSliderResponsePlugin, stimuliAllAsItem);
   
   // Showcase all (0.0.1)
   // ShowcaseAllTrial(jsPsych, timeline, ImageChoicePlugin, stimuliAll);
