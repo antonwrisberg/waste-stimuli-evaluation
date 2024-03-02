@@ -22,8 +22,8 @@ export default function (experiment) {
           `;
         case 'sv':
           return `
-            <p>Om en stund kommer du att se 9 skyltar med kategorier för avfallssortering.</p>
-            <p>För varje skylt måste du bedöma hur väl du skulle kunna förklara för någon annan vad som bör sorteras in i den avfallskategorin.</p>
+            <p>Inom kort kommer du att få se 9 skyltar med avfallskategorier.</p>
+            <p>För varje skylt kommer vi att be dig att att på en skala ange hur väl du skulle kunna förklara för någon annan vad som bör sorteras in i avfallskategorin.</p>
           `;
         default:
           break;
@@ -67,7 +67,7 @@ export default function (experiment) {
             case 'sv':
               return `
                 <div class="stimulus">
-                    <p>Hur bra skulle du kunna förklara för någon annan vad som ingår i denna kategori?</p>
+                    <p>Hur bra skulle du kunna förklara för någon annan vad som ingår i denna avfallskategori?</p>
                     <img src="${jsPsych.timelineVariable('item')}">
                 </div>
               `;
@@ -83,7 +83,19 @@ export default function (experiment) {
             case 'da':
               return ['Jeg kunne slet ikke forklare det', '← dårligere&nbsp;&nbsp;&nbsp;bedre →&nbsp;&nbsp;&nbsp;', 'Jeg kunne forklare det perfekt'];
             case 'sv':
-              return ['Jag kunde inte förklara det alls', '← sämre&nbsp;&nbsp;&nbsp;bättre →', 'Jag kunde förklara det perfekt'];
+              return ['Jag kan inte förklara det alls', '← sämre&nbsp;&nbsp;&nbsp;bättre →', 'Jag kan förklara det perfekt'];
+            default:
+              break;
+          }
+        },
+        button_label: function() {
+          switch (experiment.detectLanguage()) {
+            case 'en':
+              return "Next";
+            case 'da':
+              return "Næste";
+            case 'sv':
+              return "Nästa";
             default:
               break;
           }

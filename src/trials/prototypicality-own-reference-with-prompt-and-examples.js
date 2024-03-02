@@ -24,8 +24,8 @@ export default function (experiment) {
               `;
             case 'sv':
               return `
-                <p>Vänligen ta en stund för att bilda dig en mental bild av en avfallssak från hemmet som du skulle kategorisera som <strong>${jsPsych.timelineVariable('fraction_sv')}</strong>.</p>
-                <p class="delayed">Vad ser du i din mentala bild?</p>
+                <p>Vänligen ta en stund för att forma en inre bild av något från hemmet du skulle slänga som avfall och som du skulle kategorisera som <strong>${jsPsych.timelineVariable('fraction_sv')}</strong>.</p>
+                <p class="delayed">Vad visar din inre bild?</p>
               `;
             default:
               break;
@@ -106,7 +106,7 @@ export default function (experiment) {
               `;
             case 'sv':
               return `
-                <p>Inom kort kommer du att se ${experiment.stimuli.congruencymix.length} slumpmässiga bilder på olika avfallssaker som dem nedan.</p>
+                <p>Inom kort kommer du att se ${experiment.stimuli.congruencymix.length} slumpmässiga bilder på olika avfall som dem du ser här nedanför.</p>
                 <img src="${images[0]}">
                 <img src="${images[1]}">
                 <img src="${images[2]}">
@@ -116,8 +116,8 @@ export default function (experiment) {
                 <img src="${images[6]}">
                 <img src="${images[7]}">
                 <img src="${images[8]}">
-                <p>För varje sak måste du bedöma på en skala hur bra den liknar det mentala bilden<br /> <strong>du</strong> just bildat av en avfallssak från hemmet som du skulle kategorisera som <strong>${jsPsych.timelineVariable('fraction_sv')}</strong>.</p>
-                <p>Så ta en stund att mindes den mentale bild du har i tankarna just nu (av "${jsPsych.data.get().trials[0][jsPsych.timelineVariable('key') + '-mental-image']}").</p>
+                <p>För varje bild kommer vi att be dig att på en skala ange hur mycket den liknar den inre bild<br /> <strong>du</strong> just formade av ett avfall från hemmet som du skulle kategorisera som <strong>${jsPsych.timelineVariable('fraction_sv')}</strong>.</p>
+                <p>Försök att minnas den inre bild du formade (av "${jsPsych.data.get().trials[0][jsPsych.timelineVariable('key') + '-mental-image']}").</p>
               `;
             default:
               break;
@@ -163,7 +163,7 @@ export default function (experiment) {
                 case 'sv':
                   return `
                     <div class="prompt">
-                      <p>Var på skalan skulle du placera denna avfallssak när det gäller hur väl den liknar ditt mentala bild av ett avfallssak från hemmet kategoriserat som <strong>${jsPsych.timelineVariable('fraction_sv')}</strong>?</p>
+                      <p>Hur mycket liknar detta avfall din inre bild av ett avfall från hemmet kategoriserat som <strong>${jsPsych.timelineVariable('fraction_sv')}</strong>?</p>
                     </div>`;
                 default:
                   break;
@@ -176,7 +176,7 @@ export default function (experiment) {
                 case 'da':
                   return [`<p>Det ligner overhovedet ikke<br />mit mentale billede<br />(af "${jsPsych.data.get().trials[0][jsPsych.timelineVariable('key') + '-mental-image']}")</p>`, '← mindre&nbsp;&nbsp;&nbsp;mere →&nbsp;&nbsp;', `<p>Det ligner præcis<br />mit mentale billede<br />(af "${jsPsych.data.get().trials[0][jsPsych.timelineVariable('key') + '-mental-image']}")</p>`];
                 case 'sv':
-                  return [`<p>Det ser överhuvudtaget inte<br />ut som mitt mentale bild<br />(av "${jsPsych.data.get().trials[0][jsPsych.timelineVariable('key') + '-mental-image']}")</p>`, '← mindre&nbsp;&nbsp;&nbsp;mer →&nbsp;&nbsp;&nbsp;', `<p>Det ser identiskt ut<br />med mitt mentale bild<br />(av "${jsPsych.data.get().trials[0][jsPsych.timelineVariable('key') + '-mental-image']}")</p>`];
+                  return [`<p>Det ser överhuvudtaget inte<br />ut som min inre bild<br />(av "${jsPsych.data.get().trials[0][jsPsych.timelineVariable('key') + '-mental-image']}")</p>`, '← mindre&nbsp;&nbsp;&nbsp;mer →&nbsp;&nbsp;&nbsp;', `<p>Det ser precis ut<br />som min inre bild<br />(av "${jsPsych.data.get().trials[0][jsPsych.timelineVariable('key') + '-mental-image']}")</p>`];
                 default:
                   break;
               }

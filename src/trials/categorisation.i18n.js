@@ -23,8 +23,8 @@ export default function (experiment) {
               `;
             case 'sv':
               return `
-                <p>Inom en kort stund kommer du att se ${experiment.categorisationCount} avfallssaker.</p>
-                <p>För varje avfallssak måste du välja avfallsfraktionen som du tror att det tillhör.</p>
+                <p>Inom en kort stund kommer du att få se ${experiment.categorisationCount} olika avfall.</p>
+                <p>För varje avfall kommer vi att be dig att välja vilken avfallskategori du tror att det tillhör.</p>
               `;
             default:
               break;
@@ -58,7 +58,7 @@ export default function (experiment) {
             case 'da':
               return "<p>Hvilken af affaldsfraktionerne til højre tror du, at affaldet til venstre passer ind i?<br /> <br />Klik på en affaldsfraktion for at vælge den.</p>";
             case 'sv':
-              return "<p>Vilken av avfallsfraktionerna till höger tror du att avfallssaken till vänster passar in i?<br /> <br />Klicka på en avfallsfraktion för att välja den.</p>";
+              return "<p>Vilken av avfallskategorierna avbildade till höger tror du avfallet till vänster passar in i?<br /> <br />Klicka på en avfallskategori för att välja den.</p>";
             default:
               break;
           }

@@ -23,7 +23,7 @@ export default function (experiment) {
         case 'sv':
           return `
             <p>Inom kort kommer du att se ${experiment.frequencyTrialCount} bilder på avfall.</p>
-            <p>För varje stycke avfall måste du ange hur många gånger du har förbrukat det under den senaste veckan.</p>
+            <p>För varje bild av avfall kommer vi att be dig att berätta hur många gånger du har förbrukat/använt slut på det som visas på bilden under den senaste veckan.</p>
           `;
         default:
           break;

@@ -22,8 +22,8 @@ export default function (experiment) {
           `;
         case 'sv':
           return `
-            <p>Inom kort kommer du att se ${experiment.oddOneOutTrialCount} uppsättninger av tre bilder på avfall.</p>
-            <p>För varje uppsättning måste du välja det avfallsobjekt som skiljer sig mest från de andra.</p>
+            <p>Inom kort kommer du att få se ${experiment.oddOneOutTrialCount} uppsättningar av tre bilder på avfall.</p>
+            <p>För varje uppsättning bilder kommer vi att be dig att välja det avbildade avfall som skiljer sig mest från de andra .</p>
           `;
         default:
           break;
@@ -57,7 +57,7 @@ export default function (experiment) {
             case 'da':
               return `<p>Nedenfor er tre stykker affald.<br />Klik på det, der adskiller sig mest fra de to andre.</p>`;
             case 'sv':
-              return `<p>Nedan finns tre avfallsobjekt.<br />Klicka på det som skiljer sig mest från de andra två.</p>`;
+              return `<p>Här nedanför ser du tre olika bilder på avfall.<br />Klicka på den som avbildar det avfall som skiljer sig mest från de andra två.</p>`;
             default:
               break;
           }

@@ -7,19 +7,19 @@ export default function (experiment) {
   experiment.timeline.push({
     type: HtmlChoicePlugin,
     html_array: [
-      "<div><span>🇩🇰</span><br />Fortsæt på dansk</div>",
       "<div><span>🇸🇪</span><br />Fortsätt på svenska</div>",
-      "<div><span>🏴󠁧󠁢󠁥󠁮󠁧󠁿</span><br />Continue in English</div>"
+      // "<div><span>🇩🇰</span><br />Fortsæt på dansk</div>",
+      // "<div><span>🏴󠁧󠁢󠁥󠁮󠁧󠁿</span><br />Continue in English</div>"
     ],
     css_classes: ["lanauge-selection"],
     on_finish: function(data) {
       if (data.response === 0) {
         jsPsych.data.addProperties({
-          lang: "da"
+          lang: "sv"
         });
       } else if (data.response === 1) {
         jsPsych.data.addProperties({
-          lang: "sv"
+          lang: "da"
         });
       } else if (data.response === 2) {
         jsPsych.data.addProperties({

@@ -17,7 +17,7 @@ export default function (experiment) {
           `;
         case 'sv':
           return `
-            <p>Experimentet kommer att växla till fullskärmsläge när du trycker på knappen nedan.</p>
+            <p>När du trycker på knappen nedan kommer du att gå in i fullskärmsläge.</p>
             <p>Du kan avsluta fullskärmsläget genom att trycka på 'esc'-tangenten.</p>
           `;
         default:

@@ -3,7 +3,7 @@
  * @description An experiment to evaluate waste items for later sorting experiments
  * @version 0.1.3
  *
- * @assets assets/img/betaset-sorted/,assets/img/signs/
+ * @assets assets/img/betaset-sorted/,assets/img/signs/,assets/img/logos
  */
 
 /**
@@ -11,11 +11,13 @@
  */
 
 let recognitionTrialCount = 10;
-let frequencyTrialCount = 8;
+let frequencyTrialCount = 100;
 let prototypicalityTrialPerFractionCount = 12;
-let prototypicalityFractionCount = 1;
-let oddOneOutTrialCount = 20;
-let categorisationCount = 12;
+let prototypicalityFractionCount = 4;
+let prototypicalityFreeSortCongruentCount = 20;
+let prototypicalityFreeSortIncongruentCount = 16;
+let oddOneOutTrialCount = 100;
+let categorisationCount = 100;
 
 // You can import stylesheets (.scss or .css).
 import "../styles/main.scss";
@@ -33,6 +35,7 @@ import HtmlChoicePlugin from "@jspsych-contrib/plugin-html-choice";
 import SurveyHtmlFormPlugin from '@jspsych/plugin-survey-html-form';
 import AnimationPlugin from '@jspsych/plugin-animation';
 import ImageKeyboardResponsePlugin from "@jspsych/plugin-image-keyboard-response";
+import FreeSortPlugin from '@jspsych/plugin-free-sort';
 
 // Import trials
 import LanguageSelectionTrial from "./trials/select-language";
@@ -50,6 +53,7 @@ import PrototypicalityFromOwnReferenceWithPromptAndExamplesTrial from "./trials/
 import PrototypicalityFromOwnReferenceWithPromptTrial from "./trials/prototypicality-own-reference-with-prompt";
 import PrototypicalityFromOwnReferenceTrialNewText from "./trials/prototypicality-own-reference.2";
 import PrototypicalityFromWonReferenceTrial from "./trials/prototypicality-own-reference";
+import prototypicalityFreeSort from "./trials/prototypicality-free-sort";
 import ExamplenessTrial from "./trials/exampleness";
 import CategorisationTrial from "./trials/categorisation";
 import CategorisationWithCertaintyTrial from "./trials/categorisation-with-certainty";
@@ -95,6 +99,8 @@ export async function run({ assetPaths, input = {}, environment, title, version 
   experiment.prototypicalityFractionCount = prototypicalityFractionCount;
   experiment.oddOneOutTrialCount = oddOneOutTrialCount;
   experiment.categorisationCount = categorisationCount;
+  experiment.prototypicalityFreeSortCongruentCount = prototypicalityFreeSortCongruentCount
+  experiment.prototypicalityFreeSortIncongruentCount = prototypicalityFreeSortIncongruentCount
 
   // experiment.addTrial();
 
@@ -230,7 +236,7 @@ export async function run({ assetPaths, input = {}, environment, title, version 
 
   var stimuliSet = fractions;
   stimuliSet.forEach(function(val, i) {
-    stimuliSet[i].congruent = jsPsych.randomization.sampleWithoutReplacement(stimuli[val.key], 10);
+    stimuliSet[i].congruent = jsPsych.randomization.sampleWithoutReplacement(stimuli[val.key], prototypicalityFreeSortCongruentCount);
 
     var remainingStimuli = [];
     
@@ -240,8 +246,10 @@ export async function run({ assetPaths, input = {}, environment, title, version 
       }
     }
   
-    stimuliSet[i].incongruent = jsPsych.randomization.sampleWithoutReplacement(remainingStimuli.flat(), 10);
+    stimuliSet[i].incongruent = jsPsych.randomization.sampleWithoutReplacement(remainingStimuli.flat(), prototypicalityFreeSortIncongruentCount);
   });
+
+  experiment.stimuli.set = stimuliSet;
 
   let waste_fraction_signs = [
     "assets/img/signs/CARDBOARD/CARDBOARD_rgb_72dpi.jpg",
@@ -292,6 +300,19 @@ export async function run({ assetPaths, input = {}, environment, title, version 
     "congruent",
     "incongruent",
     "incongruent",
+    "congruent",
+    "congruent",
+    "congruent",
+    "incongruent",
+    "congruent",
+    "congruent",
+    "incongruent",
+    "incongruent",
+    "congruent",
+    "incongruent",
+    "incongruent",
+    "congruent",
+    "congruent"
   ]
   var congruencymix = [];
   var congruentCount = -1;
@@ -322,6 +343,9 @@ export async function run({ assetPaths, input = {}, environment, title, version 
     );
   });
 
+  console.log("CONGRUENCE MIX SHOW");
+  console.log(congruencymix);
+
   experiment.stimuli.congruencymix = congruencymix;
 
   let detectLanguage = function() {
@@ -341,6 +365,40 @@ export async function run({ assetPaths, input = {}, environment, title, version 
   // Select language
   experiment.addTrial(LanguageSelectionTrial);
   //LanguageSelectionTrial(jsPsych, timeline, HtmlChoicePlugin); // Necessary for running detectLanguage!!
+
+  // Welcome screen
+  experiment.timeline.push({
+    type: HtmlButtonResponsePlugin,
+    stimulus: function() {
+      switch (experiment.detectLanguage()) {
+        case 'sv':
+          return `
+            <img src="assets/img/logos/Lunds_universitet_C2r_RGB.png" style="height:120px">
+            <p>Hej och välkommen till vår undersökning av hur du tänker kring avfall och avfallsortering.</p>
+            <p>Undersökningen består av X delar. Totalt tar den 15-20 minuter att genomföra.<br />Innan varje del kommer du att få instruktioner om vad du kommer att få se och vad du ska göra.</p>
+            <p>Var snäll och läs instruktionerna noggrant.</p>
+            <p>Ingen kommer att kunna titta på dina svar och veta att det var du, som  person som svarade.<br />All insamlad data kommer att hanteras enligt gällande GDPR-lagstiftning.</p>
+            <p>Du kan när som helst välja att avsluta din medverkan genom att stänga fönstret. Då kommer ingen data att sparas!</p>
+            <p>Undersökningen genomförs av Anton Wrisberg, doktorand vid Lunds Universitet.<br />Vid frågor kan han nås på <a href="mailto:anton.wrisberg@lucs.lu.se">anton.wrisberg@lucs.lu.se</a>.</p>
+            <p>Tack för att du vill delta!</p>
+          `;
+        default:
+          break;
+      }
+    },
+    choices: function() {
+      switch (experiment.detectLanguage()) {
+        case 'en':
+          return ["Start"];
+        case 'da':
+          return ["Start"];
+        case 'sv':
+          return ["Start"];
+        default:
+          break;
+      }
+    }
+  });
 
   // Switch to full screen
   experiment.addTrial(FullScreenTrial);
