@@ -360,9 +360,12 @@ export async function run({ assetPaths, input = {}, environment, title, version 
 
   // Frequency 0.0.1
   // FrequencyWithOptionsTrial(jsPsych, timeline, HtmlButtonResponsePlugin, stimuliAllAsItem);
+
+  // Prototypicality 0.0.6
+  experiment.addTrial(prototypicalityFreeSort);
   
   // Prototypicality 0.0.5
-  experiment.addTrial(PrototypicalityFromOwnReferenceWithPromptAndExamplesTrial);
+  // experiment.addTrial(PrototypicalityFromOwnReferenceWithPromptAndExamplesTrial);
   
   // Prototypicality 0.0.4
   // experiment.addTrial(PrototypicalityFromOwnReferenceWithPromptTrial);

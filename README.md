@@ -52,6 +52,7 @@ The links below take you to examples of different versions of implementations of
 - **[v0.0.3](https://antonwrisberg.github.io/waste-stimuli-evaluation/dist/experiment/index.html?version=prototypicality.0.0.3)**. Same as v0.0.2 but with slightly updated text based on Elsa's pilot tests. Most importantly, "household waste" is replaced with "waste from the home".
 - **[v0.0.4](https://antonwrisberg.github.io/waste-stimuli-evaluation/dist/experiment/index.html?version=prototypicality.0.0.4)**. Same as v0.0.3 but with an added prompt forcing participants to write down their mental image and with the middle option in the scale replaced with "← less | more →".
 - **[v0.0.5](https://antonwrisberg.github.io/waste-stimuli-evaluation/dist/experiment/index.html?version=prototypicality.0.0.5)**. **Current favourite**. Same as v0.0.4 but with an emphasis on the mental image containing ONE waste item, examples of random waste items showing the breadth of images to be evaluated, and an emphasis on the answer being on a scale in the individual question.
+- **[v0.0.6](https://antonwrisberg.github.io/waste-stimuli-evaluation/dist/experiment/index.html?version=prototypicality.0.0.6)**. **Current contestant**. This setup asks participants to order an array of images after how good an example of the category they are. THe array contains both congruent and incongruent images. *Has not yet been tested on participants*.
 
 ## Indirectly measurable dimension
 
