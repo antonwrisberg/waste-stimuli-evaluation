@@ -132,7 +132,7 @@ export async function run({ assetPaths, input = {}, environment, title, version 
   // this.test();
 
   // Preload assets
-  timeline.push({
+  experiment.timeline.push({
     type: PreloadPlugin,
     images: assetPaths.images,
     audio: assetPaths.audio,
