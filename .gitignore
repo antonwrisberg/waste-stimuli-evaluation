@@ -1,6 +1,6 @@
 node_modules
 .jspsych-builder
 .vscode
-assets
+/assets
 .DS_Store
 package-lock.json
