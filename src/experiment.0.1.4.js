@@ -3,7 +3,7 @@
  * @description An experiment to evaluate waste items for later sorting experiments
  * @version 0.1.3
  *
- * @assets assets/img/betaset-sorted/,assets/img/signs/,assets/img/logos
+ * @assets assets/img/betaset-sorted/,assets/img/signs/,assets/img/signs_se,assets/img/logos
  */
 
 /**
@@ -18,6 +18,7 @@ let prototypicalityFreeSortCongruentCount = 20;
 let prototypicalityFreeSortIncongruentCount = 16;
 let oddOneOutTrialCount = 100;
 let categorisationCount = 100;
+let categorisationFractionCount = 4;
 
 // You can import stylesheets (.scss or .css).
 import "../styles/main.scss";
@@ -61,6 +62,7 @@ import CategorisationSubset from "./trials/categorisation-subset";
 import CategorisationSubsetNegative from "./trials/categorisation-subset-negative";
 import CategorisationWithArrowsTrial from "./trials/categorisation-arrows";
 import CategorisationTrialWithIntroduction from "./trials/categorisation.i18n";
+import CategorisationPreparedForSSMTrial from "./trials/categorisation-for-ssm";
 import FrequencyWithOptionsTrial from "./trials/frequency-options";
 import SignageFamiliarityTrial from "./trials/familiarity-signage";
 import SignageFamiliarityWithExplanationTrial from "./trials/familiarity-signage-explanation";
@@ -99,6 +101,7 @@ export async function run({ assetPaths, input = {}, environment, title, version 
   experiment.prototypicalityFractionCount = prototypicalityFractionCount;
   experiment.oddOneOutTrialCount = oddOneOutTrialCount;
   experiment.categorisationCount = categorisationCount;
+  experiment.categorisationFractionCount = categorisationFractionCount;
   experiment.prototypicalityFreeSortCongruentCount = prototypicalityFreeSortCongruentCount
   experiment.prototypicalityFreeSortIncongruentCount = prototypicalityFreeSortIncongruentCount
 
@@ -146,45 +149,52 @@ export async function run({ assetPaths, input = {}, environment, title, version 
   let fractions = [
     {
       key: "cardboard",
-      fraction_sv: "pap",
+      fraction_sv: "pappersförpackningar",
       fraction_en: "cardboard",
-      fraction_da: "pap"
+      fraction_da: "pap",
+      sign_sv: "assets/img/signs_se/pappers-forpackningar.png" // or: "assets/img/signs_se/wellpapp.png"
     },
     {
       key: "bio",
       fraction_sv: "matavfall",
       fraction_en: "food waste",
-      fraction_da: "madaffald"
+      fraction_da: "madaffald",
+      sign_sv: "assets/img/signs_se/matavfall.png"
     },
     {
       key: "glass",
-      fraction_sv: "glas",
+      fraction_sv: "glasförpackningar",
       fraction_en: "glass",
-      fraction_da: "glas"
+      fraction_da: "glas",
+      sign_sv: "assets/img/signs_se/glasforpackningar.png",
     },
     {
       key: "metal",
-      fraction_sv: "metall",
+      fraction_sv: "metallförpackningar",
       fraction_en: "metal",
-      fraction_da: "metal"
+      fraction_da: "metal",
+      sign_sv: "assets/img/signs_se/metallforpackningar.png" // or: "assets/img/signs_se/metall.png"
     },
     {
       key: "paper",
-      fraction_sv: "paper",
+      fraction_sv: "papper",
       fraction_en: "paper",
-      fraction_da: "papir"
+      fraction_da: "papir",
+      sign_sv: "assets/img/signs_se/papper.png" // or: "assets/img/signs_se/tidningar.png"
     },
     {
       key: "plastic",
-      fraction_sv: "plast",
+      fraction_sv: "plastförpackningar",
       fraction_en: "plastic",
-      fraction_da: "plast"
+      fraction_da: "plast",
+      sign_sv: "assets/img/signs_se/plastforpackningar.png" // or: "assets/img/signs_se/plastforpackningar-alt.png",
     },
     {
       key: "residual",
       fraction_sv: "restavfall",
       fraction_en: "residual waste",
-      fraction_da: "restaffald"
+      fraction_da: "restaffald",
+      sign_sv: "assets/img/signs_se/restavfall.png"
     },
   ]
 
@@ -263,17 +273,27 @@ export async function run({ assetPaths, input = {}, environment, title, version 
     "assets/img/signs/TEXTILE_WASTE/TEXTILE_WASTE_rgb_72dpi.jpg",
   ];
 
-  // let waste_fraction_signs_sv = [
-  //   "assets/img/signs/CARDBOARD/CARDBOARD_rgb_72dpi.jpg",
-  //   "assets/img/signs/FOOD_WASTE/FOOD_WASTE_rgb_72dpi.jpg",
-  //   "assets/img/signs/GLASS/GLASS_rgb_72rgb.jpg",
-  //   "assets/img/signs/HAZARDOUS_WASTE/HAZARDOUS_WASTE_rgb_72dpi.jpg",
-  //   "assets/img/signs/METAL/METAL_rgb_72dpi.jpg",
-  //   "assets/img/signs/PAPER/PAPER_rgb_72dpi.jpg",
-  //   "assets/img/signs/PLASTICS/PLASTICS_rgb_72dpi.jpg",
-  //   "assets/img/signs/RESIDUAL_WASTE/RESIDUAL_WASTE_rgb_72dpi.jpg",
-  //   "assets/img/signs/TEXTILE_WASTE/TEXTILE_WASTE_rgb_72dpi.jpg",
-  // ];
+  let waste_fraction_signs_sv = [
+    "assets/img/signs_se/batterier.png",
+    "assets/img/signs_se/pappers-forpackningar.png",
+    "assets/img/signs_se/farligt-avfall.png",
+    "assets/img/signs_se/plastforpackningar-alt.png",
+    "assets/img/signs_se/glasforpackningar-fargade.png",
+    "assets/img/signs_se/plastforpackningar.png",
+    "assets/img/signs_se/glasforpackningar-ofargade.png",
+    "assets/img/signs_se/restavfall-grovavfall.png",
+    "assets/img/signs_se/glasforpackningar.png",
+    "assets/img/signs_se/restavfall.png",
+    "assets/img/signs_se/ljuskallor.png",
+    "assets/img/signs_se/smaelektronik.png",
+    "assets/img/signs_se/matavfall.png",
+    "assets/img/signs_se/tidningar.png",
+    "assets/img/signs_se/metall.png",
+    "assets/img/signs_se/tradgardsavfall.png",
+    "assets/img/signs_se/metallforpackningar.png",
+    "assets/img/signs_se/wellpapp.png",
+    "assets/img/signs_se/papper.png"
+  ];
 
   var waste_fraction_signs_as_items = [];
   waste_fraction_signs.forEach(function(val) {
@@ -420,7 +440,7 @@ export async function run({ assetPaths, input = {}, environment, title, version 
   // FrequencyWithOptionsTrial(jsPsych, timeline, HtmlButtonResponsePlugin, stimuliAllAsItem);
 
   // Prototypicality 0.0.6
-  experiment.addTrial(prototypicalityFreeSort);
+  // experiment.addTrial(prototypicalityFreeSort);
   
   // Prototypicality 0.0.5
   // experiment.addTrial(PrototypicalityFromOwnReferenceWithPromptAndExamplesTrial);
@@ -443,6 +463,9 @@ export async function run({ assetPaths, input = {}, environment, title, version 
   // Signage familiarity 0.0.1
   // SignageFamiliarityTrial(jsPsych, timeline, HtmlSliderResponsePlugin, waste_fraction_signs_as_items);
 
+  // Categorisation 0.0.6
+  experiment.addTrial(CategorisationPreparedForSSMTrial);
+  
   // Categorisation 0.0.5
   // CategorisationWithArrowsTrial(jsPsych, timeline, ImageChoicePlugin, waste_fraction_signs, stimuliAllAsItem);
 
