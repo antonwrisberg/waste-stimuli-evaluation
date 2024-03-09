@@ -58,6 +58,13 @@ export default function (experiment) {
           question: 'prototypicality-freesort',
           fraction: jsPsych.timelineVariable('key')
         },
+        on_load: function() { // Make sure the last dragged element is always on top
+          document.querySelectorAll(".jspsych-free-sort-draggable").forEach(function(element) {
+            element.addEventListener("mousedown", (event) => {
+              event.currentTarget.style.zIndex = Date.now() - Math.floor(Date.now() / (24 * 60 * 60 * 1000)) * (24 * 60 * 60 * 1000);
+            });
+          });
+        }
       }
     ],
     timeline_variables: experiment.stimuli.fractions,
