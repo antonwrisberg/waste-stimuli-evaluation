@@ -43,7 +43,7 @@ export default function (experiment) {
 
           // return shuffleArray(images);
         },
-        scale_factor: 1,
+        scale_factor: 4,
         sort_area_shape: "square",
         // stim_height: 115,
         // stim_width: 115,
@@ -53,7 +53,7 @@ export default function (experiment) {
         prompt_location: "above",
         counter_text_unfinished: "Du måste placera alla bilder inom sorteringsområdet. %n% bild(er) saknas.",
         counter_text_finished: "Alla bilder placerade. Placera gärna bilder om, om det behövs.",
-        css_classes: "slider-with-stimulus-and-prompt",
+        css_classes: "prototypicality-free-sort",
         data: {
           question: 'prototypicality-freesort',
           fraction: jsPsych.timelineVariable('key')

@@ -10,7 +10,7 @@
  * Settings
  */
 
-let recognitionTrialCount = 10;
+let recognitionTrialCount = 150;
 let frequencyTrialCount = 100;
 let prototypicalityTrialPerFractionCount = 12;
 let prototypicalityFractionCount = 4;
@@ -44,6 +44,7 @@ import FullScreenTrial from "./trials/full-screen";
 import OddOneOutTrial from "./trials/odd-one-out-trial";
 import OddOneOutWithReasonTrial from "./trials/odd-one-out-with-reason";
 import OddOneOutSimplifiedTrial from "./trials/odd-one-out-trial-simplified";
+import RecognitionMobileFriendlyTrial from "./trials/recognition-buttons-and-mobile";
 import RecognitionTrial from "./trials/recognition";
 import FamiliarityTrial from "./trials/familiarity";
 import FrequencyNumericInputTrial from "./trials/frequency-numeric-input";
@@ -101,6 +102,7 @@ export async function run({ assetPaths, input = {}, environment, title, version 
   experiment.prototypicalityFractionCount = prototypicalityFractionCount;
   experiment.oddOneOutTrialCount = oddOneOutTrialCount;
   experiment.categorisationCount = categorisationCount;
+  experiment.recognitionTrialCount = recognitionTrialCount;
   experiment.categorisationFractionCount = categorisationFractionCount;
   experiment.prototypicalityFreeSortCongruentCount = prototypicalityFreeSortCongruentCount
   experiment.prototypicalityFreeSortIncongruentCount = prototypicalityFreeSortIncongruentCount
@@ -363,24 +365,7 @@ export async function run({ assetPaths, input = {}, environment, title, version 
     );
   });
 
-  console.log("CONGRUENCE MIX SHOW");
-  console.log(congruencymix);
-
   experiment.stimuli.congruencymix = congruencymix;
-
-  let detectLanguage = function() {
-    let detectedLanguage = jsPsych.data.get().trials[0].lang;
-    if (["en", "sv", "da"].includes(detectedLanguage)) {
-      return detectedLanguage;
-    } else {
-      jsPsych.endExperiment(
-        '<p>The experiment has ended prematurely due to an error in detecting the selected language', 
-        {
-          error: "Detecting selected langauge failed"
-        }
-      );
-    }
-  }
 
   // Select language
   experiment.addTrial(LanguageSelectionTrial);
@@ -421,7 +406,7 @@ export async function run({ assetPaths, input = {}, environment, title, version 
   // });
 
   // Switch to full screen
-  // experiment.addTrial(FullScreenTrial);
+  experiment.addTrial(FullScreenTrial);
   // FullScreenTrial(jsPsych, timeline, FullscreenPlugin, detectLanguage);
 
   // Frequency 0.0.5
@@ -463,8 +448,8 @@ export async function run({ assetPaths, input = {}, environment, title, version 
   // Signage familiarity 0.0.1
   // SignageFamiliarityTrial(jsPsych, timeline, HtmlSliderResponsePlugin, waste_fraction_signs_as_items);
 
-  // Categorisation 0.0.6
-  experiment.addTrial(CategorisationPreparedForSSMTrial);
+  // Categorisation 0.0.7
+  // experiment.addTrial(CategorisationPreparedForSSMTrial);
   
   // Categorisation 0.0.5
   // CategorisationWithArrowsTrial(jsPsych, timeline, ImageChoicePlugin, waste_fraction_signs, stimuliAllAsItem);
@@ -491,6 +476,9 @@ export async function run({ assetPaths, input = {}, environment, title, version 
   // Odd-one-out 0.0.1
   // OddOneOutWithReasonTrial(jsPsych, timeline, ImageChoicePlugin, SurveyTextPlugin, stimuliAll, oddOneOutTrialCount);
 
+  // Familiarity v0.0.3
+  experiment.addTrial(RecognitionMobileFriendlyTrial);
+  
   // Familiarity v0.0.2
   // RecognitionTrial(jsPsych, timeline, HtmlButtonResponsePlugin, detectLanguage, recognitionTrialCount, stimuliAllAsItem);
 

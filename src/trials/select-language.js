@@ -11,7 +11,7 @@ export default function (experiment) {
       // "<div><span>🇩🇰</span><br />Fortsæt på dansk</div>",
       // "<div><span>🏴󠁧󠁢󠁥󠁮󠁧󠁿</span><br />Continue in English</div>"
     ],
-    css_classes: ["lanauge-selection"],
+    css_classes: ["language-selection"],
     on_finish: function(data) {
       if (data.response === 0) {
         jsPsych.data.addProperties({
@@ -35,7 +35,7 @@ export default function (experiment) {
       }
     },
     on_load: function() {
-      console.log(jsPsych.getInitSettings().minimum_valid_rt)
+      // console.log(jsPsych.getInitSettings().minimum_valid_rt)
     }
   });
 
