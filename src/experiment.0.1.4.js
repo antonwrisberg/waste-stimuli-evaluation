@@ -11,7 +11,7 @@
  */
 
 let recognitionTrialCount = 150;
-let frequencyTrialCount = 100;
+let frequencyTrialCount = 20;
 let prototypicalityTrialPerFractionCount = 12;
 let prototypicalityFractionCount = 4;
 let prototypicalityFreeSortCongruentCount = 20;
@@ -51,6 +51,7 @@ import FrequencyNumericInputTrial from "./trials/frequency-numeric-input";
 import FrequencyNumericInputTrialNewText from "./trials/frequency-numeric-input.2";
 import FrequencyNumericInputTrialNewText2 from "./trials/frequency-numeric-input.3";
 import FrequencyNumericInputTrialNewText3 from "./trials/frequency-numeric-input.4";
+import FrequencyDaysSinceLastExpendTrial from "./trials/frequency-since-last-disposal";
 import PrototypicalityFromOwnReferenceWithPromptAndExamplesTrial from "./trials/prototypicality-own-reference-with-prompt-and-examples";
 import PrototypicalityFromOwnReferenceWithPromptTrial from "./trials/prototypicality-own-reference-with-prompt";
 import PrototypicalityFromOwnReferenceTrialNewText from "./trials/prototypicality-own-reference.2";
@@ -406,8 +407,11 @@ export async function run({ assetPaths, input = {}, environment, title, version 
   // });
 
   // Switch to full screen
-  experiment.addTrial(FullScreenTrial);
+  // experiment.addTrial(FullScreenTrial);
   // FullScreenTrial(jsPsych, timeline, FullscreenPlugin, detectLanguage);
+
+  // Frequency 0.0.6
+  experiment.addTrial(FrequencyDaysSinceLastExpendTrial);
 
   // Frequency 0.0.5
   // experiment.addTrial(FrequencyNumericInputTrialNewText3);

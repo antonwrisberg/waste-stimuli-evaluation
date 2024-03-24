@@ -74,6 +74,8 @@ video {
 }
 
 .jspsych-btn {
+  margin-bottom: 20px;
+  
   @media only screen and (max-width: 1000px) {
     padding: 12px 24px !important;
     font-size: 18px;

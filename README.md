@@ -32,7 +32,7 @@ The links below take you to examples of different versions of implementations of
 > [!TIP]
 > Hold down `Ctrl` / `Cmd` when clicking the version numbers to open the examples in a new tab.
 
-### Familiarity
+### Recognisability ~~Familiarity~~
 
 - **[v0.0.1](https://antonwrisberg.github.io/waste-stimuli-evaluation/dist/experiment/index.html?version=familiarity.0.0.1)**. This setup asks participants to evaluate how familiar waste items are on a scale of familiarity. It is not very intuitive how to map items onto the scale and it is quite slow to interact with (and in pilot tests, multiple participants had difficulties dragging the slides along the scale).
 - **[v0.0.2](https://antonwrisberg.github.io/waste-stimuli-evaluation/dist/experiment/index.html?version=familiarity.0.0.2)**. **Current favourite**. This setup asks participants if they can explain what the displayed items are to other people giving them answer options "yes", "no", and "maybe". I changed the framing to this focus on explainability after pilot tests with students in which they confused questions such as "Can you see what this is?" and "Do you recognise this item?" with whether they where familiar with the brand or specific item. As the important bit in the sortin gexperiments is not familiarity with specific brands but rather that people can identify the waste items, this framing occurs to do the job. The idea is to set some cut-off value for the percentage of "no"s an item is allowed to be included in the final stimuli set.
@@ -42,8 +42,9 @@ The links below take you to examples of different versions of implementations of
 - **[v0.0.1](https://antonwrisberg.github.io/waste-stimuli-evaluation/dist/experiment/index.html?version=frequency.0.0.1)**. This setup asks participants how often they dispose of items giving them the answer options "once daily", "once weekly", "once monthly", and "once yearly". It is not particularly well-desgined as it is not clear whether it asks for sorting actions or the number of items sorted. Furthermore, what should you answer, if you dispose of, say, 12 batteries one day a year? "Once monthly"? "Once yearly"?
 - **[v0.0.2](https://antonwrisberg.github.io/waste-stimuli-evaluation/dist/experiment/index.html?version=frequency.0.0.2)**. This setup asks participants to fill in the blank in the sentence "In the past week, I have disposed of this item __ times". While the format is good in that it offers a simple input and concrete context, it might be too difficult to remember past waste actions.
 - **[v0.0.3](https://antonwrisberg.github.io/waste-stimuli-evaluation/dist/experiment/index.html?version=frequency.0.0.3)**. Same as v0.0.2 but with updated text based on Elsa's pilot tests. In this version, the sentence is "In the past week, I have generated waste like this (ignoring brands) __ times".
-- **[v0.0.4](https://antonwrisberg.github.io/waste-stimuli-evaluation/dist/experiment/index.html?version=frequency.0.0.4)**. **Current favourite**. Same as v0.0.3 but with updated text based on Emma's pilot tests. In this version, the sentence is "In the past week, I have expended this (ignoring brands) __ times".
-- **[v0.0.5](https://antonwrisberg.github.io/waste-stimuli-evaluation/dist/experiment/index.html?version=frequency.0.0.5)**. Same as v0.0.4 but with updated text based on Elsa and Emma's pilot tests. In this version, the sentence is "In the past week, I have expended this (ignoring brands and variants) __ times". The bit about variants, might be confusing as it is unclear weather it means that I should not count variants or that I should not categorise variants differently (the latter is the intended meaning). *Has not been tested on participants yet*.
+- **[v0.0.4](https://antonwrisberg.github.io/waste-stimuli-evaluation/dist/experiment/index.html?version=frequency.0.0.4)**. Same as v0.0.3 but with updated text based on Emma's pilot tests. In this version, the sentence is "In the past week, I have expended this (ignoring brands) __ times".
+- **[v0.0.5](https://antonwrisberg.github.io/waste-stimuli-evaluation/dist/experiment/index.html?version=frequency.0.0.5)**. Same as v0.0.4 but with updated text based on Elsa and Emma's pilot tests. In this version, the sentence is "In the past week, I have expended this (ignoring brands and variants) __ times". The bit about variants might be confusing as it is unclear weather it means that I should not count variants or that I should not categorise variants differently (the latter is the intended meaning). *Has not been tested on participants yet*.
+- **[v0.0.6](https://antonwrisberg.github.io/waste-stimuli-evaluation/dist/experiment/index.html?version=frequency.0.0.6)**. **Current favourite**.  This setup asks participants how many days it has been since they last expended some item (ignoring brands and variants). The bit about variants might hold the same confusion as above. *Has not been tested on participants yet*.
 
 ### Prototypicality
 
@@ -67,7 +68,7 @@ However, I have also considered a few other dimensions that could allow us to ev
 
 The links below take you to examples of different versions of implementations of such measures.
 
-### Categorisation
+### Sorting ~~Categorisation~~
 
 - **[v0.0.1](https://antonwrisberg.github.io/waste-stimuli-evaluation/dist/experiment/index.html?version=categorisation.0.0.1)**. This setup shows the participant a waste items and nine waste fractions and asks the participant to click the fraction they believe the item belongs in. *This measure might be relevant as a baseline-measure of the ease of sorting of various waste items regardless of whether it is used to evaluate conceptual centrality*.
 - **[v0.0.2](https://antonwrisberg.github.io/waste-stimuli-evaluation/dist/experiment/index.html?version=categorisation.0.0.2)**. Same as v0.0.1 but also asking participants to evaluate their certainty in the selection. This is interesting, but we might be able to judge this from the response time alone, so no need to burden the participants with this extra questions. Furthermore, it makes the task more cumbersome as you have to move your mouse from the area showing th efractions to the sliding scale with each trial. *Has not been tested on participants yet*.
@@ -115,7 +116,7 @@ Only stimuli that participants can recognise will be included in the following s
 
 Study 2 will be using these measures (in that order):
 
-- Frequency v**0.0.4** [ [example](https://antonwrisberg.github.io/waste-stimuli-evaluation/dist/experiment/index.html?version=frequency.0.0.4) &#124; [context](#frequency) ]
+- Frequency v**0.0.6** [ [example](https://antonwrisberg.github.io/waste-stimuli-evaluation/dist/experiment/index.html?version=frequency.0.0.6) &#124; [context](#frequency) ]
 - Prototypicality v**0.0.5** [ [example](https://antonwrisberg.github.io/waste-stimuli-evaluation/dist/experiment/index.html?version=prototypicality.0.0.5) &#124; [context](#prototypicality) ]
 - Signage familiarity v**0.0.2** [ [example](https://antonwrisberg.github.io/waste-stimuli-evaluation/dist/experiment/index.html?version=signage-familiarity.0.0.2) &#124; [context](#signage-familiarity) ]
 - Categorisation v**0.0.1** [ [example](https://antonwrisberg.github.io/waste-stimuli-evaluation/dist/experiment/index.html?version=categorisation.0.0.1) &#124; [context](#categorisation) ]
