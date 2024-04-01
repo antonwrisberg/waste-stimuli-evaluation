@@ -293,8 +293,8 @@ video {
       max-height: 100%;
       grid-column-start: 1;
       grid-row-start: 2;
-      grid-column-end: 2;
-      grid-row-end: 3;
+      grid-column-end: 1;
+      grid-row-end: 2;
     }
   
     .prompt {
@@ -304,8 +304,8 @@ video {
     }
   
     .fraction {
-      grid-column-start: 1;
-      grid-column-end: 2;
+      grid-column-start: 2;
+      grid-column-end: 3;
       grid-row-start: 2;
       grid-row-end: 3;
     }

@@ -18,7 +18,7 @@ let prototypicalityFreeSortCongruentCount = 20;
 let prototypicalityFreeSortIncongruentCount = 16;
 let oddOneOutTrialCount = 100;
 let categorisationCount = 100;
-let categorisationFractionCount = 4;
+let categorisationFractionCount = 1;
 
 // You can import stylesheets (.scss or .css).
 import "../styles/main.scss";
@@ -47,6 +47,7 @@ import OddOneOutSimplifiedTrial from "./trials/odd-one-out-trial-simplified";
 import RecognitionMobileFriendlyTrial from "./trials/recognition-buttons-and-mobile";
 import RecognitionTrial from "./trials/recognition";
 import FamiliarityTrial from "./trials/familiarity";
+import FrequencyWithOptionsTrial from "./trials/frequency-options";
 import FrequencyNumericInputTrial from "./trials/frequency-numeric-input";
 import FrequencyNumericInputTrialNewText from "./trials/frequency-numeric-input.2";
 import FrequencyNumericInputTrialNewText2 from "./trials/frequency-numeric-input.3";
@@ -65,7 +66,7 @@ import CategorisationSubsetNegative from "./trials/categorisation-subset-negativ
 import CategorisationWithArrowsTrial from "./trials/categorisation-arrows";
 import CategorisationTrialWithIntroduction from "./trials/categorisation.i18n";
 import CategorisationPreparedForSSMTrial from "./trials/categorisation-for-ssm";
-import FrequencyWithOptionsTrial from "./trials/frequency-options";
+import CategorisationPreparedForSSMImprovedTrial from "./trials/categorisation-for-ssm-improved";
 import SignageFamiliarityTrial from "./trials/familiarity-signage";
 import SignageFamiliarityWithExplanationTrial from "./trials/familiarity-signage-explanation";
 import ShowcaseAllTrial from "./trials/showcase";
@@ -411,7 +412,7 @@ export async function run({ assetPaths, input = {}, environment, title, version 
   // FullScreenTrial(jsPsych, timeline, FullscreenPlugin, detectLanguage);
 
   // Frequency 0.0.6
-  experiment.addTrial(FrequencyDaysSinceLastExpendTrial);
+  // experiment.addTrial(FrequencyDaysSinceLastExpendTrial);
 
   // Frequency 0.0.5
   // experiment.addTrial(FrequencyNumericInputTrialNewText3);
@@ -452,6 +453,9 @@ export async function run({ assetPaths, input = {}, environment, title, version 
   // Signage familiarity 0.0.1
   // SignageFamiliarityTrial(jsPsych, timeline, HtmlSliderResponsePlugin, waste_fraction_signs_as_items);
 
+  // Categorisation 0.0.8
+  experiment.addTrial(CategorisationPreparedForSSMImprovedTrial);
+  
   // Categorisation 0.0.7
   // experiment.addTrial(CategorisationPreparedForSSMTrial);
   
@@ -481,7 +485,7 @@ export async function run({ assetPaths, input = {}, environment, title, version 
   // OddOneOutWithReasonTrial(jsPsych, timeline, ImageChoicePlugin, SurveyTextPlugin, stimuliAll, oddOneOutTrialCount);
 
   // Familiarity v0.0.3
-  experiment.addTrial(RecognitionMobileFriendlyTrial);
+  // experiment.addTrial(RecognitionMobileFriendlyTrial);
   
   // Familiarity v0.0.2
   // RecognitionTrial(jsPsych, timeline, HtmlButtonResponsePlugin, detectLanguage, recognitionTrialCount, stimuliAllAsItem);
