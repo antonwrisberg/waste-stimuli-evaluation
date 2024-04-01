@@ -14,8 +14,8 @@ let recognitionTrialCount = 150;
 let frequencyTrialCount = 20;
 let prototypicalityTrialPerFractionCount = 12;
 let prototypicalityFractionCount = 4;
-let prototypicalityFreeSortCongruentCount = 20;
-let prototypicalityFreeSortIncongruentCount = 16;
+let prototypicalityFreeSortCongruentCount = 18;
+let prototypicalityFreeSortIncongruentCount = 14;
 let oddOneOutTrialCount = 100;
 let categorisationCount = 100;
 let categorisationFractionCount = 1;
@@ -58,6 +58,7 @@ import PrototypicalityFromOwnReferenceWithPromptTrial from "./trials/prototypica
 import PrototypicalityFromOwnReferenceTrialNewText from "./trials/prototypicality-own-reference.2";
 import PrototypicalityFromWonReferenceTrial from "./trials/prototypicality-own-reference";
 import prototypicalityFreeSort from "./trials/prototypicality-free-sort";
+import prototypicalityFreeSortLineTrial from "./trials/prototypicality-free-sort-line";
 import ExamplenessTrial from "./trials/exampleness";
 import CategorisationTrial from "./trials/categorisation";
 import CategorisationWithCertaintyTrial from "./trials/categorisation-with-certainty";
@@ -172,13 +173,13 @@ export async function run({ assetPaths, input = {}, environment, title, version 
       fraction_da: "glas",
       sign_sv: "assets/img/signs_se/glasforpackningar.png",
     },
-    {
-      key: "metal",
-      fraction_sv: "metallförpackningar",
-      fraction_en: "metal",
-      fraction_da: "metal",
-      sign_sv: "assets/img/signs_se/metallforpackningar.png" // or: "assets/img/signs_se/metall.png"
-    },
+    // {
+    //   key: "metal",
+    //   fraction_sv: "metallförpackningar",
+    //   fraction_en: "metal",
+    //   fraction_da: "metal",
+    //   sign_sv: "assets/img/signs_se/metallforpackningar.png" // or: "assets/img/signs_se/metall.png"
+    // },
     {
       key: "paper",
       fraction_sv: "papper",
@@ -429,6 +430,9 @@ export async function run({ assetPaths, input = {}, environment, title, version 
   // Frequency 0.0.1
   // FrequencyWithOptionsTrial(jsPsych, timeline, HtmlButtonResponsePlugin, stimuliAllAsItem);
 
+  // Prototypicality 0.0.7
+  experiment.addTrial(prototypicalityFreeSortLineTrial);
+
   // Prototypicality 0.0.6
   // experiment.addTrial(prototypicalityFreeSort);
   
@@ -454,7 +458,7 @@ export async function run({ assetPaths, input = {}, environment, title, version 
   // SignageFamiliarityTrial(jsPsych, timeline, HtmlSliderResponsePlugin, waste_fraction_signs_as_items);
 
   // Categorisation 0.0.8
-  experiment.addTrial(CategorisationPreparedForSSMImprovedTrial);
+  // experiment.addTrial(CategorisationPreparedForSSMImprovedTrial);
   
   // Categorisation 0.0.7
   // experiment.addTrial(CategorisationPreparedForSSMTrial);
