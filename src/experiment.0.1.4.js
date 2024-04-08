@@ -11,7 +11,7 @@
  */
 
 let recognitionTrialCount = 150;
-let frequencyTrialCount = 20;
+let frequencyTrialCount = 30;
 let prototypicalityTrialPerFractionCount = 12;
 let prototypicalityFractionCount = 4;
 let prototypicalityFreeSortCongruentCount = 18;
@@ -19,6 +19,7 @@ let prototypicalityFreeSortIncongruentCount = 14;
 let oddOneOutTrialCount = 100;
 let categorisationCount = 100;
 let categorisationFractionCount = 1;
+let frequencyRelativeTrialCount = 25;
 
 // You can import stylesheets (.scss or .css).
 import "../styles/main.scss";
@@ -44,6 +45,7 @@ import FullScreenTrial from "./trials/full-screen";
 import OddOneOutTrial from "./trials/odd-one-out-trial";
 import OddOneOutWithReasonTrial from "./trials/odd-one-out-with-reason";
 import OddOneOutSimplifiedTrial from "./trials/odd-one-out-trial-simplified";
+import RecognitionWithTimerTrial from "./trials/recognition-buttons-and-mobile-time-select";
 import RecognitionMobileFriendlyTrial from "./trials/recognition-buttons-and-mobile";
 import RecognitionTrial from "./trials/recognition";
 import FamiliarityTrial from "./trials/familiarity";
@@ -53,6 +55,7 @@ import FrequencyNumericInputTrialNewText from "./trials/frequency-numeric-input.
 import FrequencyNumericInputTrialNewText2 from "./trials/frequency-numeric-input.3";
 import FrequencyNumericInputTrialNewText3 from "./trials/frequency-numeric-input.4";
 import FrequencyDaysSinceLastExpendTrial from "./trials/frequency-since-last-disposal";
+import FrequencyRelativeTrial from "./trials/frequency-relative";
 import PrototypicalityFromOwnReferenceWithPromptAndExamplesTrial from "./trials/prototypicality-own-reference-with-prompt-and-examples";
 import PrototypicalityFromOwnReferenceWithPromptTrial from "./trials/prototypicality-own-reference-with-prompt";
 import PrototypicalityFromOwnReferenceTrialNewText from "./trials/prototypicality-own-reference.2";
@@ -102,6 +105,7 @@ export async function run({ assetPaths, input = {}, environment, title, version 
   }
 
   experiment.frequencyTrialCount = frequencyTrialCount;
+  experiment.frequencyRelativeTrialCount = frequencyRelativeTrialCount;
   experiment.prototypicalityFractionCount = prototypicalityFractionCount;
   experiment.oddOneOutTrialCount = oddOneOutTrialCount;
   experiment.categorisationCount = categorisationCount;
@@ -412,6 +416,9 @@ export async function run({ assetPaths, input = {}, environment, title, version 
   // experiment.addTrial(FullScreenTrial);
   // FullScreenTrial(jsPsych, timeline, FullscreenPlugin, detectLanguage);
 
+  // Frequency 0.0.7
+  experiment.addTrial(FrequencyRelativeTrial);
+
   // Frequency 0.0.6
   // experiment.addTrial(FrequencyDaysSinceLastExpendTrial);
 
@@ -431,7 +438,7 @@ export async function run({ assetPaths, input = {}, environment, title, version 
   // FrequencyWithOptionsTrial(jsPsych, timeline, HtmlButtonResponsePlugin, stimuliAllAsItem);
 
   // Prototypicality 0.0.7
-  experiment.addTrial(prototypicalityFreeSortLineTrial);
+  // experiment.addTrial(prototypicalityFreeSortLineTrial);
 
   // Prototypicality 0.0.6
   // experiment.addTrial(prototypicalityFreeSort);
@@ -488,6 +495,9 @@ export async function run({ assetPaths, input = {}, environment, title, version 
   // Odd-one-out 0.0.1
   // OddOneOutWithReasonTrial(jsPsych, timeline, ImageChoicePlugin, SurveyTextPlugin, stimuliAll, oddOneOutTrialCount);
 
+  // Familiarity v0.0.4
+  // experiment.addTrial(RecognitionWithTimerTrial);
+  
   // Familiarity v0.0.3
   // experiment.addTrial(RecognitionMobileFriendlyTrial);
   

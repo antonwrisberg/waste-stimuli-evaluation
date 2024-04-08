@@ -44,7 +44,8 @@ The links below take you to examples of different versions of implementations of
 - **[v0.0.3](https://antonwrisberg.github.io/waste-stimuli-evaluation/dist/experiment/index.html?version=frequency.0.0.3)**. Same as v0.0.2 but with updated text based on Elsa's pilot tests. In this version, the sentence is "In the past week, I have generated waste like this (ignoring brands) __ times".
 - **[v0.0.4](https://antonwrisberg.github.io/waste-stimuli-evaluation/dist/experiment/index.html?version=frequency.0.0.4)**. Same as v0.0.3 but with updated text based on Emma's pilot tests. In this version, the sentence is "In the past week, I have expended this (ignoring brands) __ times".
 - **[v0.0.5](https://antonwrisberg.github.io/waste-stimuli-evaluation/dist/experiment/index.html?version=frequency.0.0.5)**. Same as v0.0.4 but with updated text based on Elsa and Emma's pilot tests. In this version, the sentence is "In the past week, I have expended this (ignoring brands and variants) __ times". The bit about variants might be confusing as it is unclear weather it means that I should not count variants or that I should not categorise variants differently (the latter is the intended meaning). *Has not yet been tested on participants*.
-- **[v0.0.6](https://antonwrisberg.github.io/waste-stimuli-evaluation/dist/experiment/index.html?version=frequency.0.0.6)**. **Current favourite**.  This setup asks participants how many days it has been since they last expended some item (ignoring brands and variants). The bit about variants might hold the same confusion as above. *Has not yet been tested on participants*.
+- **[v0.0.6](https://antonwrisberg.github.io/waste-stimuli-evaluation/dist/experiment/index.html?version=frequency.0.0.6)**. This setup asks participants how many days it has been since they last expended some item (ignoring brands and variants). The bit about variants might hold the same confusion as above.
+- **[v0.0.7](https://antonwrisberg.github.io/waste-stimuli-evaluation/dist/experiment/index.html?version=frequency.0.0.7)**. **Current favourite**.  This setup shows the participant two waste items and asks the participant to select the one that the have most recently expended. Gamechanger! *Has not yet been tested on participants*.
 
 ### Prototypicality
 
@@ -118,7 +119,7 @@ Only stimuli that participants can recognise will be included in the following s
 
 Study 2 will be using these measures (in that order):
 
-- Frequency v**0.0.6** [ [example](https://antonwrisberg.github.io/waste-stimuli-evaluation/dist/experiment/index.html?version=frequency.0.0.6) &#124; [context](#frequency) ]
+- Frequency v**0.0.7** [ [example](https://antonwrisberg.github.io/waste-stimuli-evaluation/dist/experiment/index.html?version=frequency.0.0.7) &#124; [context](#frequency) ]
 - Prototypicality v**0.0.7** [ [example](https://antonwrisberg.github.io/waste-stimuli-evaluation/dist/experiment/index.html?version=prototypicality.0.0.7) &#124; [context](#prototypicality) ]
 - Signage familiarity v**0.0.2** [ [example](https://antonwrisberg.github.io/waste-stimuli-evaluation/dist/experiment/index.html?version=signage-familiarity.0.0.2) &#124; [context](#signage-familiarity) ]
 - Sorting v**0.0.8** [ [example](https://antonwrisberg.github.io/waste-stimuli-evaluation/dist/experiment/index.html?version=categorisation.0.0.8) &#124; [context](#categorisation) ]

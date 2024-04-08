@@ -7,11 +7,6 @@ img {
   max-height: 100%;
 }
 
-video {
-  max-height: 300px;
-  pointer-events: none;
-}
-
 // .jspsych-display-element {
 //   background-color: #ffffff;
 // }
@@ -174,18 +169,25 @@ video {
   }
 }
 
-.select-the-imposter.three-options {
+.select-the-imposter {
   min-width: 60%;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(2, auto);
   place-items: center;
   place-content: center;
   column-gap: 60px;
 
+  &.two-options {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  &.three-options {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
   .prompt {
     grid-column-start: 1;
-    grid-column-end: 4;
+    grid-column-end: -1;
   }
 
   .stimulus {
@@ -194,7 +196,7 @@ video {
   
   .answer-options {
     grid-column-start: 1;
-    grid-column-end: 4;
+    grid-column-end: -1;
     display: grid;
     grid-template-columns: subgrid;
     grid-template-rows: subgrid;
