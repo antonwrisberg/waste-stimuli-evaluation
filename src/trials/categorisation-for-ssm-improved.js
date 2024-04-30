@@ -47,8 +47,8 @@ export default function (experiment) {
                 <p>In a moment, you will see ${experiment.categorisationCount} waste items and a random waste fraction.</p>
                 <p>For each item, you must decide if you believe the item to belong in the the waste fraction.</p>
 
-                <p>Press <b>${(jIsCorrect ? 'j' : 'f')}</b>, if you believe that the item on the left <b>belongs</b> in the fraction on the right.<br />
-                Press <b>${(jIsCorrect ? 'f' : 'j')}</b>, if you believe that the item on the left <b>does no belong</b> in the fraction on the right.</p>
+                <p>Press <b>${(jIsCorrect ? 'j' : 'f')}</b>, if you believe that the item <b>belongs</b> in the fraction.<br />
+                Press <b>${(jIsCorrect ? 'f' : 'j')}</b>, if you believe that the item <b>does no belong</b> in the fraction.</p>
 
                 <p>To begin, please press <b>j</b>.</p>
               `;
@@ -57,8 +57,8 @@ export default function (experiment) {
                 <p>Om et øjeblik vil du se ${experiment.categorisationCount} affaldsprodukter og en tilfældig affaldsfraktion.</p>
                 <p>For hvert stykle affald skal du afgøre, om du tror, at det hører til i affaldsfraktionen.</p>
                 
-                <p>Tryk på <b>${(jIsCorrect ? 'j' : 'f')}</b>, hvis du tror, at affaldet til venstre <b>hører til</b> i fraktionen til højre.<br />
-                Tryk på <b>${(jIsCorrect ? 'f' : 'j')}</b>, hvis du tror, at affaldet til venstre <b>ikke hører til</b> i fraktionen til højre.</p>
+                <p>Tryk på <b>${(jIsCorrect ? 'j' : 'f')}</b>, hvis du tror, at affaldet <b>hører til</b> i fraktionen.<br />
+                Tryk på <b>${(jIsCorrect ? 'f' : 'j')}</b>, hvis du tror, at affaldet <b>ikke hører til</b> i fraktionen.</p>
                 
                 <p>For at begynde, tryk på <b>j</b>.</p>
               `;
@@ -67,8 +67,8 @@ export default function (experiment) {
                 <p>Inom en kort stund kommer du att få se ${experiment.stimuli.congruencymix.length} olika avfall och en slumpmässig avfallskategori.</p>
                 <p>För varje avfall ska du avgöra om du tror att den tillhör just den avfallskategori.</p>
 
-                <p>Tryck på <b>${(jIsCorrect ? 'j' : 'f')}</b>, om du tror att avfallet till vänster <b>tillhör</b> fraktionen till höger.<br />
-                Tryck på <b>${(jIsCorrect ? 'f' : 'j')}</b>, om du tror att avfallet till vänster <b>inte tillhör</b> fraktionen till höger.</p>
+                <p>Tryck på <b>${(jIsCorrect ? 'j' : 'f')}</b>, om du tror att avfallet <b>tillhör</b> fraktionen.<br />
+                Tryck på <b>${(jIsCorrect ? 'f' : 'j')}</b>, om du tror att avfallet <b>inte tillhör</b> fraktionen.</p>
                 
                 <p>För att börja, tryck på <b>j</b>.</p>
               `;
@@ -83,13 +83,17 @@ export default function (experiment) {
         prompt: function() {
           switch (experiment.detectLanguage()) {
             case 'en':
-              return "<p>Which of the waste fractions on the right do you believe that the waste item on the left fit into?<br /> <br />Click a waste fraction to select it.</p>";
+              return `
+                <p class="prompt">Press <b>${(jIsCorrect ? 'j' : 'f')}</b>, if you believe that this item <b>belongs</b> in this waste fraction.<br />
+                Press <b>${(jIsCorrect ? 'f' : 'j')}</b>, if you believe that this item <b>does no belong</b> in this waste fraction.</p>
+                <img class="fraction" src="${jsPsych.timelineVariable('sign_sv')}" />
+              `;
             case 'da':
               return "<p>Hvilken af affaldsfraktionerne til højre tror du, at affaldet til venstre passer ind i?<br /> <br />Klik på en affaldsfraktion for at vælge den.</p>";
             case 'sv':
               return `
-                <p class="prompt">Press <b>${(jIsCorrect ? 'j' : 'f')}</b>, if you believe that the item on the left <b>belongs</b> in the fraction on the right.<br />
-                Press <b>${(jIsCorrect ? 'f' : 'j')}</b>, if you believe that the item on the left <b>does no belong</b> in the fraction on the right.</p>
+                <p class="prompt">Tryck på <b>${(jIsCorrect ? 'j' : 'f')}</b>, om du tror att avfallet <b>tillhör</b> fraktionen.<br />
+                Tryck på <b>${(jIsCorrect ? 'f' : 'j')}</b>, om du tror att avfallet <b>inte tillhör</b> fraktionen.</p>
                 <img class="fraction" src="${jsPsych.timelineVariable('sign_sv')}" />
                 `;
             default:
