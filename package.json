@@ -23,10 +23,14 @@
     "@jspsych/plugin-survey-text": "^1.1.3",
     "@jspsych/plugin-video-slider-response": "^1.1.3",
     "jspsych": "^7.3.1",
-    "plain-draggable": "^2.5.14"
+    "plain-draggable": "^2.5.14",
+    "anim-event": "^1.0.17",
+    "cssprefix": "^2.0.17",
+    "m-class-list": "^1.1.10",
+    "pointer-event": "^1.0.2"
   },
   "devDependencies": {
-    "@antonwrisberg/plugin-image-freesort": "github:antonwrisberg/plugin-image-freesort",
+    "@antonwrisberg/plugin-images-freesort": "file: ./../../custom-jspsych-packages/plugin-image-freesort",
     "@antonwrisberg/plugin-test": "github:antonwrisberg/plugin-test",
     "jspsych-builder": "^4.4.0",
     "node-pre-gyp": "^0.17.0"
