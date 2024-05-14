@@ -1,5 +1,5 @@
 import HtmlButtonResponsePlugin from "@jspsych/plugin-html-button-response";
-import ImageChoicePlugin from "/node_modules/@antonwrisberg/plugin-image-choice/dist";
+import ImageChoicePlugin from "/node_modules/@antonwrisberg/plugin-images-choice/dist";
 
 // Categorisation
 export default function (experiment) {

@@ -1,7 +1,7 @@
 import HtmlButtonResponsePlugin from "@jspsych/plugin-html-button-response";
 import HtmlKeyboardResponsePlugin from "@jspsych/plugin-html-keyboard-response";
 import ImagesKeyboardResponsePlugin from "/node_modules/@antonwrisberg/plugin-images-keyboard-response";
-import ImageChoicePlugin from "/node_modules/@antonwrisberg/plugin-image-choice/dist";
+import ImageChoicePlugin from "/node_modules/@antonwrisberg/plugin-images-choice/dist";
 
 // Relative frequency
 export default function (experiment) {
