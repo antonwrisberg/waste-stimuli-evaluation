@@ -1,7 +1,9 @@
+import FullscreenPlugin from "@jspsych/plugin-fullscreen";
+
 // Switch to fullscreen
 export default function (experiment) {
   experiment.timeline.push({
-    type: experiment.plugins.FullscreenPlugin,
+    type: FullscreenPlugin,
     fullscreen_mode: true,
     message: function() {
       switch (experiment.detectLanguage()) {
