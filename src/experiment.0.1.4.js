@@ -36,7 +36,7 @@ import SurveyTextPlugin from "@jspsych/plugin-survey-text";
 import PreloadPlugin from "@jspsych/plugin-preload";
 import HtmlSliderResponsePlugin from '@jspsych/plugin-html-slider-response';
 import VideoSliderResponsePlugin from '@jspsych/plugin-video-slider-response';
-import ImageChoicePlugin from "/node_modules/@antonwrisberg/plugin-image-choice/dist";
+import ImageChoicePlugin from "/node_modules/@antonwrisberg/plugin-images-choice/dist";
 import HtmlChoicePlugin from "@jspsych-contrib/plugin-html-choice";
 import SurveyHtmlFormPlugin from '@jspsych/plugin-survey-html-form';
 import AnimationPlugin from '@jspsych/plugin-animation';
@@ -62,6 +62,7 @@ import FrequencyNumericInputTrialNewText3 from "./trials/frequency-numeric-input
 import FrequencyDaysSinceLastExpendTrial from "./trials/frequency-since-last-disposal";
 import FrequencyRelativeTrial from "./trials/frequency-relative";
 import FrequencyRelativeTrialKeypress from "./trials/frequency-relative-keypress";
+import FrequencyOnArrowTrial from "./trials/frequency-on-arrow";
 import PrototypicalityFromOwnReferenceWithPromptAndExamplesTrial from "./trials/prototypicality-own-reference-with-prompt-and-examples";
 import PrototypicalityFromOwnReferenceWithPromptTrial from "./trials/prototypicality-own-reference-with-prompt";
 import PrototypicalityFromOwnReferenceTrialNewText from "./trials/prototypicality-own-reference.2";
@@ -81,6 +82,8 @@ import SignageFamiliarityTrial from "./trials/familiarity-signage";
 import SignageFamiliarityWithExplanationTrial from "./trials/familiarity-signage-explanation";
 import ShowcaseAllTrial from "./trials/showcase";
 import CommonAndUncommonWasteItemsTrial from "./trials/common-uncommon";
+
+import betasetTwoZero from "./stimuli/combined";
 
 import { initJsPsych } from "jspsych";
 
@@ -692,115 +695,117 @@ export async function run({ assetPaths, input = {}, environment, title, version 
   //   "img-8797-cropped_800x800.jpg"
   // ]
 
-  let betasetTwoZero = [
-    "img-8633-cropped_800x800.jpg",
-    "img-8616-cropped_800x800.jpg",
-    "img-8622-cropped_800x800.jpg",
-    "img-8561-cropped_800x800.jpg",
-    "img-8637-cropped_800x800.jpg",
-    "5h5a7654-cropped_800x800.jpg",
-    "img-8761-cropped_800x800.jpg",
-    "5h5a7754-cropped_800x800.jpg",
-    "5h5a7755-cropped_800x800.jpg",
-    "5h5a7415-cropped_800x800.jpg",
-    "img-8381-cropped_800x800.jpg",
-    "img-8418-cropped_800x800.jpg",
-    "img-8794-cropped_800x800.jpg",
-    "img-8507-cropped_800x800.jpg",
-    "5h5a7650-cropped_800x800.jpg",
-    "img-8623-cropped_800x800.jpg",
-    "img-8598-cropped_800x800.jpg",
-    "img-7996-cropped_800x800.jpg",
-    "img-8600-cropped_800x800.jpg",
-    "5h5a7795-cropped_800x800.jpg",
-    "img-8604-cropped_800x800.jpg",
-    "img-7985-cropped_800x800.jpg",
-    "img-8631-cropped_800x800.jpg",
-    "5h5a7743-cropped_800x800.jpg",
-    "img-8601-cropped_800x800.jpg",
-    "5h5a7538-cropped_800x800.jpg",
-    "img-8345-cropped_800x800.jpg",
-    "img-8668-cropped_800x800.jpg",
-    "img-7964-cropped_800x800.jpg",
-    "5h5a7562-cropped_800x800.jpg",
-    "5h5a7744-cropped_800x800.jpg",
-    "5h5a7595-cropped_800x800.jpg",
-    "img-8728-cropped_800x800.jpg",
-    "5h5a7439-cropped_800x800.jpg",
-    "img-8483-cropped_800x800.jpg",
-    "img-8698-cropped_800x800.jpg",
-    "img-8470-cropped_800x800.jpg",
-    "img-8386-cropped_800x800.jpg",
-    "5h5a7490-cropped_800x800.jpg",
-    "5h5a7669-cropped_800x800.jpg",
-    // "5h5a7334-cropped_800x800.jpg",
-    // "5h5a7478-cropped_800x800.jpg",
-    // "5h5a7726-cropped_800x800.jpg",
-    // "5h5a7531-cropped_800x800.jpg",
-    // "img-8565-cropped_800x800.jpg",
-    // "img-8256-cropped_800x800.jpg",
-    // "img-8683-cropped_800x800.jpg",
-    // "img-7974-cropped_800x800.jpg",
-    // "img-8578-cropped_800x800.jpg",
-    // "img-8399-cropped_800x800.jpg",
-    // "5h5a7801-cropped_800x800.jpg",
-    // "5h5a7696-cropped_800x800.jpg",
-    // "5h5a7354-cropped_800x800.jpg",
-    // "img-8465-cropped_800x800.jpg",
-    // "img-8525-cropped_800x800.jpg",
-    // "img-8606-cropped_800x800.jpg",
-    // "img-8547-cropped_800x800.jpg",
-    // "5h5a7492-cropped_800x800.jpg",
-    // "img-8790-cropped_800x800.jpg",
-    // "5h5a7441-cropped_800x800.jpg",
-    // "5h5a7640-cropped_800x800.jpg",
-    // "5h5a7691-cropped_800x800.jpg",
-    // "5h5a7572-cropped_800x800.jpg",
-    // "5h5a7653-cropped_800x800.jpg",
-    // "5h5a7745-cropped_800x800.jpg",
-    // "5h5a7564-cropped_800x800.jpg",
-    // "5h5a7671-cropped_800x800.jpg",
-    // "img-7944-cropped_800x800.jpg",
-    // "img-8747-cropped_800x800.jpg",
-    // "5h5a7683-cropped_800x800.jpg",
-    // "img-8574-cropped_800x800.jpg",
-    // "5h5a7540-cropped_800x800.jpg",
-    // "5h5a7738-cropped_800x800.jpg",
-    // "5h5a7581-cropped_800x800.jpg",
-    // "5h5a7536-cropped_800x800.jpg",
-    // "5h5a7362-cropped_800x800.jpg",
-    // "img-8687-cropped_800x800.jpg",
-    // "img-8336-cropped_800x800.jpg",
-    // "img-8549-cropped_800x800.jpg",
-    // "5h5a7712-cropped_800x800.jpg",
-    // "5h5a7736-cropped_800x800.jpg",
-    // "5h5a7666-cropped_800x800.jpg",
-    // "img-8722-cropped_800x800.jpg",
-    // "5h5a7759-cropped_800x800.jpg",
-    // "5h5a7459-cropped_800x800.jpg",
-    // "5h5a7527-cropped_800x800.jpg",
-    // "5h5a7681-cropped_800x800.jpg",
-    // "5h5a7643-cropped_800x800.jpg",
-    // "5h5a7600-cropped_800x800.jpg",
-    // "img-8797-cropped_800x800.jpg",
-    // "5h5a7491-cropped_800x800.jpg",
-    // "5h5a7576-cropped_800x800.jpg",
-    // "5h5a7690-cropped_800x800.jpg",
-    // "img-8371-cropped_800x800.jpg",
-    // "5h5a7655-cropped_800x800.jpg",
-    // "5h5a7584-cropped_800x800.jpg",
-    // "5h5a7479-cropped_800x800.jpg",
-    // "img-8784-cropped_800x800.jpg",
-    // "5h5a7560-cropped_800x800.jpg",
-    // "5h5a7566-cropped_800x800.jpg",
-    // "5h5a7758-cropped_800x800.jpg",
-    // "5h5a7606-cropped_800x800.jpg",
-    // "5h5a7674-cropped_800x800.jpg",
-    // "img-8451-cropped_800x800.jpg",
-    // "5h5a7685-cropped_800x800.jpg",
-    // "5h5a7502-cropped_800x800.jpg",
-    // "img-7963-cropped_800x800.jpg"
-  ]
+  // let betasetTwoZero = [
+  //   "img-8633-cropped_800x800.jpg",
+  //   "img-8616-cropped_800x800.jpg",
+  //   "img-8622-cropped_800x800.jpg",
+  //   "img-8561-cropped_800x800.jpg",
+  //   "img-8637-cropped_800x800.jpg",
+  //   "5h5a7654-cropped_800x800.jpg",
+  //   "img-8761-cropped_800x800.jpg",
+  //   "5h5a7754-cropped_800x800.jpg",
+  //   "5h5a7755-cropped_800x800.jpg",
+  //   "5h5a7415-cropped_800x800.jpg",
+  //   "img-8381-cropped_800x800.jpg",
+  //   "img-8418-cropped_800x800.jpg",
+  //   "img-8794-cropped_800x800.jpg",
+  //   "img-8507-cropped_800x800.jpg",
+  //   "5h5a7650-cropped_800x800.jpg",
+  //   "img-8623-cropped_800x800.jpg",
+  //   "img-8598-cropped_800x800.jpg",
+  //   "img-7996-cropped_800x800.jpg",
+  //   "img-8600-cropped_800x800.jpg",
+  //   "5h5a7795-cropped_800x800.jpg",
+  //   "img-8604-cropped_800x800.jpg",
+  //   "img-7985-cropped_800x800.jpg",
+  //   "img-8631-cropped_800x800.jpg",
+  //   "5h5a7743-cropped_800x800.jpg",
+  //   "img-8601-cropped_800x800.jpg",
+  //   "5h5a7538-cropped_800x800.jpg",
+  //   "img-8345-cropped_800x800.jpg",
+  //   "img-8668-cropped_800x800.jpg",
+  //   "img-7964-cropped_800x800.jpg",
+  //   "5h5a7562-cropped_800x800.jpg",
+  //   "5h5a7744-cropped_800x800.jpg",
+  //   "5h5a7595-cropped_800x800.jpg",
+  //   "img-8728-cropped_800x800.jpg",
+  //   "5h5a7439-cropped_800x800.jpg",
+  //   "img-8483-cropped_800x800.jpg",
+  //   "img-8698-cropped_800x800.jpg",
+  //   "img-8470-cropped_800x800.jpg",
+  //   "img-8386-cropped_800x800.jpg",
+  //   "5h5a7490-cropped_800x800.jpg",
+  //   "5h5a7669-cropped_800x800.jpg",
+  //   // "5h5a7334-cropped_800x800.jpg",
+  //   // "5h5a7478-cropped_800x800.jpg",
+  //   // "5h5a7726-cropped_800x800.jpg",
+  //   // "5h5a7531-cropped_800x800.jpg",
+  //   // "img-8565-cropped_800x800.jpg",
+  //   // "img-8256-cropped_800x800.jpg",
+  //   // "img-8683-cropped_800x800.jpg",
+  //   // "img-7974-cropped_800x800.jpg",
+  //   // "img-8578-cropped_800x800.jpg",
+  //   // "img-8399-cropped_800x800.jpg",
+  //   // "5h5a7801-cropped_800x800.jpg",
+  //   // "5h5a7696-cropped_800x800.jpg",
+  //   // "5h5a7354-cropped_800x800.jpg",
+  //   // "img-8465-cropped_800x800.jpg",
+  //   // "img-8525-cropped_800x800.jpg",
+  //   // "img-8606-cropped_800x800.jpg",
+  //   // "img-8547-cropped_800x800.jpg",
+  //   // "5h5a7492-cropped_800x800.jpg",
+  //   // "img-8790-cropped_800x800.jpg",
+  //   // "5h5a7441-cropped_800x800.jpg",
+  //   // "5h5a7640-cropped_800x800.jpg",
+  //   // "5h5a7691-cropped_800x800.jpg",
+  //   // "5h5a7572-cropped_800x800.jpg",
+  //   // "5h5a7653-cropped_800x800.jpg",
+  //   // "5h5a7745-cropped_800x800.jpg",
+  //   // "5h5a7564-cropped_800x800.jpg",
+  //   // "5h5a7671-cropped_800x800.jpg",
+  //   // "img-7944-cropped_800x800.jpg",
+  //   // "img-8747-cropped_800x800.jpg",
+  //   // "5h5a7683-cropped_800x800.jpg",
+  //   // "img-8574-cropped_800x800.jpg",
+  //   // "5h5a7540-cropped_800x800.jpg",
+  //   // "5h5a7738-cropped_800x800.jpg",
+  //   // "5h5a7581-cropped_800x800.jpg",
+  //   // "5h5a7536-cropped_800x800.jpg",
+  //   // "5h5a7362-cropped_800x800.jpg",
+  //   // "img-8687-cropped_800x800.jpg",
+  //   // "img-8336-cropped_800x800.jpg",
+  //   // "img-8549-cropped_800x800.jpg",
+  //   // "5h5a7712-cropped_800x800.jpg",
+  //   // "5h5a7736-cropped_800x800.jpg",
+  //   // "5h5a7666-cropped_800x800.jpg",
+  //   // "img-8722-cropped_800x800.jpg",
+  //   // "5h5a7759-cropped_800x800.jpg",
+  //   // "5h5a7459-cropped_800x800.jpg",
+  //   // "5h5a7527-cropped_800x800.jpg",
+  //   // "5h5a7681-cropped_800x800.jpg",
+  //   // "5h5a7643-cropped_800x800.jpg",
+  //   // "5h5a7600-cropped_800x800.jpg",
+  //   // "img-8797-cropped_800x800.jpg",
+  //   // "5h5a7491-cropped_800x800.jpg",
+  //   // "5h5a7576-cropped_800x800.jpg",
+  //   // "5h5a7690-cropped_800x800.jpg",
+  //   // "img-8371-cropped_800x800.jpg",
+  //   // "5h5a7655-cropped_800x800.jpg",
+  //   // "5h5a7584-cropped_800x800.jpg",
+  //   // "5h5a7479-cropped_800x800.jpg",
+  //   // "img-8784-cropped_800x800.jpg",
+  //   // "5h5a7560-cropped_800x800.jpg",
+  //   // "5h5a7566-cropped_800x800.jpg",
+  //   // "5h5a7758-cropped_800x800.jpg",
+  //   // "5h5a7606-cropped_800x800.jpg",
+  //   // "5h5a7674-cropped_800x800.jpg",
+  //   // "img-8451-cropped_800x800.jpg",
+  //   // "5h5a7685-cropped_800x800.jpg",
+  //   // "5h5a7502-cropped_800x800.jpg",
+  //   // "img-7963-cropped_800x800.jpg"
+  // ]
+
+  console.log(betasetTwoZero);
 
   experiment.betasetTwoZero = [];
   experiment.betasetTwoZero.allAsItem = [];
@@ -1003,6 +1008,9 @@ export async function run({ assetPaths, input = {}, environment, title, version 
   // experiment.addTrial(FullScreenTrial);
   // FullScreenTrial(jsPsych, timeline, FullscreenPlugin, detectLanguage);
 
+  // Frequency 0.0.9
+  experiment.addTrial(FrequencyOnArrowTrial);
+  
   // Frequency 0.0.8
   // experiment.addTrial(FrequencyRelativeTrialKeypress);
 
@@ -1028,7 +1036,7 @@ export async function run({ assetPaths, input = {}, environment, title, version 
   // FrequencyWithOptionsTrial(jsPsych, timeline, HtmlButtonResponsePlugin, stimuliAllAsItem);
 
   // Prototypicality 0.0.7
-  experiment.addTrial(prototypicalityFreeSortLineTrial);
+  // experiment.addTrial(prototypicalityFreeSortLineTrial);
 
   // Prototypicality 0.0.6
   // experiment.addTrial(prototypicalityFreeSort);

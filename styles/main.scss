@@ -257,7 +257,7 @@ img {
     padding-top: 65px;
 
     display: grid;
-    grid-template-columns: repeat(8, 1fr);
+    grid-template-columns: repeat(8, 100px);
     grid-auto-rows: auto;
     place-items: center;
     place-content: center;
@@ -266,6 +266,16 @@ img {
 
   .plain-draggable {
     height: 100px;
+  }
+
+  .plain-draggable[data-correctly-placed="true"]:not(.plain-draggable-dragging) {
+    width: 50px;
+    
+    img {
+      height: 50px;
+      width: 50px;
+      margin-top: 25px;
+    }
   }
 
   .plain-draggable-dragging {
@@ -279,7 +289,7 @@ img {
   }
 
   img {
-    transition: height .2s, width .2s, max-width .2s, max-height .2s, margin .2s;
+    transition: height .2s, width .2s, max-width .2s, max-height .2s, margin .2s, rotate .5s;
     height: 100px;
     width: 100px;
 
