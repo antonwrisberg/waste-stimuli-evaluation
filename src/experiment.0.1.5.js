@@ -249,7 +249,7 @@ export async function run({ assetPaths, input = {}, environment, title, version 
   // experiment.addTrial(FrequencyRelativeKeypressTimerTrial);
 
   // // Frequency on arrow
-  experiment.addTrial(FrequencyOnArrowTrial);
+  // experiment.addTrial(FrequencyOnArrowTrial);
 
   // // Break screen
   // experiment.addTrial(BreakTrial);
@@ -273,7 +273,7 @@ export async function run({ assetPaths, input = {}, environment, title, version 
   // experiment.addTrial(AttentionCheckKeypressTrial);
 
   // Background questions
-  // experiment.addTrial(backgroundQuestionsTrial);
+  experiment.addTrial(backgroundQuestionsTrial);
 
   // Run the experiment timeline
   await jsPsych.run(experiment.timeline);

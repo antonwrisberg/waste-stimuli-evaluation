@@ -84,6 +84,7 @@ img {
 
 .jspsych-btn {
   margin-bottom: 20px;
+  font-size: 16px;
   
   @media only screen and (max-width: 1000px) {
     padding: 12px 24px !important;
@@ -438,4 +439,15 @@ img {
     grid-template-columns: subgrid;
     grid-template-rows: subgrid;
   }
+}
+
+input,
+select,
+option {
+  font-size: 16px;
+  font-family: inherit;
+}
+
+.background-survey {
+  text-align: left;
 }
