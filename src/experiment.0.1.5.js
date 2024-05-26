@@ -239,17 +239,14 @@ export async function run({ assetPaths, input = {}, environment, title, version 
   // // Welcome screen
   // experiment.addTrial(WelcomeTrial);
 
+  // // Attention check button
+  // experiment.addTrial(AttentionCheckButtonTrial);
+
   // // Switch to full screen
   // experiment.addTrial(FullScreenTrial);
 
   // // Relative frequency with keypress and timer
   // experiment.addTrial(FrequencyRelativeKeypressTimerTrial);
-
-  // Attention check button
-  experiment.addTrial(AttentionCheckButtonTrial);
-
-  // Attention check keypress
-  experiment.addTrial(AttentionCheckKeypressTrial);
 
   // // Frequency on arrow
   // experiment.addTrial(FrequencyOnArrowTrial);
@@ -257,14 +254,23 @@ export async function run({ assetPaths, input = {}, environment, title, version 
   // // Break screen
   // experiment.addTrial(BreakTrial);
 
+  // // Attention check button
+  // experiment.addTrial(AttentionCheckButtonTrial);
+
   // // Prototypicality with timer
   // experiment.addTrial(PrototypicalityLineSortTimerTrial);
+
+  // // Attention check button
+  // experiment.addTrial(AttentionCheckButtonTrial);
 
   // // Break screen
   // experiment.addTrial(BreakTrial);
 
   // Categorisation with timer
   // experiment.addTrial(CategorisationForSsmTimerTrial);
+
+  // // Attention check keypress
+  // experiment.addTrial(AttentionCheckKeypressTrial);
 
   // Background questions
   // experiment.addTrial(backgroundQuestionsTrial);
