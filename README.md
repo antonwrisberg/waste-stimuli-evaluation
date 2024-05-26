@@ -107,6 +107,10 @@ The links below take you to examples of different versions of implementations of
 - **[v0.0.1](https://antonwrisberg.github.io/waste-stimuli-evaluation/dist/experiment/index.html?version=signage-familiarity.0.0.1)**. This setup is a mirroring of the v0.0.1 of the waste item familiarity evaluation presented above using waste fractions instead of waste items as stimuli. While it might be smart to have a measure of signage familiarity, I am not sure if this way of asking is very good. It would be nice to have a somewhat more concrete answer scale (or even, and preferably, buttoned options).
 - **[v0.0.2](https://antonwrisberg.github.io/waste-stimuli-evaluation/dist/experiment/index.html?version=signage-familiarity.0.0.2)**. **Current favourite**. This setup is a marge of the v0.0.1 and v0.0.2 of the waste item familiarity evaluation presented above using waste fractions instead of waste items as stimuli. Now it asks "How well could you could explain to somebody else, what goes into this category?" and offers a slider as response. As pointed out by Emma and Elsa, it should come before any tests using the signs as participants will otherwise be familiar with them from having just seen them.
 
+## A side note: Attention checks
+
+This is just to include a showcase of the attention checks employed in these setups. [Check them out here](https://antonwrisberg.github.io/waste-stimuli-evaluation/dist/experiment/index.html?version=attention-checks).
+
 # Version of current favourites
 
 This is at the bottom, so that PP finds this bit quickly 😇

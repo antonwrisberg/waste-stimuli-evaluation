@@ -26,6 +26,8 @@ import LanguageSelectionTrial from "./trials/select-language";
 import BrowserCheckTrial from "./trials/browser-check";
 import FullScreenTrial from "./trials/full-screen";
 import BreakTrial from "./trials/break";
+import AttentionCheckButtonTrial from "./trials/attention-check-button";
+import AttentionCheckKeypressTrial from "./trials/attention-check-keypress";
 import FrequencyRelativeKeypressTimerTrial from "./trials/frequency-relative-keypress-timer";
 import FrequencyOnArrowTrial from "./trials/frequency-on-arrow";
 import PrototypicalityLineSortTimerTrial from "./trials/prototypicality-free-sort-line-timer";
@@ -243,8 +245,14 @@ export async function run({ assetPaths, input = {}, environment, title, version 
   // // Relative frequency with keypress and timer
   // experiment.addTrial(FrequencyRelativeKeypressTimerTrial);
 
+  // Attention check button
+  experiment.addTrial(AttentionCheckButtonTrial);
+
+  // Attention check keypress
+  experiment.addTrial(AttentionCheckKeypressTrial);
+
   // // Frequency on arrow
-  experiment.addTrial(FrequencyOnArrowTrial);
+  // experiment.addTrial(FrequencyOnArrowTrial);
 
   // // Break screen
   // experiment.addTrial(BreakTrial);
@@ -259,7 +267,7 @@ export async function run({ assetPaths, input = {}, environment, title, version 
   // experiment.addTrial(CategorisationForSsmTimerTrial);
 
   // Background questions
-  experiment.addTrial(backgroundQuestionsTrial);
+  // experiment.addTrial(backgroundQuestionsTrial);
 
   // Run the experiment timeline
   await jsPsych.run(experiment.timeline);
