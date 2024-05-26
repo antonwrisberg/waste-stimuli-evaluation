@@ -254,46 +254,35 @@ img {
 .prototypicality-free-sort {
   .answer-options {
     margin-top: 0px;
-    padding-top: 65px;
+    // padding-top: 65px;
 
     display: grid;
     grid-template-columns: repeat(8, 100px);
-    grid-auto-rows: auto;
+    grid-template-rows: repeat(3, 100px);
     place-items: center;
     place-content: center;
     gap: 30px;
   }
 
   .plain-draggable {
-    height: 100px;
-  }
-
-  .plain-draggable[data-correctly-placed="true"]:not(.plain-draggable-dragging) {
+    height: 50px;
     width: 50px;
-    
-    img {
-      height: 50px;
-      width: 50px;
-      margin-top: 25px;
+
+    &.plain-draggable-dragging {
+      img {
+        transform: scale(6);
+      }
     }
-  }
 
-  .plain-draggable-dragging {
-    img {
-      height: 300px;
-      width: 300px;
-      max-width: 300px;
-      max-height: 300px;
-      margin: -100px;
+    &:not([data-correctly-placed="true"]):not(.plain-draggable-dragging) {
+      img {
+        transform: scale(2);
+      }
     }
-  }
 
-  img {
-    transition: height .2s, width .2s, max-width .2s, max-height .2s, margin .2s, rotate .5s;
-    height: 100px;
-    width: 100px;
-
-    // transform: translate(0, 150px);
+    img {
+      transition: transform .2s;
+    }
   }
 
   .prompt,
@@ -302,20 +291,12 @@ img {
     grid-column-end: -1;
   }
 
-  .prompt {
-    margin-bottom: -50px;
-  }
-
   .arrow {
     height: 30px;
     width: 100%;
     background: rgb(204,17,17);
     background: linear-gradient(90deg, rgba(204,17,17,1) 0%, rgba(204,204,17,1) 50%, rgba(17,204,17,1) 100%);
-
     position: relative;
-
-    margin-top: 20px;
-    margin-bottom: 35px;
 
     .label {
       position: absolute;
