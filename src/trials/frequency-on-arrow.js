@@ -28,22 +28,22 @@ export default function (experiment) {
         case 'en':
           return `
             <h1>Part 1</h1>
-            <p>In this section, you will see an arrow and a series of waste images on each screen.</p>
-            <p>On each screen, we ask you to sort the images by how often you consume them.<br />You sort the images by dragging and dropping them onto the arrow.</p>
+            <p>In this part, you will see an arrow and a series of waste images on each screen.</p>
+            <p>On each screen, we ask you to sort the images by <b>how often you expend them</b>.<br />You sort the images by dragging and dropping them onto the arrow.</p>
             <p>This part of the survey ends automatically after 6 minutes.<br />After this, you will have the opportunity to take a break.</p>
           `;
         case 'da':
           return `
             <h1>Del 1</h1>
             <p>I denne del vil du på hvert skærmbillede se en pil og en række billeder af affald.</p>
-            <p>På hvert skærmbillede beder vi dig om at sortere billederne efter, hvor ofte du færdigopbruger dem.<br />Du sorterer billederne ved at trække og slippe dem på pilen.</p>
+            <p>På hvert skærmbillede beder vi dig om at sortere billederne efter, <b>hvor ofte du færdigopbruger dem</b>.<br />Du sorterer billederne ved at trække og slippe dem på pilen.</p>
             <p>Denne del af undersøgelsen slutter automatisk efter 6 minutter.<br />Herefter har du mulighed for at holde en pause.</p>
           `;
         case 'sv':
           return `
             <h1>Del 1</h1>
             <p>I denna del kommer du på varje skärmbild att se en pil och en rad bilder av avfall.</p>
-            <p>På varje skärmbild ber vi dig att sortera bilderna efter hur ofta du förbrukar dem.<br />Du sorterar bilderna genom att dra och släppa dem på pilen.</p>
+            <p>På varje skärmbild ber vi dig att sortera bilderna efter <b>hur ofta du förbrukar dem</b>.<br />Du sorterar bilderna genom att dra och släppa dem på pilen.</p>
             <p>Denna del av undersökningen avslutas automatiskt efter 6 minuter.<br />Efter detta har du möjlighet att ta en paus.</p>
           `;
         default:
@@ -125,11 +125,11 @@ export default function (experiment) {
         prompt: function() {
           switch (experiment.detectLanguage()) {
             case 'en':
-              return `<p>Drag and drop the images along the arrow according to how often you expend them.</p>`;
+              return `<p>Drag and drop the images along the arrow according to <b>how often you expend them</b>.</p>`;
             case 'da':
-              return `<p>Træk billederne og placer dem langs pilen efter, hvor ofte du færdigopbruger dem.</p>`;
+              return `<p>Træk billederne og placer dem langs pilen efter, <b>hvor ofte du færdigopbruger dem</b>.</p>`;
             case 'sv':
-              return `<p>Dra bilderna och placera dem längs pilen enligt hur ofta du förbrukar/användar slut på dom.</p>`;
+              return `<p>Dra bilderna och placera dem längs pilen enligt <b>hur ofta du förbrukar/användar slut på dom</b>.</p>`;
             default:
               break;
           }

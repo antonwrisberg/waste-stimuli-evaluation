@@ -28,22 +28,22 @@ export default function (experiment) {
         case 'en':
           return `
             <h1>Part 2</h1>
-            <p>In a moment, you will see an arrow and a number of images of waste.</p>
-            <p>For each arrow, We ask you to sort the images by dragging and dropping them onto the arrow accordingly to how good an example you think they are of the specified waste fraction.</p>
+            <p>In this part, you will see an arrow and a series of waste images on each screen.</p>
+            <p>On each screen, we ask you to sort the images by <b>how good an example you think they are of the specified waste fraction</b>.<br />You sort the images by dragging and dropping them onto the arrow.</p>
             <p>This part of the survey automatically ends after 6 minutes.<br />Then you have the option to take a break.</p>
           `;
         case 'da':
           return `
             <h1>Del 2</h1>
-            <p>Om et øjeblik vil du se en pil og en række billeder af affald.</p>
-            <p>For hver pil beder vi dig om at sortere billederne ved at trække og slippe dem på pilen i overensstemmelse med, hvor godt et eksempel du synes, de er på den angivne affaldsfraktion.</p>
+            <p>I denne del vil du på hvert skærmbillede se en pil og en række billeder af affald.</p>
+            <p>På hvert skærmbillede beder vi dig om at sortere billederne efter, <b>hvor godt et eksempel, du synes, de er på den angivne affaldsfraktion</b>.<br />Du sorterer billederne ved at trække og slippe dem på pilen.</p>
             <p>Denne del af undersøgelsen slutter automatisk efter 6 minutter.<br />Herefter har du mulighed for at holde en pause.</p>"
           `;
         case 'sv':
           return `
             <h1>Del 2</h1>
-            <p>Inom kort kommer du att se en pil och ett antal bilder på avfall.</p>
-            <p>För värje pil ber vi dig att sortera bilderna genom att dra och släppa dem på pilen enligt hur bra exempel du tycker de är på den angivna avfallsfraktionen.</p>
+            <p>I denna del kommer du på varje skärmbild att se en pil och en rad bilder av avfall.</p>
+            <p>På varje skärmbild ber vi dig att sortera bilderna efter <b>hur bra exempel du tycker de är på den angivna avfallsfraktionen</b>.<br />Du sorterar bilderna genom att dra och släppa dem på pilen.</p>
             <p>Denna del av undersökningen avslutas automatiskt efter 6 minuter.<br />Därefter har du möjlighet att ta en paus.</p>
           `;
         default:
@@ -126,11 +126,11 @@ export default function (experiment) {
         prompt: function() {
           switch (experiment.detectLanguage()) {
             case 'en':
-              return `<p>Drag and drop the images along the line according to how good an example you think they are of the waste fraction <strong>${jsPsych.timelineVariable('fraction_en')}</strong>.</p>`;
+              return `<p>Drag and drop the images along the arrow according to <b>how good an example you think they are of the waste fraction <em>${jsPsych.timelineVariable('fraction_en')}</em></b>.</p>`;
             case 'da':
-              return `<p>Træk billederne og placer dem langs linjen efter hvor godt et eksempel du synes, de er på affaldsfraktionen <strong>${jsPsych.timelineVariable('fraction_da')}</strong>.</p>`;
+              return `<p>Træk billederne og placer dem langs pilen efter <b>hvor godt et eksempel du synes, de er på affaldsfraktionen <em>${jsPsych.timelineVariable('fraction_da')}</em></b>.</p>`;
             case 'sv':
-              return `<p>Dra bilderna och placera dem längs linjen efter hur bra exempel du tycker att de är på sorteringskategorin <strong>${jsPsych.timelineVariable('fraction_sv')}</strong>.</p>`;
+              return `<p>Dra bilderna och placera dem längs pilen efter <b>hur bra exempel du tycker att de är på avfallsfraktionen <em>${jsPsych.timelineVariable('fraction_sv')}</em></b>.</p>`;
             default:
               break;
           }
