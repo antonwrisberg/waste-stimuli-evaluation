@@ -23,7 +23,7 @@ export default function (experiment) {
         case 'sv':
           return `
             <h1>Nästan klar!</h1>
-            <p>Fyll i din bakgrundsinformation och avsluta ditt deltagande:</p>
+            <p>Vänligen fyll i lite bakgrundsinformation om dig som kommer hjälpa oss förstå dina svar:</p>
           `;
         default:
           break;

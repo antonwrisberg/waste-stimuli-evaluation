@@ -17,7 +17,7 @@ export default function (experiment) {
           case 'da':
             return '<p>Du skal anvende en stationær/laptop for at deltage i denne undersøgelse.</p>';
           case 'sv':
-            return '<p>Du måste använda en stationär/dator för att delta i denna undersökning.</p>';
+            return '<p>Du måste använda en stationär/laptop för att delta i denna undersökning.</p>';
           default:
             break;
         }

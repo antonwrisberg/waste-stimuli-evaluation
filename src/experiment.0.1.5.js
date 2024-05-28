@@ -3,7 +3,7 @@
  * @description An experiment to evaluate waste items for later sorting experiments
  * @version 0.1.5
  *
- * @assets assets/img/stimuli-800x800-sorted/,assets/img/signs_se,assets/img/logos/
+ * @assets assets/img/stimuli-800x800-sorted/,assets/img/signs_se,assets/img/logos/,assets/img/screendumps/
  */
 
 /**
@@ -231,46 +231,42 @@ export async function run({ assetPaths, input = {}, environment, title, version 
 
   // Select language
   experiment.addTrial(LanguageSelectionTrial);
-  //LanguageSelectionTrial(jsPsych, timeline, HtmlChoicePlugin); // Necessary for running detectLanguage!!
 
   // Browser check
-  // experiment.addTrial(BrowserCheckTrial);
+  experiment.addTrial(BrowserCheckTrial);
 
-  // // Welcome screen
-  // experiment.addTrial(WelcomeTrial);
+  // Welcome screen
+  experiment.addTrial(WelcomeTrial);
 
-  // // Attention check button
-  // experiment.addTrial(AttentionCheckButtonTrial);
+  // Attention check button
+  experiment.addTrial(AttentionCheckButtonTrial);
 
-  // // Switch to full screen
-  // experiment.addTrial(FullScreenTrial);
+  // Switch to full screen
+  experiment.addTrial(FullScreenTrial);
 
-  // // Relative frequency with keypress and timer
-  // experiment.addTrial(FrequencyRelativeKeypressTimerTrial);
+  // Frequency on arrow
+  experiment.addTrial(FrequencyOnArrowTrial);
 
-  // // Frequency on arrow
-  // experiment.addTrial(FrequencyOnArrowTrial);
+  // Break screen
+  experiment.addTrial(BreakTrial);
 
-  // // Break screen
-  // experiment.addTrial(BreakTrial);
+  // Attention check button
+  experiment.addTrial(AttentionCheckButtonTrial);
 
-  // // Attention check button
-  // experiment.addTrial(AttentionCheckButtonTrial);
+  // Prototypicality with timer
+  experiment.addTrial(PrototypicalityLineSortTimerTrial);
 
-  // // Prototypicality with timer
-  // experiment.addTrial(PrototypicalityLineSortTimerTrial);
+  // Attention check button
+  experiment.addTrial(AttentionCheckButtonTrial);
 
-  // // Attention check button
-  // experiment.addTrial(AttentionCheckButtonTrial);
-
-  // // Break screen
-  // experiment.addTrial(BreakTrial);
+  // Break screen
+  experiment.addTrial(BreakTrial);
 
   // Categorisation with timer
-  // experiment.addTrial(CategorisationForSsmTimerTrial);
+  experiment.addTrial(CategorisationForSsmTimerTrial);
 
-  // // Attention check keypress
-  // experiment.addTrial(AttentionCheckKeypressTrial);
+  // Attention check keypress
+  experiment.addTrial(AttentionCheckKeypressTrial);
 
   // Background questions
   experiment.addTrial(backgroundQuestionsTrial);

@@ -451,3 +451,10 @@ option {
 .background-survey {
   text-align: left;
 }
+
+img.screendump {
+  max-width: 600px;
+  border: 1px #ccc solid;
+  border-radius: 4px;
+  box-shadow: 0 2px 8px -4px black;
+}

@@ -21,7 +21,8 @@ export default function (experiment) {
         case 'sv':
           return `
             <h1>Paus</h1>
-            <p>Du har nu möjlighet att ta en paus. Alla timrar är pausade tills du fortsätter.</p>
+
+            <p>Du har nu möjlighet att ta en paus. Vänligen tryck på knappen nedan när du är redo att fortsätta studien.</p>
           `;
         default:
           break;
@@ -34,7 +35,7 @@ export default function (experiment) {
         case 'da':
           return ["Afslut pause og fortsæt"];
         case 'sv':
-          return ["Avsluta paus och fortsätt"];
+          return ["Avsluta pausen och fortsätt"];
         default:
           break;
       }

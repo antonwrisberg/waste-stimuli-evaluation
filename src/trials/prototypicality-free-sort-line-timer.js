@@ -42,9 +42,18 @@ export default function (experiment) {
         case 'sv':
           return `
             <h1>Del 2</h1>
-            <p>I denna del kommer du på varje skärmbild att se en pil och en rad bilder av avfall.</p>
-            <p>På varje skärmbild ber vi dig att sortera bilderna efter <b>hur bra exempel du tycker de är på den angivna avfallsfraktionen</b>.<br />Du sorterar bilderna genom att dra och släppa dem på pilen.</p>
-            <p>Denna del av undersökningen avslutas automatiskt efter 6 minuter.<br />Därefter har du möjlighet att ta en paus.</p>
+
+            <p>I denna del kommer du på varje sida att se en pil och en rad bilder på avfall.</p>
+
+            <img src="assets/img/screendumps/part2_sv.png" class="screendump">
+            
+            <p>Din uppgift kommer att vara att sortera bilderna efter<br /><b>hur bra exempel du tycker att avfallet på bilden är av den avfallskategori som presenteras</b><br />(t.ex. plast eller tidningar).</p>
+            
+            <p>Du sorterar bilderna genom att dra dem med din muspekare och släppa bilderna på pilen.</p>
+            
+            <p>Denna del av undersökningen avslutas automatiskt efter 6 minuter.<br />Gör så många sidor som du hinner under denna tid.</p>
+
+            <p>När uppgiften är slutförd kommer du att få möjlighet till att ta en paus.</p>
           `;
         default:
           break;
@@ -130,7 +139,7 @@ export default function (experiment) {
             case 'da':
               return `<p>Træk billederne og placer dem langs pilen efter <b>hvor godt et eksempel du synes, de er på affaldsfraktionen <em>${jsPsych.timelineVariable('fraction_da')}</em></b>.</p>`;
             case 'sv':
-              return `<p>Dra bilderna och placera dem längs pilen efter <b>hur bra exempel du tycker att de är på avfallsfraktionen <em>${jsPsych.timelineVariable('fraction_sv')}</em></b>.</p>`;
+              return `<p>Dra bilderna och placera dem längs pilen efter <b>hur bra exempel du tycker att de är på avfallsfraktionen:</b></p><p style="text-transform:uppercase"><b>${jsPsych.timelineVariable('fraction_sv')}</b></p>`;
             default:
               break;
           }

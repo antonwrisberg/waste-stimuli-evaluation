@@ -63,11 +63,12 @@ export default function (experiment) {
               `;
             case 'sv':
               return `
-                <p>Om en stund kommer du att se en bild av slumpmässiga avfall tillsammans med en slumpmässig avfallsfraktion.</p>
-                <p>För varje bild av avfall ska du avgöra om du tror att den tillhör avfallsfraktionen.</p>
+                <p>I denna del kommer du på varje sida att se en bild på ett avfall tillsammans med en  bild på en avfallskategori.</p>
+
+                <p>Din uppgift kommer vara att att avgöra om den visade bilden tillhör den visade avfallskategorin eller ej.</p>
                 
-                <p>Tryck på <b>${(jIsCorrect ? 'j' : 'f')}</b>, om du tror att avfallet <b>tillhör</b> fraktionen.<br />
-                Tryck på <b>${(jIsCorrect ? 'f' : 'j')}</b>, om du tror att avfallet <b>inte tillhör</b> fraktionen.</p>
+                <p>Tryck på <b>${(jIsCorrect ? 'j' : 'f')}</b>, om du tror att avfallet <b>tillhör</b> kategorin.<br />
+                Tryck på <b>${(jIsCorrect ? 'f' : 'j')}</b>, om du tror att avfallet <b>inte tillhör</b> kategorin.</p>
                 
                 <p>För att börja, tryck på <b>j</b>.</p>
               `;
@@ -108,7 +109,7 @@ export default function (experiment) {
               `;
             case 'sv':
               return `
-                <p>Observera: Nu kommer det en ny avfallsfraktion.</p>
+                <p>Observera: Nu kommer det en ny avfallskategori.</p>
                 <p>Tryck på <b>f</b> för att fortsätta.</p>
               `;
             default:
@@ -139,8 +140,8 @@ export default function (experiment) {
               `;
             case 'sv':
               return `
-                <p class="prompt">Tryck på <b>${(jIsCorrect ? 'j' : 'f')}</b>, om du tror att avfallet <b>tillhör</b> fraktionen.<br />
-                Tryck på <b>${(jIsCorrect ? 'f' : 'j')}</b>, om du tror att avfallet <b>inte tillhör</b> fraktionen.</p>
+                <p class="prompt">Tryck på <b>${(jIsCorrect ? 'j' : 'f')}</b>, om du tror att avfallet <b>tillhör</b> avfallskategorin.<br />
+                Tryck på <b>${(jIsCorrect ? 'f' : 'j')}</b>, om du tror att avfallet <b>inte tillhör</b> avfallskategorin.</p>
                 <img class="fraction" src="${jsPsych.timelineVariable('sign_sv')}" />
               `;
             default:

@@ -42,9 +42,18 @@ export default function (experiment) {
         case 'sv':
           return `
             <h1>Del 1</h1>
-            <p>I denna del kommer du på varje skärmbild att se en pil och en rad bilder av avfall.</p>
-            <p>På varje skärmbild ber vi dig att sortera bilderna efter <b>hur ofta du förbrukar dem</b>.<br />Du sorterar bilderna genom att dra och släppa dem på pilen.</p>
-            <p>Denna del av undersökningen avslutas automatiskt efter 6 minuter.<br />Efter detta har du möjlighet att ta en paus.</p>
+
+            <p>I denna del kommer du på varje sida att se en pil och en rad bilder på avfall:</p>
+
+            <img src="assets/img/screendumps/part1_sv.png" class="screendump">
+
+            <p>Din uppgift kommer att vara att sortera bilderna efter<br /><b>hur ofta du förbrukar eller använder slut på dem</b>.</p>
+            
+            <p>Du sorterar bilderna genom att dra dem med din muspekare och släppa bilderna på pilen.</p>
+            
+            <p>Denna del av undersökningen avslutas automatiskt efter 6 minuter.<br />Gör så många sidor som du hinner under denna tid.</p>
+
+            <p>När uppgiften är slutförd kommer du att få möjlighet till att ta en paus.</p>
           `;
         default:
           break;
@@ -129,7 +138,7 @@ export default function (experiment) {
             case 'da':
               return `<p>Træk billederne og placer dem langs pilen efter, <b>hvor ofte du færdigopbruger dem</b>.</p>`;
             case 'sv':
-              return `<p>Dra bilderna och placera dem längs pilen enligt <b>hur ofta du förbrukar/användar slut på dom</b>.</p>`;
+              return `<p>Dra bilderna och placera dem längs pilen enligt <b>hur ofta du förbrukar/använder slut på dem</b>.</p>`;
             default:
               break;
           }
