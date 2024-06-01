@@ -43,7 +43,7 @@ export default function (experiment) {
           return `
             <h1>Del 2</h1>
 
-            <p>I denna del kommer du på varje sida att se en pil och en rad bilder på avfall.</p>
+            <p>I denna del kommer du på varje sida att se en pil, en rad bilder på avfall och information om en avfallskategori.</p>
 
             <img src="assets/img/screendumps/part2_sv.png" class="screendump">
             
