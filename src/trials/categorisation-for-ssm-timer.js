@@ -36,6 +36,11 @@ export default function (experiment) {
           }
         },
         choices: ["f"],
+on_finish: function() {
+          jsPsych.setProgressBar(0.03);
+
+          console.log(jsPsych.finishTrial);
+        }
       },
       {
         type: HtmlKeyboardResponsePlugin,

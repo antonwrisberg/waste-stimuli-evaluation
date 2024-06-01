@@ -458,3 +458,7 @@ img.screendump {
   border-radius: 4px;
   box-shadow: 0 2px 8px -4px black;
 }
+
+#jspsych-progressbar-inner {
+  transition: width 0.3s;
+}

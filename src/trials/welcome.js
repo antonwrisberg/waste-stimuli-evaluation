@@ -41,6 +41,9 @@ export default function (experiment) {
         default:
           break;
       }
+    },
+    on_finish: function() {
+      jsPsych.setProgressBar(0.02);
     }
   });
 };

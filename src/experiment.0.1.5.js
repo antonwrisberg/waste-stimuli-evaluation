@@ -47,7 +47,14 @@ import { initJsPsych } from "jspsych";
  */
 export async function run({ assetPaths, input = {}, environment, title, version }) {
   const jsPsych = initJsPsych({
-    minimum_valid_rt: 150 // Note: Also valid for image choice plugin
+    minimum_valid_rt: 150, // Note: Also valid for image choice plugin
+    show_progress_bar: true,
+    auto_update_progress_bar: false,
+    message_progress_bar: 'Framsteg',
+    on_trial_finish: function(data) {
+      // jsPsych.setProgressBar(data.time_elapsed / (6 * 60 * 1000));
+      // console.log(data)
+    }
   });
 
   // Set up internal experiment variable to link timeline across trial modules

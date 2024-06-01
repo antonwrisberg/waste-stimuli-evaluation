@@ -33,6 +33,8 @@ export default function (experiment) {
           }
         );
       }
+
+      jsPsych.setProgressBar(0.01);
     },
     on_load: function() {
       // console.log(jsPsych.getInitSettings().minimum_valid_rt)
