@@ -1,4 +1,4 @@
-import HtmlButtonResponsePlugin from "@jspsych/plugin-html-button-response";
+import HtmlButtonResponsePlugin from "@jspsych/plugin-html-button-response"; 
 
 // Break
 export default function (experiment) {
@@ -14,9 +14,7 @@ export default function (experiment) {
 
             <p>Hej och välkommen till denna undersökning som handlar om hur du tänker kring avfall och avfallssortering.</p>
 
-            <p>Undersökningen består av 3 delar. Totalt tar den 15-20 minuter att genomföra.<br />Mellan varje del kommer du ges möjlighet att ta en paus. Undvik att ta andra pauser än dessa, tack!</p>
-            
-            <p>Innan varje del kommer du att få instruktioner om vad du kommer göra.<br />Var snäll och läs instruktionerna noggrant.</p>
+            <p>Undersökningen tar den 8-10 minuter att genomföra.<br />Undvik att ta pauser under denna tid.</p>
             
             <p>Varken försöksledarna eller anda obehöriga kommer kunna koppla dina svar till dig som person.<br />All insamlad data kommer att hanteras enligt gällande GDPR-lagstiftning.</p>
 
