@@ -4,7 +4,8 @@ import CallFunctionPlugin from '@jspsych/plugin-call-function';
 
 // Categorisation
 export default function (experiment) {
-  jsPsych = experiment.jsPsych;
+  let jsPsych = experiment.jsPsych;
+  let jIsCorrect = (Math.random() > .5);
 
   // Intro
   experiment.timeline.push({
@@ -17,26 +18,25 @@ export default function (experiment) {
               return `
                 <h1>Part 3</h1>
                 <p>Please place a finger from your right hand on the <b>j</b> key and a finger from your left hand on the <b>f</b> key.</p>
-                <p>When you have placed both fingers, press <b>f</b> to continue.</p>
+                <p>When you have placed both fingers, press <b>${(jIsCorrect ? 'f' : 'j')}</b> to continue.</p>
               `;
             case 'da':
               return `
                 <h1>Del 3</h1> 
                 <p>Placér en finger fra din højre hånd på <b>j</b>-tasten og en finger fra din venstre hånd på <b>f</b>-tasten.</p>
-                <p>Tryk på <b>f</b> for at fortsætte, når du har placeret begge fingre.</p>
+                <p>Tryk på <b>${(jIsCorrect ? 'f' : 'j')}</b> for at fortsætte, når du har placeret begge fingre.</p>
               `;
             case 'sv':
               return `
-                <h1>Del 3</h1>
                 <p>Placera ett finger från din högra hand på tangenten <b>j</b> och ett finger från din vänstra hand på tangenten <b>f</b>.</p>
-                <p>Tryck på <b>f</b> för att fortsätta när du har placerat båda fingrarna.</p>
+                <p>Tryck på <b>${(jIsCorrect ? 'f' : 'j')}</b> för att fortsätta när du har placerat båda fingrarna.</p>
               `;
             default:
               break;
           }
         },
-        choices: ["f"],
-on_finish: function() {
+        choices: [(jIsCorrect ? 'f' : 'j')],
+        on_finish: function() {
           jsPsych.setProgressBar(0.03);
 
           console.log(jsPsych.finishTrial);
@@ -64,29 +64,30 @@ on_finish: function() {
                 <p>Tryk på <b>${(jIsCorrect ? 'j' : 'f')}</b>, hvis du mener, at affaldet <b>hører til</b> i fraktionen.<br />
                 Tryk på <b>${(jIsCorrect ? 'f' : 'j')}</b>, hvis du mener, at affaldet <b>ikke hører til</b> i fraktionen.</p>
                 
-                <p>For at begynde, tryk på <b>j</b>.</p>
+                <p>For at begynde, tryk på den tast, der angiver, at affaldet hører til i fraktionen.</p>
               `;
             case 'sv':
               return `
-                <p>I denna del kommer du på varje sida att se en bild på ett avfall tillsammans med en  bild på en avfallskategori.</p>
+                <p>På varje sida kommer du att se en bild på ett avfall tillsammans med en  bild på en avfallskategori.</p>
 
                 <p>Din uppgift kommer vara att att avgöra om den visade bilden tillhör den visade avfallskategorin eller ej.</p>
                 
                 <p>Tryck på <b>${(jIsCorrect ? 'j' : 'f')}</b>, om du tror att avfallet <b>tillhör</b> kategorin.<br />
                 Tryck på <b>${(jIsCorrect ? 'f' : 'j')}</b>, om du tror att avfallet <b>inte tillhör</b> kategorin.</p>
                 
-                <p>För att börja, tryck på <b>j</b>.</p>
+                <p>För att börja, tryck på tangenten som anger att avfallet tillhör kategorin.</p>
               `;
             default:
               break;
           }
         },
-        choices: ["j"]
+        choices: [(jIsCorrect ? 'j' : 'f')],
+        on_finish: function() {
+          jsPsych.setProgressBar(0.04);
+        }
       }
     ]
   });
-
-  let jIsCorrect = (Math.random() > .5);
 
   experiment.timeline.push({
     timeline: [
@@ -105,26 +106,26 @@ on_finish: function() {
             case 'en':
               return `
                 <p>Note: A new waste fraction will now appear.</p>
-                <p>Press <b>f</b> to continue.</p>
+                <p>Press <b>${(jIsCorrect ? 'f' : 'j')}</b> to continue.</p>
               `;
             case 'da':
               return `
                 <p>Bemærk: Nu kommer der en ny affaldsfraktion.</p>
-                <p>>Tryk på <b>f</b> for at fortsætte.</p>
+                <p>>Tryk på <b>${(jIsCorrect ? 'f' : 'j')}</b> for at fortsætte.</p>
               `;
             case 'sv':
               return `
                 <p>Observera: Nu kommer det en ny avfallskategori.</p>
-                <p>Tryck på <b>f</b> för att fortsätta.</p>
+                <p>Tryck på <b>${(jIsCorrect ? 'f' : 'j')}</b> för att fortsätta.</p>
               `;
             default:
               break;
           }
         },
-        choices: ["f"],
+        choices: [(jIsCorrect ? 'f' : 'j')],
         on_finish: function(data) {
           experiment.timeLimitSetTime = new Date().getTime();
-          experiment.timeLimit = 1000*60*6/experiment.stimuli.fractions.length;
+          experiment.timeLimit = 1000 * 60 * 7/*number of minutes for this setup*/ /experiment.stimuli.fractions.length;
         }
       },
       {
@@ -166,8 +167,57 @@ on_finish: function() {
           if (new Date().getTime() - experiment.timeLimitSetTime > experiment.timeLimit) {
             jsPsych.endCurrentTimeline();
           } else {
-            console.log("Still " + (experiment.timeLimit - (new Date().getTime() - experiment.timeLimitSetTime)) + " ms left")
+            // console.log("Still " + (experiment.timeLimit - (new Date().getTime() - experiment.timeLimitSetTime)) + " ms left")
+
+            let stimuliIndex = data.internal_node_id.split("-")[3].split(".")[0];
+            let fractionIndex = data.internal_node_id.split("-")[3].split(".")[1];
+
+            let progressPercentageBasedOnStimuli = ((stimuliIndex * 1 + 1) + fractionIndex * experiment.stimuli.congruencymix.length) / (experiment.stimuli.congruencymix.length * experiment.stimuli.fractions.length);
+            let progressPercentageBasedOnTime = ((new Date().getTime() - experiment.timeLimitSetTime) / experiment.timeLimit) / experiment.stimuli.fractions.length + fractionIndex / experiment.stimuli.fractions.length;
+            
+            // console.log("progressPercentageBasedOnTime: " + progressPercentageBasedOnTime);
+            // console.log("progressPercentageBasedOnStimuli: " + progressPercentageBasedOnStimuli);
+
+            jsPsych.setProgressBar(0.05 + Math.max(progressPercentageBasedOnStimuli, progressPercentageBasedOnTime) * 0.9);
           }
+        }
+      },
+      {
+        timeline: [{ // Atention check
+          type: HtmlKeyboardResponsePlugin,
+          stimulus: function() {
+            switch (experiment.detectLanguage()) {
+              case 'en':
+                return `
+                  <p>This screen is an attention check.</p>
+                  <p>Please do not press <b>f</b> or <b>j</b>.<br />Instead, press the spacebar to continue.</p>
+                `;
+              case 'da':
+                return `
+                  <p>Dette skærmbillede er et opmærksomhedstjek.</p>
+                  <p>Vær venlig ikke at trykke på <b>f</b> eller <b>j</b>.<br />Tryk i stedet på mellemrumstasten for at fortsætte.</p>
+                `;
+              case 'sv':
+                return `
+                  <p>Denna skärmbild är en uppmärksamhetskontroll.</p>
+                  <p>Var vänlig tryck inte på <b>f</b> eller <b>j</b>.<br />Tryck istället på mellanslagstangenten för att fortsätta.</p>
+                `;
+              default:
+                break;
+            }
+          },
+          on_finish: function(data) {
+            // Save the button text (value) in addition to its index
+            if (data.response == " ") {
+              data.attention_check_response = 'Successful attention check!';
+            } else {
+              data.attention_check_response = 'Failed attention check! This key should not have been pressed';
+            }
+          },
+          choices: 'ALL_KEYS'
+        }],
+        conditional_function: function(){
+          return (Math.random() > .7)
         }
       }
     ],
