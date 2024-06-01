@@ -233,6 +233,11 @@ export async function run({ assetPaths, input = {}, environment, title, version 
 
   experiment.stimuli.congruencymix = congruencymix;
 
+  // Grab and save altid for PFM Research participants
+  jsPsych.data.addProperties({
+    PFM_participant_id: jsPsych.data.getURLVariable('altid')
+  });
+
   // Preload assets
   experiment.addTrial(PreLoadTrial);
 
