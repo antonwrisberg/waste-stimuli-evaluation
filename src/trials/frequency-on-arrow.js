@@ -41,19 +41,13 @@ export default function (experiment) {
           `;
         case 'sv':
           return `
-            <h1>Del 1</h1>
-
-            <p>I denna del kommer du på varje sida att se en pil och en rad bilder på avfall:</p>
+            <p>På varje sida kommer du att se en pil och en rad bilder på avfall:</p>
 
             <img src="assets/img/screendumps/part1_sv.png" class="screendump">
 
             <p>Din uppgift kommer att vara att sortera bilderna efter<br /><b>hur ofta du förbrukar eller använder slut på dem</b>.</p>
             
             <p>Du sorterar bilderna genom att dra dem med din muspekare och släppa bilderna på pilen.</p>
-            
-            <p>Denna del av undersökningen avslutas automatiskt efter 6 minuter.<br />Gör så många sidor som du hinner under denna tid.</p>
-
-            <p>När uppgiften är slutförd kommer du att få möjlighet till att ta en paus.</p>
           `;
         default:
           break;
@@ -73,7 +67,7 @@ export default function (experiment) {
     },
     on_finish: function(data) {
       experiment.timeLimitSetTime = new Date().getTime();
-      experiment.timeLimit = 1000*60*6;
+      experiment.timeLimit = 1000 * 60 * 7; // Run this round of trials for 7 minutes
     }
   });
 
@@ -152,6 +146,9 @@ export default function (experiment) {
         on_finish: function(data) {
           if (new Date().getTime() - experiment.timeLimitSetTime > experiment.timeLimit) {
             jsPsych.endCurrentTimeline();
+          } else {
+            let progressPercentageBasedOnTime = ((new Date().getTime() - experiment.timeLimitSetTime) / experiment.timeLimit);
+            jsPsych.setProgressBar(0.05 + progressPercentageBasedOnTime * 0.9);
           }
         }
       }
