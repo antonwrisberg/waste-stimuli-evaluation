@@ -1,8 +1,42 @@
 import BrowserCheckPlugin from '@jspsych/plugin-browser-check';
+import HtmlButtonResponsePlugin from "@jspsych/plugin-html-button-response";
 
 // Browser check
 export default function (experiment) {
   jsPsych = experiment.jsPsych;
+
+  experiment.timeline.push({
+    type: HtmlButtonResponsePlugin,
+    stimulus: function() {
+      switch (experiment.detectLanguage()) {
+        case 'sv':
+          return `
+            <h1>Observera!</h1>
+
+            <p>Du måste använda en stationär dator/laptop för att delta i denna undersökning.</p>
+
+            <p>Om du är på mobil, vänligen stäng sidan och tillgå undersökningen från en stationär dator eller laptop istället.</p>
+          `;
+        default:
+          break;
+      }
+    },
+    choices: function() {
+      switch (experiment.detectLanguage()) {
+        case 'en':
+          return ["I am on a desktop/laptop"];
+        case 'da':
+          return ["Jeg anvender en statilnær/laptop"];
+        case 'sv':
+          return ["Jag använder redan en stationär dator/laptop"];
+        default:
+          break;
+      }
+    },
+    on_finish: function() {
+      jsPsych.setProgressBar(0.015);
+    }
+  });
 
   experiment.timeline.push({
     type: BrowserCheckPlugin,
