@@ -217,7 +217,7 @@ export default function (experiment) {
           choices: 'ALL_KEYS'
         }],
         conditional_function: function(){
-          return (Math.random() > .7)
+          return (Math.random() > .6)
         }
       }
     ],
