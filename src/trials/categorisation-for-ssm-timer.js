@@ -68,7 +68,7 @@ export default function (experiment) {
               `;
             case 'sv':
               return `
-                <p>På varje sida kommer du att se en bild på ett avfall tillsammans med en  bild på en avfallskategori.</p>
+                <p>På varje sida kommer du att se en bild på ett avfall tillsammans med en bild på en avfallskategori.</p>
 
                 <p>Din uppgift kommer vara att att avgöra om den visade bilden tillhör den visade avfallskategorin eller ej.</p>
                 
