@@ -68,6 +68,7 @@ export default function (experiment) {
     on_finish: function(data) {
       experiment.timeLimitSetTime = new Date().getTime();
       experiment.timeLimit = 1000 * 60 * 7; // Run this round of trials for 7 minutes
+      jsPsych.setProgressBar(0.035);
     }
   });
 
