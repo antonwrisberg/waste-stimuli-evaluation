@@ -70,7 +70,7 @@ export async function run({ assetPaths, input = {}, environment, title, version 
       experiment.prototypicalityFreeSortIncongruentCount = 6;
 
       experiment.addTrial = function(trialModule) {
-        trialModule(this);
+        trialModule(this); // Automatically pass on jsPsych and timeline to modules to alter
       }
 
   // Populate stimuli array
