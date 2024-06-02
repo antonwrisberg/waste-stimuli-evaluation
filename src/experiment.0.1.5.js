@@ -32,6 +32,7 @@ import FrequencyRelativeKeypressTimerTrial from "./trials/frequency-relative-key
 import FrequencyOnArrowTrial from "./trials/frequency-on-arrow";
 import PrototypicalityLineSortTimerTrial from "./trials/prototypicality-free-sort-line-timer";
 import CategorisationForSsmTimerTrial from "./trials/categorisation-for-ssm-timer";
+import CategorisationSwipeTrial from "./trials/categorisation-swipe";
 import backgroundQuestionsTrial from "./trials/background";
 
 // Import stimuli
@@ -244,44 +245,46 @@ export async function run({ assetPaths, input = {}, environment, title, version 
   // Select language
   experiment.addTrial(LanguageSelectionTrial);
 
-  // Browser check
-  experiment.addTrial(BrowserCheckTrial);
+  // Browser check 
 
-  // Welcome screen
-  experiment.addTrial(WelcomeTrial);
+  // // Welcome screen
+  // experiment.addTrial(WelcomeTrial);
 
-  // Attention check button
-  experiment.addTrial(AttentionCheckButtonTrial);
+  // // Attention check button
+  // experiment.addTrial(AttentionCheckButtonTrial);
 
-  // Switch to full screen
-  experiment.addTrial(FullScreenTrial);
+  // // Switch to full screen
+  // experiment.addTrial(FullScreenTrial);
 
-  // Frequency on arrow
-  experiment.addTrial(FrequencyOnArrowTrial);
+  // // Frequency on arrow
+  // experiment.addTrial(FrequencyOnArrowTrial);
 
-  // Break screen
-  experiment.addTrial(BreakTrial);
+  // // Break screen
+  // experiment.addTrial(BreakTrial);
 
-  // Attention check button
-  experiment.addTrial(AttentionCheckButtonTrial);
+  // // Attention check button
+  // experiment.addTrial(AttentionCheckButtonTrial);
 
-  // Prototypicality with timer
-  experiment.addTrial(PrototypicalityLineSortTimerTrial);
+  // // Prototypicality with timer
+  // experiment.addTrial(PrototypicalityLineSortTimerTrial);
 
-  // Attention check button
-  experiment.addTrial(AttentionCheckButtonTrial);
+  // // Attention check button
+  // experiment.addTrial(AttentionCheckButtonTrial);
 
-  // Break screen
-  experiment.addTrial(BreakTrial);
+  // // Break screen
+  // experiment.addTrial(BreakTrial);
 
-  // Categorisation with timer
-  experiment.addTrial(CategorisationForSsmTimerTrial);
+  // // Categorisation with timer
+  // experiment.addTrial(CategorisationForSsmTimerTrial);
+
+  // Tinder for waste categorisation
+  experiment.addTrial(CategorisationSwipeTrial);
 
   // Attention check keypress
-  experiment.addTrial(AttentionCheckKeypressTrial);
+  // experiment.addTrial(AttentionCheckKeypressTrial);
 
-  // Background questions
-  experiment.addTrial(backgroundQuestionsTrial);
+  // // Background questions
+  // experiment.addTrial(backgroundQuestionsTrial);
 
   // Run the experiment timeline
   await jsPsych.run(experiment.timeline);

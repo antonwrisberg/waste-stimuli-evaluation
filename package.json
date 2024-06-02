@@ -10,6 +10,7 @@
     "@antonwrisberg/plugin-images-choice": "file: ./../../custom-jspsych-packages/plugin-images-choice",
     "@antonwrisberg/plugin-images-freesort": "file: ./../../custom-jspsych-packages/plugin-images-freesort",
     "@antonwrisberg/plugin-images-keyboard-response": "file: ./../../custom-jspsych-packages/plugin-images-keyboard-response",
+    "@antonwrisberg/plugin-tinder-waste": "file: ./../../custom-jspsych-packages/plugin-tinder-waste",
     "@jspsych-contrib/plugin-html-choice": "^1.0.0",
     "@jspsych/plugin-animation": "^1.1.3",
     "@jspsych/plugin-browser-check": "^1.0.3",
