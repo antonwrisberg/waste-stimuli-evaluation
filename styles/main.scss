@@ -466,9 +466,9 @@ img.screendump {
 .tinder-waste {
   display: grid;
   grid-template-columns: 100%;
-  grid-template-rows: repeat(2, calc(calc(95vh - 72px) / 2));
+  grid-template-rows: repeat(2, calc((95vh - 72px - env(safe-area-inset-bottom)) / 2));
   row-gap: 5vh;
-  height: calc(100vh - 72px);
+  height: calc(100vh - 72p - env(safe-area-inset-bottom));
   margin: 0 5vw;
   width: 90vw;
   overflow: hidden;
@@ -492,4 +492,11 @@ img.screendump {
   img.after-successful-interaction {
     transition-timing-function: ease;
   }
+
+  &::after {
+    content: ".";
+    height: 1px;
+    background: pink;
+    display: block;
+  } 
 }
