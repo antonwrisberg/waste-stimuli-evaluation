@@ -358,7 +358,7 @@ export default function (experiment) {
               <option value="" disabled>-----</option>
               <option value="other">Annat / föredrar att inte svara</option>
             </select>.</p>
-            <p>Där jag vanligtvis sorterar mitt avfall, kan jag sortera i:<br />
+            <p>När jag är hemma har jag möjlighet att sortera mitt avfall i följande kategorier. Vänligen fyll i alla tillgängliga alternativ:</p>
 
             <table>
               <tr>
@@ -381,22 +381,21 @@ export default function (experiment) {
                   <input type="checkbox" name="tidningar" value="selected" id="checkbox-tidningar" /> <label for="checkbox-tidningar">Tidningar och andra trycksaker</label><br />
                   <input type="checkbox" name="tradgardsavfall" value="selected" id="checkbox-tradgardsavfall" /> <label for="checkbox-tradgardsavfall">Trädgårdsavfall</label><br />
                   <input type="checkbox" name="aterbruk" value="selected" id="checkbox-aterbruk" /> <label for="checkbox-aterbruk">Återbruk</label><br />
-                  <input type="checkbox" name="other" value="selected" id="checkbox-other" /> <label for="checkbox-other">Annat</label>
+                  <label for="checkbox-other-value">Annat: </label><input type="text" name="checkbox-other-value" id="checkbox-other-value" />
                 </td>
               </tr>
             </table>
 
-            <p>Det är <select name="sorting convenience" required>
+             <p>När jag är hemma tycker jag det är <select name="sorting convenience" required>
               <option value="" disabled selected>Vänligen välj</option>
-besværligt og ubesværligt!!
-              <option value="very inconvenient">Mycket obekvämt</option>
-              <option value="inconvenient">Obekvämt</option>
-              <option value="neither convenient nor inconvenient">Varken obekvämt eller bekvämt</option>
-              <option value="convenient">Bekvämt</option>
-              <option value="very convenient">Mycket bekvämt</option>
+              <option value="very inconvenient">Mycket omständigt</option>
+              <option value="inconvenient">Omständigt</option>
+              <option value="neither convenient nor inconvenient">Varken obekvämt eller enkelt</option>
+              <option value="convenient">Enkelt</option>
+              <option value="very convenient">Mycket Enkelt</option>
               <option value="" disabled>-----</option>
               <option value="other">Annat / föredrar att inte svara</option>
-            </select> för mig att sortera avfall hemma.</p>
+            </select> att sortera avfall.</p>
 
             <p>Jag är <select name="sorting abilities" required>
               <option value="" disabled selected>Vänligen välj</option>
