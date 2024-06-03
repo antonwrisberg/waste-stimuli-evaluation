@@ -229,6 +229,11 @@ export async function run({ assetPaths, input = {}, environment, title, version 
   experiment.stimuli.congruencymix = congruencymix;
 
   // Grab and save altid for PFM Research participants
+  if (typeof jatos !== "undefined") {
+    jsPsych.data.addProperties({
+      PFM_participant_id: jatos.urlQueryParameters.altid
+    });
+  } else {
   jsPsych.data.addProperties({
     PFM_participant_id: jsPsych.data.getURLVariable('altid')
   });
