@@ -113,6 +113,8 @@ export default function (experiment) {
         fraction_img: jsPsych.timelineVariable('sign_sv'),
         css_classes: ["tinder-waste"],
         time_after_response: 200,
+        label_left: 'Tillhör inte',
+        label_right: 'Tillhör',
         data: {
           question: 'fraction-belongingness',
           item: jsPsych.timelineVariable('item'),

@@ -481,15 +481,25 @@ img.screendump {
 .tinder-waste {
   display: grid;
   grid-template-columns: 100%;
-  grid-template-rows: repeat(2, calc((95vh - 4em) / 2));
-  grid-template-rows: repeat(2, calc((95dvh - 4em) / 2));
-  row-gap: 5vh;
-  row-gap: 5dvh;
-  height: calc(100vh - 4em);
-  height: calc(100dvh - 4em);
+  // grid-template-rows: calc((95vh - 4em) / 2) 2vh calc((95vh - 4em) / 2);
+  // grid-template-rows: calc((95dvh - 4em) / 2) 2dvh calc((95dvh - 4em) / 2);
+  // grid-template-rows: calc(95vh - 5dvh - 90vw) 2vh 90vw;
+  // grid-template-rows: calc(95dvh - 5dvh - 90vw) 2dvh 90vw;
+  grid-template-rows: calc((95vh - 3em - 16px) - min((95vh - 3em - 16px) * 0.6, 90vw)) 2vh min(calc((95vh - 3em - 16px) * 0.6), 90vw);
+  grid-template-rows: calc((95dvh - 3em - 16px) - min((95dvh - 3em - 16px) * 0.6, 90vw)) 2dvh min(calc((95dvh - 3em - 16px) * 0.6), 90vw);
+  row-gap: 1.5vh;
+  row-gap: 1.5dvh;
+  height: calc(100vh - 3em - 16px);
+  height: calc(100dvh - 3em - 16px);
   margin: 0 5vw;
   width: 90vw;
   overflow: hidden;
+  position: relative;
+
+
+  .labels-wrapper {
+    grid-row-start: 2;
+  }
 
   img {
     transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -509,5 +519,22 @@ img.screendump {
 
   img.after-successful-interaction {
     transition-timing-function: ease;
+  }
+
+  .label {
+    line-height: 2vh;
+    line-height: 2dvh;
+    height: 2vh;
+    height: 2dvh;
+    font-size: 2vh;
+    font-size: 2dvh;
+
+    &.left {
+      float: left;
+    }
+
+    &.right {
+      float: right; 
+    }
   }
 }
