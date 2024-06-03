@@ -232,6 +232,7 @@ export async function run({ assetPaths, input = {}, environment, title, version 
   jsPsych.data.addProperties({
     PFM_participant_id: jsPsych.data.getURLVariable('altid')
   });
+  }
 
   // Preload assets
   experiment.addTrial(PreLoadTrial);
