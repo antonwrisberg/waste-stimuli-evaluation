@@ -135,7 +135,7 @@ export default function (experiment) {
             case 'sv':
               return `
                 <p style="text-align: left">Detta är en <b>övning</b>.</p>
-                <p>Låtsas som om du sorterar sakerna efter hur bra exempel de är på runda saker. Gör så här:</p>
+                <p style="text-align: left">Låtsas som om du sorterar sakerna efter hur bra exempel de är på runda saker. Gör så här:</p>
 
                 <ol style="text-align: left">
                   <li>Dra apelsinen till pilen som om du tycker den är ett gott exempel på en rund sak.</li>
