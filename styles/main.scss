@@ -85,6 +85,7 @@ img {
 .jspsych-btn {
   margin-bottom: 20px;
   font-size: 16px;
+  cursor: pointer;
   
   @media only screen and (max-width: 1000px) {
     padding: 12px 24px !important;
@@ -450,6 +451,20 @@ option {
 
 .background-survey {
   text-align: left;
+
+  label {
+    margin-right: 1em;
+  }
+
+  p + table {
+    margin-top: -1em;
+  }
+
+  @media only screen and (max-width: 920px) {
+    td {
+      display: block;
+    }
+  }
 }
 
 img.screendump {
@@ -466,9 +481,12 @@ img.screendump {
 .tinder-waste {
   display: grid;
   grid-template-columns: 100%;
-  grid-template-rows: repeat(2, calc((95vh - 72px - env(safe-area-inset-bottom)) / 2));
+  grid-template-rows: repeat(2, calc((95vh - 4em) / 2));
+  grid-template-rows: repeat(2, calc((95dvh - 4em) / 2));
   row-gap: 5vh;
-  height: calc(100vh - 72p - env(safe-area-inset-bottom));
+  row-gap: 5dvh;
+  height: calc(100vh - 4em);
+  height: calc(100dvh - 4em);
   margin: 0 5vw;
   width: 90vw;
   overflow: hidden;
@@ -492,11 +510,4 @@ img.screendump {
   img.after-successful-interaction {
     transition-timing-function: ease;
   }
-
-  &::after {
-    content: ".";
-    height: 1px;
-    background: pink;
-    display: block;
-  } 
 }
