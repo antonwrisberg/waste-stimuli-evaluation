@@ -27,6 +27,7 @@ import FrequencyOnArrowTrial from "./trials/frequency-on-arrow";
 import PrototypicalityLineSortTimerTrial from "./trials/prototypicality-free-sort-line-timer";
 import CategorisationForSsmTimerTrial from "./trials/categorisation-for-ssm-timer";
 import CategorisationSwipeTrial from "./trials/categorisation-swipe";
+import CategorisationDeviceDependentTrial from "./trials/categorisation-device-dependent";
 import backgroundQuestionsTrial from "./trials/background";
 
 // Import stimuli
@@ -57,6 +58,7 @@ export async function run({ assetPaths, input = {}, environment, title, version 
       experiment.jsPsych = jsPsych;
       experiment.assetPaths = assetPaths;
       experiment.timeline = [];
+      experiment.requiresDesktop = false;
       experiment.stimuli = {};
       experiment.stimuli.items = {};
       experiment.stimuli.items.all = [];
@@ -69,7 +71,7 @@ export async function run({ assetPaths, input = {}, environment, title, version 
       }
 
   // Populate stimuli array
-  console.log(experiment.assetPaths.images);
+  // console.log(experiment.assetPaths.images);
   
   experiment.assetPaths.images.forEach(function(val) {
     let path = val.split("/");
@@ -160,8 +162,8 @@ export async function run({ assetPaths, input = {}, environment, title, version 
   // Populate congruent and incongruent stimuli to fraction arrays
   experiment.stimuli.fractions.forEach(function(val, i) {
 
-    console.log(val);
-    console.log(experiment.stimuli.items.inFractions);
+    // console.log(val);
+    // console.log(experiment.stimuli.items.inFractions);
     
     var congruentStimuli = [];
     
@@ -191,12 +193,12 @@ export async function run({ assetPaths, input = {}, environment, title, version 
     experiment.stimuli.fractionCounts.push(experiment.stimuli.items.inFractions[val.key].length)
   })
 
-  console.log(experiment.stimuli.fractions);
-  console.log(experiment.stimuli.fractionCounts);
+  // console.log(experiment.stimuli.fractions);
+  // console.log(experiment.stimuli.fractionCounts);
 
   // Functionality to show a mixture of fraction-congruent and -incongruent stimuli
   let congruencyRecipe = jsPsych.randomization.shuffle([...Array(Math.min(...experiment.stimuli.fractionCounts))].fill('congruent').concat([...Array(Math.floor(Math.min(...experiment.stimuli.fractionCounts) * 1.5))].fill('incongruent')));
-  console.debug(congruencyRecipe);
+  // console.debug(congruencyRecipe);
   var congruencymix = [];
   var congruentCount = -1;
   var incongruentCount = -1;
@@ -234,9 +236,9 @@ export async function run({ assetPaths, input = {}, environment, title, version 
       PFM_participant_id: jatos.urlQueryParameters.altid
     });
   } else {
-  jsPsych.data.addProperties({
-    PFM_participant_id: jsPsych.data.getURLVariable('altid')
-  });
+    jsPsych.data.addProperties({
+      PFM_participant_id: jsPsych.data.getURLVariable('altid')
+    });
   }
 
   // Preload assets
@@ -246,12 +248,13 @@ export async function run({ assetPaths, input = {}, environment, title, version 
   experiment.addTrial(LanguageSelectionTrial);
 
   // Browser check 
+  experiment.addTrial(BrowserCheckTrial);
 
   // // Welcome screen
   // experiment.addTrial(WelcomeTrial);
 
-  // // Attention check button
-  // experiment.addTrial(AttentionCheckButtonTrial);
+  // // // Attention check button
+  // // experiment.addTrial(AttentionCheckButtonTrial);
 
   // // Switch to full screen
   // experiment.addTrial(FullScreenTrial);
@@ -274,17 +277,21 @@ export async function run({ assetPaths, input = {}, environment, title, version 
   // // Break screen
   // experiment.addTrial(BreakTrial);
 
+  // Browser-size dependent categorisation trial
+  experiment.addTrial(CategorisationDeviceDependentTrial);
+
+
+  // // Tinder for waste categorisation
+  // experiment.addTrial(CategorisationSwipeTrial);
+  
   // // Categorisation with timer
   // experiment.addTrial(CategorisationForSsmTimerTrial);
 
-  // Tinder for waste categorisation
-  experiment.addTrial(CategorisationSwipeTrial);
-
-  // Attention check keypress
+  // // Attention check keypress
   // experiment.addTrial(AttentionCheckKeypressTrial);
 
-  // // Background questions
-  // experiment.addTrial(backgroundQuestionsTrial);
+  // Background questions
+  experiment.addTrial(backgroundQuestionsTrial);
 
   // Run the experiment timeline
   await jsPsych.run(experiment.timeline);
