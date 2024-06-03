@@ -186,7 +186,7 @@ export default function (experiment) {
             if (responses.orange < 0.8) {
               alert("Tycker du inte att apelsinen borde placeras längre till höger?");
             } else if (responses.paint > 0.2) {
-                alert("Tycker du inte att målarfärgsburken borde placeras längre till vänster?");
+                alert("Tycker du inte att målarburken borde placeras längre till vänster?");
             } else if (responses.wine < responses.paint) {
                 alert("Tycker du inte att vinflaskan borde placeras längre till höger?");
             } else if (responses.wine > responses.orange) {
