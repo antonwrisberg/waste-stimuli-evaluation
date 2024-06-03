@@ -10,12 +10,6 @@
  * Earlier assets: assets/img/betaset-sorted/,assets/img/signs/,assets/img/signs_se,assets/img/logos
  */
 
-/**
- * Settings
- */
-let prototypicalityFreeSortCongruentCount = 10;
-let prototypicalityFreeSortIncongruentCount = 6;
-
 // Import stylesheets
 import "../styles/main.scss";
 
