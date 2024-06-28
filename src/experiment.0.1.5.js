@@ -3,7 +3,7 @@
  * @description An experiment to evaluate waste items for later sorting experiments
  * @version 0.1.5
  *
- * @assets assets/img/stimuli-800x800-sorted/,assets/img/signs_se,assets/img/logos/,assets/img/screendumps/
+ * @assets assets/img/stimuli-800x800-sorted/,assets/img/signs_se,assets/img/logos/,assets/img/screendumps/,assets/img/attention-checks/1x/,assets/img/JPG_sorted_RFsubset/,assets/img/signs/
  */
 
 /**
@@ -27,8 +27,10 @@ import FrequencyOnArrowTrial from "./trials/frequency-on-arrow";
 import PrototypicalityLineSortTimerTrial from "./trials/prototypicality-free-sort-line-timer";
 import CategorisationForSsmTimerTrial from "./trials/categorisation-for-ssm-timer";
 import CategorisationSwipeTrial from "./trials/categorisation-swipe";
+import CategorisationSwipeRFTrial from "./trials/categorisation-swipe-rf";
 import CategorisationDeviceDependentTrial from "./trials/categorisation-device-dependent";
 import backgroundQuestionsTrial from "./trials/background";
+import CategorisationForSortingTrial from "./trials/categorisation-for-sorting";
 
 // Import stimuli
 import betasetTwoZero from "./stimuli/combined";
@@ -62,6 +64,7 @@ export async function run({ assetPaths, input = {}, environment, title, version 
       experiment.stimuli = {};
       experiment.stimuli.items = {};
       experiment.stimuli.items.all = [];
+      experiment.stimuli.items.RFasItems = [];
       experiment.stimuli.items.inFractions = {};
       experiment.prototypicalityFreeSortCongruentCount = 10;
       experiment.prototypicalityFreeSortIncongruentCount = 6;
@@ -83,7 +86,12 @@ export async function run({ assetPaths, input = {}, environment, title, version 
 
       experiment.stimuli.items.inFractions[path[3]].push(path[4]);
     }
+
+    if (path[2] == 'JPG_sorted_RFsubset') {
+      experiment.stimuli.items.RFasItems.push({item: path[3]});
+    }
   });
+
 
   // Array to populate experiment (and a bit of i18n)
   experiment.stimuli.fractions = [
@@ -218,17 +226,43 @@ export async function run({ assetPaths, input = {}, environment, title, version 
         stimulus: function() {
           return "<img src='assets/img/stimuli-800x800-sorted/" + jsPsych.timelineVariable(val)[index] + "'>";
         },
-        data: {
-          condition: val,
-          item: function() {
-            return jsPsych.timelineVariable(val)[index];
-          }
+        condition: val,
+        item: function() {
+          return jsPsych.timelineVariable(val)[index];
         }
       }
     );
   });
 
+  congruencymix.push(
+    {
+      stimulus: function() {
+        if (new Date().getSeconds() % 2 == 0) {
+          return "<img src='assets/img/attention-checks/1x/belong_se.png'>";
+        } else {
+          return "<img src='assets/img/attention-checks/1x/no_belong_se.png'>";
+        }
+      },
+      condition: function() {
+        if (new Date().getSeconds() % 2 == 0) {
+          return "congruent";
+        } else {
+          return "incongruent";
+        }
+      },
+      item: function() {
+        if (new Date().getSeconds() % 2 == 0) {
+          return "attention-checks/1x/belong_se.png";
+        } else {
+          return "attention-checks/1x/no_belong_se.png";
+        }
+      }
+    }
+  );
+
   experiment.stimuli.congruencymix = congruencymix;
+
+  console.log(experiment.stimuli.congruencymix);
 
   // Grab and save altid for PFM Research participants
   if (typeof jatos !== "undefined") {
@@ -248,10 +282,13 @@ export async function run({ assetPaths, input = {}, environment, title, version 
   experiment.addTrial(LanguageSelectionTrial);
 
   // Browser check 
-  experiment.addTrial(BrowserCheckTrial);
+  // experiment.addTrial(BrowserCheckTrial);
 
   // // Welcome screen
-  // experiment.addTrial(WelcomeTrial);
+  experiment.addTrial(WelcomeTrial);
+
+  // Sorting for internal categorisation
+  // experiment.addTrial(CategorisationForSortingTrial)
 
   // // // Attention check button
   // // experiment.addTrial(AttentionCheckButtonTrial);
@@ -278,20 +315,23 @@ export async function run({ assetPaths, input = {}, environment, title, version 
   // experiment.addTrial(BreakTrial);
 
   // Browser-size dependent categorisation trial
-  experiment.addTrial(CategorisationDeviceDependentTrial);
+  // experiment.addTrial(CategorisationDeviceDependentTrial);
 
 
   // // Tinder for waste categorisation
   // experiment.addTrial(CategorisationSwipeTrial);
-  
+
+  // // Tinder for waste categorisation @ RF24
+  experiment.addTrial(CategorisationSwipeRFTrial);
+
   // // Categorisation with timer
   // experiment.addTrial(CategorisationForSsmTimerTrial);
 
   // // Attention check keypress
   // experiment.addTrial(AttentionCheckKeypressTrial);
 
-  // Background questions
-  experiment.addTrial(backgroundQuestionsTrial);
+  // // Background questions
+  // experiment.addTrial(backgroundQuestionsTrial);
 
   // Run the experiment timeline
   await jsPsych.run(experiment.timeline);
