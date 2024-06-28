@@ -95,7 +95,7 @@ pre {
         <h2 id="questions-heading">Questions</h2>
         <p id="questions-text">If you have any questions about this investigation, plesae contact Anton Wrisberg, PhD student at Lund University, at <a href="mailto:anton.wrisberg@lucs.lu.se">anton.wrisberg@lucs.lu.se</a>.</p>
 
-        <pre>{"glass":{"correct":3,"wrong":0},"metal":{"correct":4,"wrong":0},"residual":{"correct":4,"wrong":0},"food":{"correct":4,"wrong":0},"paper":{"correct":2,"wrong":2}}</pre>
+        <pre id="rawData"></pre>
 
         <script>
             // A bit of internationalisation
@@ -157,7 +157,7 @@ pre {
             }
 
             // Define path to image resources on JATOS server
-            let jatosPath = '../../' //Insert absolute path to JATOS assets directory here
+            let jatosPath = 'https://jatos.mindprobe.eu/publix/1adc2ae8-cd15-4b2e-b3c6-4f613345e16e/80b5fd25-801e-4e95-9f37-f171e6e6f87c/' //Insert absolute path to JATOS assets directory here
 
             // Get results string from URL
             let results = JSON.parse(new URLSearchParams(window.location.search).get("results"));
@@ -170,6 +170,9 @@ pre {
 
                 // Calculate the percentage of correctly sorted items
                 const percentageCorrect = ((correctlySorted / itemsSorted) * 100).toFixed(0);
+
+                // Remove potential dash from fractionKey value
+                fractionKey = fractionKey.replaceAll('-', '');
         
                 // Create table row and cells
                 const table = document.getElementById("resultsTable");
@@ -226,7 +229,7 @@ pre {
                 document.getElementById('heading').innerHTML = `Tak for din deltagelse!`;
                 document.getElementById('success-message').innerHTML = `Dine svar er nu gemt og du kan se dine resultater nedenfor.</p><p>Tak for din tid og for at hjælpe os med at forbedre affaldssorteringen på Roskilde Festival 🧡`;
 
-                document.getElementById('results').innerHTML = `På 2,5 minut sorterede du <b>${totalCorrect + totalWrong} stykker affald</b> og <b>${totalCorrect} (${((totalCorrect / (totalCorrect + totalWrong)) * 100).toFixed(0)}%) af dem korrekt</b>`;
+                document.getElementById('results').innerHTML = `På 2,5 minut sorterede du <b>${totalCorrect + totalWrong} stykker affald</b> og ud af dem sorterede du <b>${totalCorrect} (${((totalCorrect / (totalCorrect + totalWrong)) * 100).toFixed(0)}%) korrekt</b>`;
 
                 document.getElementById('questions-heading').innerHTML = `Spørgsmål`;
                 document.getElementById('questions-text').innerHTML = `Hvis du har spørgsmål til undersøgelsen, er du velkommen til at kontakte Anton Wrisberg, ph.d.-sudterende ved Lunds Universitet, på <a href="mailto:anton.wrisberg@lucs.lu.se">anton.wrisberg@lucs.lu.se</a>.`;
@@ -234,11 +237,13 @@ pre {
                 document.getElementById('heading').innerHTML = `Thank you for participating!`;
                 document.getElementById('success-message').innerHTML = `Your responses have now been saved and you can see your results below.</p></p>Thank you for yout time and for helping us improving waste sorting at Roskilde Festival 🧡`;
 
-                document.getElementById('results').innerHTML = `In 2.5 minutes, you sorted <b>${totalCorrect + totalWrong} waste items</b> and <b>${totalCorrect} (${((totalCorrect / (totalCorrect + totalWrong)) * 100).toFixed(0)}%) of those correctly</b>`;
+                document.getElementById('results').innerHTML = `In 2.5 minutes, you sorted <b>${totalCorrect + totalWrong} waste items</b> and those, you sorted <b>${totalCorrect} (${((totalCorrect / (totalCorrect + totalWrong)) * 100).toFixed(0)}%) correctly</b>`;
 
                 document.getElementById('questions-heading').innerHTML = `Questions`;
                 document.getElementById('questions-text').innerHTML = `If you have any questions about this investigation, plesae contact Anton Wrisberg, PhD student at Lund University, at <a href="mailto:anton.wrisberg@lucs.lu.se">anton.wrisberg@lucs.lu.se</a>.`;
             }
+
+            document.getElementById('rawData').innerHTML = JSON.stringify(results);
         </script>
     </body>
 </html>
