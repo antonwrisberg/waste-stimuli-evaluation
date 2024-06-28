@@ -6,14 +6,239 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <meta name="viewport" content="width=device-width,initial-scale=1">
         <link href="css/main.css" rel="stylesheet">
-        <script type="text/javascript">
-            let results = new URLSearchParams(window.location.search).get("results");
-        
-            console.log(results);
-        </script>
+
+        <style>
+body {
+    font-family: sans-serif;
+}
+
+table {
+    border-spacing: 0px;
+}
+
+table tr,
+table td {
+    padding: 0;
+}
+
+table td {
+    padding-bottom: 5vw;
+}
+
+table tr td:first-of-type {
+    width: 30vw;
+    padding-right: 2vw;
+    vertical-align: top;
+}
+
+h2 {
+    margin-bottom: 0.5rem;
+}
+
+h3 {
+    margin-top: 0;
+    margin-bottom: .2rem;
+}
+
+p {
+    margin-top: 0;
+    margin-bottom: .5rem;
+}
+
+#results {
+    background: #FFFF55;
+    padding: 5vw 10vw;
+    text-align: center;
+    position: relative;
+}
+
+#results::before,
+#results::after {
+    content: "🎉";
+    position: absolute;
+    top: 50%;
+    margin-top: -4vw;
+    font-size: 8vw;
+    height: 8vw;
+    line-height: 8vw;
+}
+
+#results::before {
+    left: 2vw;
+}
+
+#results::after {
+    right: 2vw;
+}
+
+pre {
+    border: 1px #999 solid;
+    background: #dedede;
+    color: #666;
+    padding: 5px;
+    overflow: scroll;
+}
+        </style>
     </head>
     <body>
-        <h1 style="text-align: center; margin-top: 100px; font-family: sans-serif;">Thank you for participating</h1>
-        <p style="text-align: center; margin-top: 20px; font-family: sans-serif;">Your responses have now been saved and you can safely exit this window.<br />Thank you for yout time and for supporting ongoing science.</p>
+        <h1 id="heading">Thank you for participating!</h1>
+        <p id="success-message">Your responses have now been saved and you can safely exit this window.<br />Thank you for yout time and for supporting ongoing science.</p>
+
+        <hr />
+
+        <p id="results">You managed to sort XX items in your 2.5 minutes.</p>
+
+        <hr />
+
+        <table id="resultsTable"></table>
+
+        <h2 id="questions-heading">Questions</h2>
+        <p id="questions-text">If you have any questions about this investigation, plesae contact Anton Wrisberg, PhD student at Lund University, at <a href="mailto:anton.wrisberg@lucs.lu.se">anton.wrisberg@lucs.lu.se</a>.</p>
+
+        <pre>{"glass":{"correct":3,"wrong":0},"metal":{"correct":4,"wrong":0},"residual":{"correct":4,"wrong":0},"food":{"correct":4,"wrong":0},"paper":{"correct":2,"wrong":2}}</pre>
+
+        <script>
+            // A bit of internationalisation
+            let imageSrc = {
+                cardboard: {
+                    fraction_en: "cardboard",
+                    fraction_da: "pap",
+                    sign_da: "assets/img/signs_da/PAP_cmyk_300dpi.jpg",
+                    sign_en: "assets/img/signs_en/CARDBOARD_cmyk_300dpi.jpg"
+                },
+                food: {
+                    fraction_en: "food waste",
+                    fraction_da: "madaffald",
+                    sign_da: "assets/img/signs_da/MADAFFALD_cmyk_300dpi.jpg",
+                    sign_en: "assets/img/signs_en/FOOD_WASTE_cmyk_300dpi.jpg"
+                },
+                foodcontainers: {
+                    fraction_en: "beverage and food cartons",
+                    fraction_da: "mad- og drikkekartoner",
+                    sign_da: "assets/img/signs_da/MAD-_DRIKKEKARTONER_cmyk_300dpi.jpg",
+                    sign_en: "assets/img/signs_en/BEVERAGE_FOOD_CARTONS_cmyk_300dpi.jpg"
+                },
+                glass: {
+                    fraction_en: "glass",
+                    fraction_da: "glas",
+                    sign_da: "assets/img/signs_da/GLAS_cmyk_300dpi.jpg",
+                    sign_en: "assets/img/signs_en/GLASS_cmyk_300dpi.jpg"
+                },
+                hazardous: {
+                    fraction_en: "hazardous waste",
+                    fraction_da: "farligt affald",
+                    sign_da: "assets/img/signs_da/FARLIGT_AFFALD_cmyk_300dpi.jpg",
+                    sign_en: "assets/img/signs_en/HAZARDOUS_WASTE_cmyk_300dpi.jpg"
+                },
+                metal: {
+                    fraction_en: "metal",
+                    fraction_da: "metal",
+                    sign_da: "assets/img/signs_da/METAL_cmyk_300dpi.jpg",
+                    sign_en: "assets/img/signs_en/METAL_cmyk_300dpi.jpg"
+                },
+                paper: {
+                    fraction_en: "paper",
+                    fraction_da: "papir",
+                    sign_da: "assets/img/signs_da/PAPIR_cmyk_300dpi.jpg",
+                    sign_en: "assets/img/signs_en/PAPER_cmyk_300dpi.jpg"
+                },
+                plastics: {
+                    fraction_en: "plastic",
+                    fraction_da: "plast",
+                    sign_da: "assets/img/signs_da/PLAST_cmyk_300dpi.jpg",
+                    sign_en: "assets/img/signs_en/PLASTICS_cmyk_300dpi.jpg"
+                },
+                residual: {
+                    fraction_en: "residual waste",
+                    fraction_da: "restaffald",
+                    sign_da: "assets/img/signs_da/RESTAFFALD_cmyk_300dpi.jpg",
+                    sign_en: "assets/img/signs_en/RESIDUAL_WASTE_cmyk_300dpi.jpg"
+                }
+            }
+
+            // Define path to image resources on JATOS server
+            let jatosPath = '../../' //Insert absolute path to JATOS assets directory here
+
+            // Get results string from URL
+            let results = JSON.parse(new URLSearchParams(window.location.search).get("results"));
+            let isDanish = new URLSearchParams(window.location.search).get("isDanish");
+
+            // Function to add results per fraction
+            function addRow(fractionKey, correctlySorted, wronglySorted, isDanish = false) {
+                // Calculate the total number of sorted items
+                const itemsSorted = correctlySorted + wronglySorted;
+
+                // Calculate the percentage of correctly sorted items
+                const percentageCorrect = ((correctlySorted / itemsSorted) * 100).toFixed(0);
+        
+                // Create table row and cells
+                const table = document.getElementById("resultsTable");
+                const row = table.insertRow();
+                
+                const cell1 = row.insertCell(0);
+                const cell2 = row.insertCell(1);
+        
+                // Set the content for the first cell (image)
+                if (isDanish) {
+                    cell1.innerHTML = `<img src="${jatosPath + imageSrc[fractionKey].sign_da}" alt="Piktorgram for fraktionen ${imageSrc[fractionKey].fraction_da}">`;
+                } else {
+                    cell1.innerHTML = `<img src="${jatosPath + imageSrc[fractionKey].sign_en}" alt="Icon for the fraction ${imageSrc[fractionKey].fraction_en}">`;
+                }
+        
+                // Set the content for the second cell (text)
+                if (isDanish) {
+                    cell2.innerHTML = `
+                        <h3>${imageSrc[fractionKey].fraction_da.charAt(0).toUpperCase() + imageSrc[fractionKey].fraction_da.slice(1)}</h3>
+                        <p>Du sorterede ${itemsSorted} stykker affald for fraktionen '${imageSrc[fractionKey].fraction_da}'' på 30 sekunder.</p>
+                        <p>Ud af disse sorterede du ${correctlySorted} (${percentageCorrect}%) stykker korrekt.</p>
+                    `;
+                } else {
+                    cell2.innerHTML = `
+                        <h3>${imageSrc[fractionKey].fraction_en.charAt(0).toUpperCase() + imageSrc[fractionKey].fraction_en.slice(1)}</h3>
+                        <p>You sorted ${itemsSorted} items for the fraction '${imageSrc[fractionKey].fraction_en}' in 30 seconds.</p>
+                        <p>Of these, you sorted ${correctlySorted} (${percentageCorrect}%) items correctly.</p>
+                    `;
+                }
+            }
+            
+            var totalCorrect = 0;
+            var totalWrong = 0;
+
+            if (results) {
+                Object.entries(results).forEach(function(el) {
+                    addRow(
+                        el[0], // Fraction key
+                        el[1].correct, // Items sorted correctly
+                        el[1].wrong, // Items sorted wrongly
+                        new URLSearchParams(window.location.search).get("isDanish")
+                    );
+
+                    totalCorrect += el[1].correct;
+                    totalWrong += el[1].wrong;
+
+                    console.log(el);
+                });
+            } else {
+                alert ("Something went wrong. This is on us. Not on you. Sorry for the problem. We will try and sort it out as quickly as possible. Try reloading this page tomorrow to get your results. Your results are saved, but for some reason, we are unable to display them right now.")
+            }
+
+            if (isDanish) {
+                document.getElementById('heading').innerHTML = `Tak for din deltagelse!`;
+                document.getElementById('success-message').innerHTML = `Dine svar er nu gemt og du kan se dine resultater nedenfor.</p><p>Tak for din tid og for at hjælpe os med at forbedre affaldssorteringen på Roskilde Festival 🧡`;
+
+                document.getElementById('results').innerHTML = `På 2,5 minut sorterede du <b>${totalCorrect + totalWrong} stykker affald</b> og <b>${totalCorrect} (${((totalCorrect / (totalCorrect + totalWrong)) * 100).toFixed(0)}%) af dem korrekt</b>`;
+
+                document.getElementById('questions-heading').innerHTML = `Spørgsmål`;
+                document.getElementById('questions-text').innerHTML = `Hvis du har spørgsmål til undersøgelsen, er du velkommen til at kontakte Anton Wrisberg, ph.d.-sudterende ved Lunds Universitet, på <a href="mailto:anton.wrisberg@lucs.lu.se">anton.wrisberg@lucs.lu.se</a>.`;
+            } else {
+                document.getElementById('heading').innerHTML = `Thank you for participating!`;
+                document.getElementById('success-message').innerHTML = `Your responses have now been saved and you can see your results below.</p></p>Thank you for yout time and for helping us improving waste sorting at Roskilde Festival 🧡`;
+
+                document.getElementById('results').innerHTML = `In 2.5 minutes, you sorted <b>${totalCorrect + totalWrong} waste items</b> and <b>${totalCorrect} (${((totalCorrect / (totalCorrect + totalWrong)) * 100).toFixed(0)}%) of those correctly</b>`;
+
+                document.getElementById('questions-heading').innerHTML = `Questions`;
+                document.getElementById('questions-text').innerHTML = `If you have any questions about this investigation, plesae contact Anton Wrisberg, PhD student at Lund University, at <a href="mailto:anton.wrisberg@lucs.lu.se">anton.wrisberg@lucs.lu.se</a>.`;
+            }
+        </script>
     </body>
 </html>
