@@ -34,6 +34,7 @@ import CategorisationForSortingTrial from "./trials/categorisation-for-sorting";
 import PreloadPlugin from "@jspsych/plugin-preload";
 import CallFunctionPlugin from "@jspsych/plugin-call-function";
 import backgroundQuestionsRFTrial from "./trials/background-rf";
+import SurveyMultiChoicePlugin from "@jspsych/plugin-survey-multi-choice";
 
 // Import stimuli
 import betasetTwoZero from "./stimuli/combined";
@@ -326,6 +327,53 @@ export async function run({ assetPaths, input = {}, environment, title, version 
   
   // Welcome screen
   experiment.addTrial(WelcomeTrial);
+
+  // Preload logos
+  experiment.timeline.push({
+    type: SurveyMultiChoicePlugin,
+    questions: function () {
+      switch (experiment.detectLanguage()) {
+        case 'en': 
+          return [
+            {
+              prompt: "Before we start: How do you judge your ability to sort waste?", 
+              name: 'ability-self-assessment', 
+              options: [
+                "1: I am terrible", 
+                "2", 
+                "3", 
+                "4", 
+                "5",
+                "6",
+                "7: I am perfect"
+              ],
+              required: true
+            }
+          ]
+        case 'da':
+          return [
+            {
+              prompt: "Før vi går i gang: Hvor god er du til at sortere affald?", 
+              name: 'ability-self-assessment', 
+              options: [
+                "1: Jeg er helt forfærdelig", 
+                "2", 
+                "3", 
+                "4", 
+                "5",
+                "6",
+                "7: Jeg er fejlfri"
+              ],
+              required: true
+            }
+          ];
+        case 'sv':
+          return `Error in language selection`;
+        default:
+          break;
+      }
+    }
+  });
 
   // Tinder for waste categorisation @ RF24 (with respoinsive preloading)
   experiment.addTrial(CategorisationSwipeRFTrial);

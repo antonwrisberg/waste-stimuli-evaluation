@@ -35,6 +35,7 @@ export default function backgroundQuestionsRFTrial (experiment) {
               <option value="" disabled selected>Please select</option>
               <option value="female">female</option>
               <option value="male">male</option>
+              <option value="non-binary">non-binary</option>
               <option value="" disabled>-----</option>
               <option value="other">other / prefer no to answer</option>
             </select></p>
@@ -43,8 +44,9 @@ export default function backgroundQuestionsRFTrial (experiment) {
 
             <p>I am currently <select name="location-coarse" required>
               <option value="" disabled selected>Please select</option>
-              <option value="camping">at the camping grounds</option>
-              <option value="festival">in the festival (stage) area</option>
+              <option value="camping">in (one of) the camping area(s)</option>
+              <option value="festival">among the stages</option>
+              <option value="festival">not on the festival site</option>
               <option value="" disabled>-----</option>
               <option value="other">other / prefer no to answer</option>
             </select>. More exactly, I am around/at/in <input type="text" name="location-specific" size="20" required /> (e.g., "G42", "Orange stage", "Agora P", name of food stall, or similar).</p>
@@ -70,7 +72,7 @@ export default function backgroundQuestionsRFTrial (experiment) {
               <option value="other">other / prefer no to answer</option>
             </select>.</p>
 
-            <p>I worry <select name="envrionmental concern" required>
+            <p>I worry <select name="envrionmental-concern" required>
               <option value="" disabled selected>Please select</option>  
               <option value="very little">very little</option>
               <option value="little">little</option>
@@ -94,8 +96,8 @@ export default function backgroundQuestionsRFTrial (experiment) {
               <input type="checkbox" name="metal" value="selected" id="checkbox-metal" /> <label for="checkbox-metal">Metal</label><br />
               <input type="checkbox" name="paper" value="selected" id="checkbox-paper" /> <label for="checkbox-paper">Paper</label><br />
               <input type="checkbox" name="plastics" value="selected" id="checkbox-plastics" /> <label for="checkbox-plastics">Plastics</label><br />
-              <input type="checkbox" name="residual" value="selected" id="checkbox-residual" /> <label for="checkbox-residual">Residual</label><br />
-              <input type="checkbox" name="textile" value="selected" id="checkbox-textile" /> <label for="checkbox-textile">Textile</label><br />
+              <input type="checkbox" name="residual" value="selected" id="checkbox-residual" /> <label for="checkbox-residual">Residual waste</label><br />
+              <input type="checkbox" name="textile" value="selected" id="checkbox-textile" /> <label for="checkbox-textile">Textile waste</label><br />
               <label for="checkbox-other-value">Annat: </label><input type="text" name="checkbox-other-value" id="checkbox-other-value" />
             </p>
           `;
@@ -105,6 +107,7 @@ export default function backgroundQuestionsRFTrial (experiment) {
               <option value="" disabled selected>Vælg venligst</option>
               <option value="female">kvinde</option>
               <option value="male">mand</option>
+              <option value="non-binary">nonbinær</option>
               <option value="" disabled>-----</option>
               <option value="other">andet / ønsker ikke at svare</option>
             </select>.</p>
@@ -140,7 +143,7 @@ export default function backgroundQuestionsRFTrial (experiment) {
               <option value="other">andet / ønsker ikke at svare</option>
             </select>.</p>
 
-            <p>Jeg bekymrer mig <select name="envrionmental concern" required>
+            <p>Jeg bekymrer mig <select name="envrionmental-concern" required>
               <option value="" disabled selected>Vælg venligst</option>
               <option value="very little">rigtig lidt</option>
               <option value="little">lidt</option>
@@ -149,7 +152,7 @@ export default function backgroundQuestionsRFTrial (experiment) {
               <option value="very much">rigtig meget</option>
               <option value="" disabled>-----</option>
               <option value="other">andet / ønsker ikke at svare</option>
-            </select> for miljøet.</p>
+            </select> om miljøet.</p>
 
             <p>Derhjemme kan jeg sortere mit affald i følgende affaldsfraktioner. Vælg venligst alle der passer:</p>
 
