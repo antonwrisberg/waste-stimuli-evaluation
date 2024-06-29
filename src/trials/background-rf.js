@@ -44,9 +44,9 @@ export default function backgroundQuestionsRFTrial (experiment) {
 
             <p>I am currently <select name="location-coarse" required>
               <option value="" disabled selected>Please select</option>
-              <option value="camping">in (one of) the camping area(s)</option>
+              <option value="camping">in the camping area</option>
               <option value="festival">among the stages</option>
-              <option value="festival">not on the festival site</option>
+              <option value="outside">not on the festival site</option>
               <option value="" disabled>-----</option>
               <option value="other">other / prefer no to answer</option>
             </select>. More exactly, I am around/at/in <input type="text" name="location-specific" size="20" required /> (e.g., "G42", "Orange stage", "Agora P", name of food stall, or similar).</p>
@@ -118,6 +118,7 @@ export default function backgroundQuestionsRFTrial (experiment) {
               <option value="" disabled selected>Vælg venligst</option>
               <option value="camping">på campingområdet</option>
               <option value="festival">ved scenerne</option>
+              <option value="outside">uden for festivalen</option>
               <option value="" disabled>-----</option>
               <option value="other">andet / ønsker ikke at svare</option>
             </select>. Mere præcist er jeg omkring/ved/i <input type="text" name="location-specific" size="20" required /> (fx. "G42", "Orange scene", "Agora P", navnet på en madbod eller lignende).</p>

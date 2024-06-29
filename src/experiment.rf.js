@@ -408,7 +408,7 @@ export async function run({ assetPaths, input = {}, environment, title, version 
       console.log(JSON.stringify(results));
 
       if (typeof jatos !== "undefined") {
-        jatos.endStudyAndRedirect("https://antonwrisberg.github.io/waste-stimuli-evaluation/dist/experiment/results.html?results=" + JSON.stringify(results) + (trials[0].lang == "da" ? '&isDanish=true' : ''));
+        jatos.endStudyAndRedirect("https://antonwrisberg.github.io/waste-stimuli-evaluation/dist/experiment/results.html?results=" + JSON.stringify(results) + (trials[0].lang == "da" ? '&isDanish=true' : ''), jsPsych.data.get());
       }
 
       // console.log(results);
