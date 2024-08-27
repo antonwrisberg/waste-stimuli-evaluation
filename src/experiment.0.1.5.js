@@ -311,7 +311,7 @@ export async function run({ assetPaths, input = {}, environment, title, version 
   // // experiment.addTrial(AttentionCheckButtonTrial);
 
   // // Switch to full screen
-  // experiment.addTrial(FullScreenTrial);
+  experiment.addTrial(FullScreenTrial);
 
   // Frequency on arrow with timer and learning trial
   // experiment.addTrial(FrequencyOnArrowTrial);
@@ -331,7 +331,7 @@ export async function run({ assetPaths, input = {}, environment, title, version 
   // // Break screen
   // experiment.addTrial(BreakTrial);
 
-  // Browser-size dependent categorisation trial
+  // Browser-size dependent categorisation trial - use this one
   experiment.addTrial(CategorisationDeviceDependentTrial);
 
 
