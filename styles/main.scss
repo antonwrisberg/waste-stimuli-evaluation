@@ -13,15 +13,16 @@ img {
 
 .language-selection {
   display: grid;
-  grid-template-columns: repeat(3, auto);
+  grid-template-columns: 1; // repeat(3, auto);
   grid-auto-rows: auto;
-  // gap: 60px;
+  gap: 60px;
 
   > div {
-    grid-column: 1 / 4;
+    // grid-column: 1 / 1;
     display: grid;
     grid-template-columns: subgrid;
-    grid-template-rows: subgrid;
+    grid-template-rows: auto;
+    gap: 80px;
 
     span {
       font-size: 100px;
@@ -369,6 +370,26 @@ img {
     }
   }
 
+  &.nineteen-options {
+    grid-template-columns: repeat(10, 1fr);
+    grid-template-rows: repeat(4, auto);
+
+    .stimulus {
+      grid-column-end: 6;
+      grid-row-end: 5;
+    }
+  
+    .prompt {
+      display: none;
+    }
+  
+    .answer-options {
+      grid-column-start: 6;
+      grid-column-end: 11;
+      grid-row-end: 5;
+    }
+  }
+
   &.four-options {
     grid-template-columns: repeat(6, 1fr);
     grid-template-rows: repeat(2, auto);
@@ -408,6 +429,7 @@ img {
       grid-column-start: 1;
       grid-column-end: 3;
       grid-row-end: 2;
+      color: transparent;
     }
   
     .fraction {
