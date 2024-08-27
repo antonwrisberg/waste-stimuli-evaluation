@@ -34,7 +34,6 @@
     "pointer-event": "^1.0.2"
   },
   "devDependencies": {
-    "@antonwrisberg/plugin-images-freesort": "file: ./../../custom-jspsych-packages/plugin-images-freesort",
     "@antonwrisberg/plugin-test": "github:antonwrisberg/plugin-test",
     "jspsych-builder": "^4.4.0",
     "node-pre-gyp": "^0.17.0",
