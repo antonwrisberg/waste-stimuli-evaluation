@@ -4,6 +4,7 @@ node_modules
 .DS_Store
 package-lock.json
 /packaged
+Icon?
 
 assets/*
 !assets/img/
