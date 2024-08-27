@@ -3,10 +3,11 @@
  * @description An experiment to evaluate waste items for later sorting experiments
  * @version 0.1.5
  *
- * @assets assets/img/stimuli-800x800-sorted/,assets/img/signs_se,assets/img/logos/,assets/img/screendumps/,assets/img/attention-checks/1x/,assets/img/JPG_sorted_RFsubset/,assets/img/signs/
+ * @assets assets/img/stimuli-1.1-800x800-sorted/,assets/img/signs_se/,assets/img/logos,assets/img/screendumps/,assets/img/attention-checks/800x800se/
  */
 
 /**
+ * Earlier assets: assets/img/stimuli-1.1-800x800-tinified-unsorted/,assets/img/stimuli-800x800-sorted/,assets/img/signs_se,assets/img/logos/,assets/img/screendumps/,assets/img/attention-checks/1x/,assets/img/JPG_sorted_RFsubset/,assets/img/signs_da/
  * Earlier assets: assets/img/betaset-sorted/,assets/img/signs/,assets/img/signs_se,assets/img/logos
  */
 
@@ -31,6 +32,7 @@ import CategorisationSwipeRFTrial from "./trials/categorisation-swipe-rf";
 import CategorisationDeviceDependentTrial from "./trials/categorisation-device-dependent";
 import backgroundQuestionsTrial from "./trials/background";
 import CategorisationForSortingTrial from "./trials/categorisation-for-sorting";
+import CategorisationForSortingSeTrial from "./trials/categorisation-for-sorting-se";
 
 // Import stimuli
 import betasetTwoZero from "./stimuli/combined";
@@ -65,6 +67,8 @@ export async function run({ assetPaths, input = {}, environment, title, version 
       experiment.stimuli.items = {};
       experiment.stimuli.items.all = [];
       experiment.stimuli.items.RFasItems = [];
+      experiment.stimuli.items.UnsortedasItems = [];
+      experiment.stimuli.items.inCurrentTrial = [];
       experiment.stimuli.items.inFractions = {};
       experiment.prototypicalityFreeSortCongruentCount = 10;
       experiment.prototypicalityFreeSortIncongruentCount = 6;
@@ -78,39 +82,47 @@ export async function run({ assetPaths, input = {}, environment, title, version 
   
   experiment.assetPaths.images.forEach(function(val) {
     let path = val.split("/");
-    if (path[2] == "stimuli-800x800-sorted") {
+    if (path[2] == "stimuli-1.1-800x800-sorted") {
 
       if (!Array.isArray(experiment.stimuli.items.inFractions[path[3]])) {
         experiment.stimuli.items.inFractions[path[3]] = [];
       }
 
+      if (path[3] != "zzz vet inte") {
       experiment.stimuli.items.inFractions[path[3]].push(path[4]);
+      }
     }
 
     if (path[2] == 'JPG_sorted_RFsubset') {
       experiment.stimuli.items.RFasItems.push({item: path[3]});
     }
+
+    if (path[2] == 'stimuli-1.1-800x800-tinified-unsorted') {
+      experiment.stimuli.items.UnsortedasItems.push({item: path[3]});
+    }
   });
+
+  console.log(experiment.stimuli.items.inFractions);
 
 
   // Array to populate experiment (and a bit of i18n)
   experiment.stimuli.fractions = [
     {
       key: "pappersforpackningar",
-      fraction_sv: "pappersförpackningar",
+      fraction_sv: "pappersförpackningar",
       fraction_en: "cardboard- and paper-based containers",
       fraction_da: "pap- og papircontainere",
       sign_sv: "assets/img/signs_se/pappers-forpackningar.png"
     },
     {
-      key: "glasforpackningar_fargede",
+      key: "glasforpackningar_fargade",
       fraction_sv: "färgade glasförpackningar",
       fraction_en: "coloured glass",
       fraction_da: "farvet glas",
       sign_sv: "assets/img/signs_se/glasforpackningar-fargade.png",
     },
     {
-      key: "glasforpackningar_ofargede",
+      key: "glasforpackningar_ofargade",
       fraction_sv: "ofärgade glasförpackningar",
       fraction_en: "non-coloured glass",
       fraction_da: "ufarvet glas",
@@ -204,8 +216,12 @@ export async function run({ assetPaths, input = {}, environment, title, version 
   // console.log(experiment.stimuli.fractions);
   // console.log(experiment.stimuli.fractionCounts);
 
+  experiment.stimuliCounts = {};
+  experiment.stimuliCounts.congruent = Math.min(...experiment.stimuli.fractionCounts);
+  experiment.stimuliCounts.incongruent = Math.min(...experiment.stimuli.fractionCounts) * 1.5;
+
   // Functionality to show a mixture of fraction-congruent and -incongruent stimuli
-  let congruencyRecipe = jsPsych.randomization.shuffle([...Array(Math.min(...experiment.stimuli.fractionCounts))].fill('congruent').concat([...Array(Math.floor(Math.min(...experiment.stimuli.fractionCounts) * 1.5))].fill('incongruent')));
+  let congruencyRecipe = jsPsych.randomization.shuffle([...Array(experiment.stimuliCounts.congruent)].fill('congruent').concat([...Array(Math.floor(experiment.stimuliCounts.incongruent))].fill('incongruent')));
   // console.debug(congruencyRecipe);
   var congruencymix = [];
   var congruentCount = -1;
@@ -224,7 +240,7 @@ export async function run({ assetPaths, input = {}, environment, title, version 
     congruencymix.push(
       {
         stimulus: function() {
-          return "<img src='assets/img/stimuli-800x800-sorted/" + jsPsych.timelineVariable(val)[index] + "'>";
+          return "<img src='assets/img/stimuli-1.1-800x800-sorted/" + jsPsych.timelineVariable(val)[index] + "'>";
         },
         condition: val,
         item: function() {
@@ -238,9 +254,9 @@ export async function run({ assetPaths, input = {}, environment, title, version 
     {
       stimulus: function() {
         if (new Date().getSeconds() % 2 == 0) {
-          return "<img src='assets/img/attention-checks/1x/belong_se.png'>";
+          return "<img src='assets/img/attention-checks/800x800se/tillhör.png'>";
         } else {
-          return "<img src='assets/img/attention-checks/1x/no_belong_se.png'>";
+          return "<img src='assets/img/attention-checks/800x800se/intetillhör.png'>";
         }
       },
       condition: function() {
@@ -252,15 +268,15 @@ export async function run({ assetPaths, input = {}, environment, title, version 
       },
       item: function() {
         if (new Date().getSeconds() % 2 == 0) {
-          return "attention-checks/1x/belong_se.png";
+          return "attention-checks/800x800se/tillhör.png";
         } else {
-          return "attention-checks/1x/no_belong_se.png";
+          return "attention-checks/800x800se/intetillhör.png";
         }
       }
     }
   );
 
-  experiment.stimuli.congruencymix = congruencymix;
+  experiment.stimuli.congruencymix = jsPsych.randomization.shuffle(congruencymix);
 
   console.log(experiment.stimuli.congruencymix);
 
@@ -276,19 +292,20 @@ export async function run({ assetPaths, input = {}, environment, title, version 
   }
 
   // Preload assets
-  experiment.addTrial(PreLoadTrial);
+  // experiment.addTrial(PreLoadTrial);
 
   // Select language
   experiment.addTrial(LanguageSelectionTrial);
 
   // Browser check 
-  // experiment.addTrial(BrowserCheckTrial);
+  experiment.addTrial(BrowserCheckTrial);
 
-  // // Welcome screen
+  // Welcome screen
   experiment.addTrial(WelcomeTrial);
 
   // Sorting for internal categorisation
   // experiment.addTrial(CategorisationForSortingTrial)
+  // experiment.addTrial(CategorisationForSortingSeTrial)
 
   // // // Attention check button
   // // experiment.addTrial(AttentionCheckButtonTrial);
@@ -296,7 +313,7 @@ export async function run({ assetPaths, input = {}, environment, title, version 
   // // Switch to full screen
   // experiment.addTrial(FullScreenTrial);
 
-  // // Frequency on arrow
+  // Frequency on arrow with timer and learning trial
   // experiment.addTrial(FrequencyOnArrowTrial);
 
   // // Break screen
@@ -305,7 +322,7 @@ export async function run({ assetPaths, input = {}, environment, title, version 
   // // Attention check button
   // experiment.addTrial(AttentionCheckButtonTrial);
 
-  // // Prototypicality with timer
+  // // Prototypicality with timer and learning trial
   // experiment.addTrial(PrototypicalityLineSortTimerTrial);
 
   // // Attention check button
@@ -315,14 +332,14 @@ export async function run({ assetPaths, input = {}, environment, title, version 
   // experiment.addTrial(BreakTrial);
 
   // Browser-size dependent categorisation trial
-  // experiment.addTrial(CategorisationDeviceDependentTrial);
+  experiment.addTrial(CategorisationDeviceDependentTrial);
 
 
   // // Tinder for waste categorisation
   // experiment.addTrial(CategorisationSwipeTrial);
 
   // // Tinder for waste categorisation @ RF24
-  experiment.addTrial(CategorisationSwipeRFTrial);
+  // experiment.addTrial(CategorisationSwipeRFTrial);
 
   // // Categorisation with timer
   // experiment.addTrial(CategorisationForSsmTimerTrial);
@@ -331,7 +348,7 @@ export async function run({ assetPaths, input = {}, environment, title, version 
   // experiment.addTrial(AttentionCheckKeypressTrial);
 
   // // Background questions
-  // experiment.addTrial(backgroundQuestionsTrial);
+  experiment.addTrial(backgroundQuestionsTrial);
 
   // Run the experiment timeline
   await jsPsych.run(experiment.timeline);
