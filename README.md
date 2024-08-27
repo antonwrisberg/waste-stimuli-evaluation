@@ -3,7 +3,7 @@
 This repository currently contains pilot/beta versions of my setup to evaluate waste items prior to experiments evaluating waste signage.
 
 > [!TIP]
-> You can see an overview of the 250 waste items currently in the beta version of the stimuli set **[here](https://antonwrisberg.github.io/waste-stimuli-evaluation/dist/experiment/index.html?version=showcase.0.0.1)**.
+> You can see an overview of the 250 waste items previosuly in the beta version of the stimuli set **[here](https://antonwrisberg.github.io/waste-stimuli-evaluation/dist/experiment/index.html?version=showcase.0.0.1)**. Nw, there are more than 900 images in the stimuli set.
 
 ## Current challenge
 
@@ -18,21 +18,21 @@ This study aims to evaluate (quantify) waste items along a number of dimensions.
 
 The dimensions that we expect to consider in the waste sorting experiment are:
 
-- Familiarity (is the waste item recognisable?)
+~~- Familiarity (is the waste item recognisable?)~~
 - Frequency (how often is the waste item disposed of?)
 - Prototypicality (how well does the waste item align with individuals' instantions of waste fraction prototypes?)
 - Conceptual centrality
 
 ## Directly measureable dimensions
 
-The first three dimensions above can (somewhat easily) be measured "directly" (or at least by asking participants similar questions).
+The first ~~three~~ two dimensions above can (somewhat easily) be measured "directly" (or at least by asking participants similar questions).
 
 The links below take you to examples of different versions of implementations of such measures.
 
 > [!TIP]
 > Hold down `Ctrl` / `Cmd` when clicking the version numbers to open the examples in a new tab.
 
-### Recognisability ~~Familiarity~~
+### Recognisability ~~Familiarity~~ (no longer of interest…)
 
 - **[v0.0.1](https://antonwrisberg.github.io/waste-stimuli-evaluation/dist/experiment/index.html?version=familiarity.0.0.1)**. This setup asks participants to evaluate how familiar waste items are on a scale of familiarity. It is not very intuitive how to map items onto the scale and it is quite slow to interact with (and in pilot tests, multiple participants had difficulties dragging the slides along the scale).
 - **[v0.0.2](https://antonwrisberg.github.io/waste-stimuli-evaluation/dist/experiment/index.html?version=familiarity.0.0.2)**. **Current favourite**. This setup asks participants if they can explain what the displayed items are to other people giving them answer options "yes", "no", and "maybe". I changed the framing to this focus on explainability after pilot tests with students in which they confused questions such as "Can you see what this is?" and "Do you recognise this item?" with whether they where familiar with the brand or specific item. As the important bit in the sortin gexperiments is not familiarity with specific brands but rather that people can identify the waste items, this framing occurs to do the job. The idea is to set some cut-off value for the percentage of "no"s an item is allowed to be included in the final stimuli set.
@@ -47,7 +47,8 @@ The links below take you to examples of different versions of implementations of
 - **[v0.0.6](https://antonwrisberg.github.io/waste-stimuli-evaluation/dist/experiment/index.html?version=frequency.0.0.6)**. This setup asks participants how many days it has been since they last expended some item (ignoring brands and variants). The bit about variants might hold the same confusion as above.
 - **[v0.0.7](https://antonwrisberg.github.io/waste-stimuli-evaluation/dist/experiment/index.html?version=frequency.0.0.7)**. This setup shows the participant two waste items and asks the participant to click the one that the have most recently expended. Gamechanger!
 - **[v0.0.8](https://antonwrisberg.github.io/waste-stimuli-evaluation/dist/experiment/index.html?version=frequency.0.0.8)**. Same as v0.0.7 but with the selection done by clicking the f and j keys instead of clicking the alternatives with a mouse/pointer.
-- **[v0.0.9](https://antonwrisberg.github.io/waste-stimuli-evaluation/dist/experiment/index.html?version=frequency.0.0.9)**. **Current favourite**. Same measure as the prototypicality v0.0.7 asking participants to order items on an arrow according to frequency of disposal.
+- **[v0.0.9](https://antonwrisberg.github.io/waste-stimuli-evaluation/dist/experiment/index.html?version=frequency.0.0.9)**. Same measure as the prototypicality v0.0.7 asking participants to order items on an arrow according to frequency of disposal.
+- **[v0.0.10](https://antonwrisberg.github.io/waste-stimuli-evaluation/dist/experiment/index.html?version=frequency.0.0.10)**. **Current favourite**. Same measure as the frequency v0.0.9 asking participants to order items on an arrow according to frequency of disposal with learning trial, integrated timer (of 6.5 minutes), and incorporated control stimuli appearing with 40% likelihood.
 
 ### Prototypicality
 
@@ -58,7 +59,8 @@ The links below take you to examples of different versions of implementations of
 - **[v0.0.5](https://antonwrisberg.github.io/waste-stimuli-evaluation/dist/experiment/index.html?version=prototypicality.0.0.5)**. Same as v0.0.4 but with an emphasis on the mental image containing ONE waste item, examples of random waste items showing the breadth of images to be evaluated, and an emphasis on the answer being on a scale in the individual question.
 - **[v0.0.6](https://antonwrisberg.github.io/waste-stimuli-evaluation/dist/experiment/index.html?version=prototypicality.0.0.6)**. This setup asks participants to order an array of images after how good an example of the category they are. The array contains both congruent and incongruent images. Has received mixed feedback due to the two-dimensionality of the sorting space (when only sorting according to one dimension).
 - **[v0.0.7](https://antonwrisberg.github.io/waste-stimuli-evaluation/dist/experiment/index.html?version=prototypicality.0.0.7)**. This setup improves on version 0.0.6 by limiting the answer space to an arrow ranging from "worse" to "better".
-- **[v0.0.8](https://antonwrisberg.github.io/waste-stimuli-evaluation/dist/experiment/index.html?version=prototypicality.0.0.8)**. **Current favourite**. This setup improves on version 0.0.7 by offering three "snap lines" allowing for easier oversight when stacking items.
+- **[v0.0.8](https://antonwrisberg.github.io/waste-stimuli-evaluation/dist/experiment/index.html?version=prototypicality.0.0.8)**. This setup improves on version 0.0.7 by offering three "snap lines" allowing for easier oversight when stacking items.
+- **[v0.0.9](https://antonwrisberg.github.io/waste-stimuli-evaluation/dist/experiment/index.html?version=prototypicality.0.0.9)**. **Current favourite**. Same measure as the prototypicality v0.0.8 asking participants to order items on an arrow according to exemplarness with learning trial, integrated timer (of 6.5 minutes), and incorporated control stimuli appearing with 40% likelihood.
 
 ## Indirectly measurable dimension
 
@@ -84,6 +86,7 @@ The links below take you to examples of different versions of implementations of
 - **[v0.0.7](https://antonwrisberg.github.io/waste-stimuli-evaluation/dist/experiment/index.html?version=categorisation.0.0.7)**. This setup shows participants one waste fraction and one waste item at a time and asks the participant to indicate if they believe the item to belong in the fraction. This setup is prepared for sequential sampling analysis, such as with a drift diffusion model. *Has not yet been tested on participants*.
 - **[v0.0.8](https://antonwrisberg.github.io/waste-stimuli-evaluation/dist/experiment/index.html?version=categorisation.0.0.8)**. **Current favourite**. This setup improves v0.0.7 by asking participants to press either j or f for category congruency or non-congruency (counterbalanced) and by showing the item to the left and the category to the right. *Has not yet been tested on participants*.
 - **[v0.0.9](https://antonwrisberg.github.io/waste-stimuli-evaluation/dist/experiment/index.html?version=categorisation.0.0.9)**. **Current favourite**. WASTE TINDER! Only works on mobile devices. Swipe right, if you think the waste belongs in the fraction. Swipe left if not. *Has not yet been tested on participants*.
+- **[v0.0.10](https://antonwrisberg.github.io/waste-stimuli-evaluation/dist/experiment/index.html?version=categorisation.0.0.10)**. **Current favourite**. Combination of v.0.0.8 and v0.0.9 depending on participant's device.
 
 ### Odd-one-out
 
@@ -119,21 +122,9 @@ Furthermore, [here you can see](https://antonwrisberg.github.io/waste-stimuli-ev
 
 This is at the bottom, so that PP finds this bit quickly 😇
 
-Currently, my suggestion is to part our study to optimise responses.
+The three measures will be run in individual trials to keep the runtime of each experiment below 10 minutes.
+Each experiment will be run as they are below with 200 participants for each.
 
-Study 1 will be using this measure:
-
-- Familiarity v**0.0.2** [ [example](https://antonwrisberg.github.io/waste-stimuli-evaluation/dist/experiment/index.html?version=familiarity.0.0.2) &#124; [context](#familiarity) ]
-
-Only stimuli that participants can recognise will be included in the following studies.
-
-Study 2 will be using these measures (in that order):
-
-- Frequency v**0.0.7** [ [example](https://antonwrisberg.github.io/waste-stimuli-evaluation/dist/experiment/index.html?version=frequency.0.0.7) &#124; [context](#frequency) ]
-- Prototypicality v**0.0.7** [ [example](https://antonwrisberg.github.io/waste-stimuli-evaluation/dist/experiment/index.html?version=prototypicality.0.0.7) &#124; [context](#prototypicality) ]
-- Signage familiarity v**0.0.2** [ [example](https://antonwrisberg.github.io/waste-stimuli-evaluation/dist/experiment/index.html?version=signage-familiarity.0.0.2) &#124; [context](#signage-familiarity) ]
-- Sorting v**0.0.8** [ [example](https://antonwrisberg.github.io/waste-stimuli-evaluation/dist/experiment/index.html?version=categorisation.0.0.8) &#124; [context](#categorisation) ]
-
-Potentially, the study could also include: 
-
-- Odd-one-out v**0.0.3** [ [example](https://antonwrisberg.github.io/waste-stimuli-evaluation/dist/experiment/index.html?version=odd-one-out.0.0.3) &#124; [context](#odd-one-out) ]
+- Frequency v**0.0.10** [ [example](https://antonwrisberg.github.io/waste-stimuli-evaluation/dist/experiment/index.html?version=frequency.0.0.10) &#124; [context](#frequency) ]
+- Prototypicality v**0.0.9** [ [example](https://antonwrisberg.github.io/waste-stimuli-evaluation/dist/experiment/index.html?version=prototypicality.0.0.9) &#124; [context](#prototypicality) ]
+- Sorting v**0.0.10** [ [example](https://antonwrisberg.github.io/waste-stimuli-evaluation/dist/experiment/index.html?version=categorisation.0.0.10) &#124; [context](#categorisation) ]
