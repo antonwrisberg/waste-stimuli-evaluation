@@ -1,9 +1,26 @@
 import HtmlButtonResponsePlugin from "@jspsych/plugin-html-button-response";
 import ImagesLineSortPlugin from "/node_modules/@antonwrisberg/plugin-images-freesort";
+import PreloadPlugin from "@jspsych/plugin-preload";
+import CallFunctionPlugin from "@jspsych/plugin-call-function";
 
 // Prototypicality with free sort
 export default function (experiment) {
   jsPsych = experiment.jsPsych;
+
+  // Asset load
+  experiment.timeline.push({
+    type: PreloadPlugin,
+    images: [
+      "assets/img/screendumps/part1_sv.png",
+      "assets/img/screendumps/part1.1_sv.png",
+      "assets/img/stimuli-1.1-800x800-sorted/farligt_avfall/IMG_8019_1200x1200_m60_q10.jpg", //Paint bucket
+      "assets/img/stimuli-1.1-800x800-sorted/glasforpackningar_fargade/5h5a7414_1200x1200_m60_q10.jpg", // Wine bottle
+      "assets/img/stimuli-1.1-800x800-sorted/metallforpackningar/5h5a7447_1200x1200_m60_q10.jpg", // mackarel
+      "assets/img/stimuli-1.1-800x800-sorted/matavfall/5h5a7781_1200x1200_m60_q10.jpg", // Orange
+      "assets/img/attention-checks/800x800se/sällan.png",
+      "assets/img/attention-checks/800x800se/ofta.png"
+    ]
+  });
 
   // Intro
   experiment.timeline.push({
@@ -30,9 +47,9 @@ export default function (experiment) {
 
             <img src="assets/img/screendumps/part1_sv.png" class="screendump">
 
-            <p>Din uppgift kommer att vara att sortera bilderna efter<br /><b>hur ofta du förbrukar eller använder slut på dem</b>.</p>
+            <p>Din uppgift kommer att vara att sortera bilderna längs pilen efter<br /><b>hur ofta du förbrukar eller använder slut på dem</b>.</p>
             
-            <p>Du sorterar bilderna genom att dra dem med din muspekare och släppa bilderna på pilen.</p>
+            <p>Du sorterar bilderna genom att dra dem med din muspekare och släppa dem på pilen.</p>
             
             <p>Du kan släppa bilderna över hela pilen:</p>
 
@@ -67,13 +84,13 @@ export default function (experiment) {
       {
         type: ImagesLineSortPlugin,
         img_array: [
-          "farligt_avfall/IMG_8019-cropped_q8_800x800.jpg",
-          "glasforpackningar_fargede/5h5a7414-cropped_800x800.jpg",
-          "metallforpackningar/5h5a7447-cropped_800x800.jpg",
-          "matavfall/5h5a7781-cropped_800x800.jpg"
+          "farligt_avfall/IMG_8019_1200x1200_m60_q10.jpg", //Paint bucket
+          "glasforpackningar_fargade/5h5a7414_1200x1200_m60_q10.jpg", // Wine bottle
+          "metallforpackningar/5h5a7447_1200x1200_m60_q10.jpg", // mackarel
+          "matavfall/5h5a7781_1200x1200_m60_q10.jpg" // Orange
         ],
         img_path: function() {
-          return "assets/img/stimuli-800x800-sorted/";
+          return "assets/img/stimuli-1.1-800x800-sorted/";
         },
         arrow_text_left: function() {
           switch (experiment.detectLanguage()) {
@@ -119,13 +136,13 @@ export default function (experiment) {
               return `<p>Træk billederne og placer dem langs pilen efter, <b>hvor ofte du færdigopbruger dem</b>.</p>`;
             case 'sv':
               return `
-                <p style="text-align: left">Detta är en <b>övning</b>. Gör så här:</p>
+                <p style="text-align: left">Detta är en <b>övning</b>.</p><p style="text-align: left">Gör så här:</p>
 
                 <ol style="text-align: left">
-                  <li>Dra apelsinen till pilen som om du ofta förbrukar/använder slut på den.</li>
-                  <li>Dra målarburken till pilen som om du sällan förbrukar/använder slut på den.</li>
-                  <li>Dra vinflaskan till pilen som om du förbrukar/använder slut på den mer sällan än apelsinen, men oftare än målarburken.</li>
-                  <li>Dra makrillburken till pilen som om du förbrukar/använder slut på den mer sällan än vinflaskan, men oftare än målarburken.</li>
+                  <li>Dra apelsinen till pilen <b>som om</b> du ofta förbrukar/använder slut på den.</li>
+                  <li>Dra målarburken till pilen <b>som om</b> du sällan förbrukar/använder slut på den.</li>
+                  <li>Dra vinflaskan till pilen <b>som om</b> du förbrukar/använder slut på den mer sällan än apelsinen, men oftare än målarburken.</li>
+                  <li>Dra makrillburken till pilen <b>som om</b> du förbrukar/använder slut på den mer sällan än vinflaskan, men oftare än målarburken.</li>
                 </ol>
               `;
             default:
@@ -142,8 +159,8 @@ export default function (experiment) {
             var results = [];
 
             document.querySelectorAll(".jspsych-img-freesort-option").forEach(function(element) {
-              console.log("Index of image in array: " + element.children[0].getAttribute("data-choice"));
-              console.log("Image src: " + element.children[0].getAttribute("src"));
+              // console.log("Index of image in array: " + element.children[0].getAttribute("data-choice"));
+              // console.log("Image src: " + element.children[0].getAttribute("src"));
               var rect = element.getBoundingClientRect();
               // console.log(rect.left + ", " + rect.right);
               var itemWidth = rect.right - rect.left;
@@ -155,7 +172,7 @@ export default function (experiment) {
               // console.log("Left bounrady of arrow for this item: " + leftBoundaryForItem);
               // console.log("Right bounrady of arrow for this item: " + rightBoundaryForItem);
               var relativeLocationOfItemOnArrow = (itemCentre - leftBoundaryForItem) / (rightBoundaryForItem - leftBoundaryForItem);
-              console.log("Relative position of item on arrow: " + relativeLocationOfItemOnArrow);
+              // console.log("Relative position of item on arrow: " + relativeLocationOfItemOnArrow);
 
               results.push({
                 image: element.children[0].getAttribute("src").split("/").pop(),
@@ -166,18 +183,18 @@ export default function (experiment) {
 
             var responses = {};
             results.forEach(function (val) {
-              console.log(val.image);
+              // console.log(val.image);
               switch (val.image) {
-                case 'IMG_8019-cropped_q8_800x800.jpg':
+                case 'IMG_8019_1200x1200_m60_q10.jpg':
                   responses.paint = val.relative_location_on_arrow
                   break;
-                case '5h5a7414-cropped_800x800.jpg':
+                case '5h5a7414_1200x1200_m60_q10.jpg':
                   responses.wine = val.relative_location_on_arrow
                   break;
-                case '5h5a7447-cropped_800x800.jpg':
+                case '5h5a7447_1200x1200_m60_q10.jpg':
                   responses.fish = val.relative_location_on_arrow
                   break;
-                case '5h5a7781-cropped_800x800.jpg':
+                case '5h5a7781_1200x1200_m60_q10.jpg':
                   responses.orange = val.relative_location_on_arrow
                   break;
               }
@@ -244,7 +261,7 @@ export default function (experiment) {
         },
         on_finish: function(data) {
           experiment.timeLimitSetTime = new Date().getTime();
-          experiment.timeLimit = 1000 * 60 * 7; // Run this round of trials for 7 minutes
+          experiment.timeLimit = 1000 * 60 * 6.5; // Run this round of trials for 6.5 minutes
           jsPsych.setProgressBar(0.045);
         }
       }
@@ -255,18 +272,47 @@ export default function (experiment) {
   experiment.timeline.push({
     timeline: [
       {
+        type: CallFunctionPlugin,
+        func: function() {
+          var fractionObject = experiment.stimuli.fractions.find(({ key }) => key === jsPsych.timelineVariable('key'));
+          experiment.stimuli.items.inCurrentTrial = jsPsych.randomization.sampleWithoutReplacement(fractionObject.congruent, experiment.prototypicalityFreeSortCongruentCount + experiment.prototypicalityFreeSortIncongruentCount)
+        }
+      },
+      {
+        type: PreloadPlugin,
+        images: function() {
+          let imgPaths = [];
+
+          experiment.stimuli.items.inCurrentTrial.forEach(function(val) {
+            imgPaths.push("assets/img/stimuli-1.1-800x800-sorted/" + val)
+          })
+
+          return imgPaths;
+        }
+      },
+      {
         type: ImagesLineSortPlugin,
         img_array: function() {
-          var fractionObject = experiment.stimuli.fractions.find(({ key }) => key === jsPsych.timelineVariable('key'));
+          let imgArray = experiment.stimuli.items.inCurrentTrial;
 
-          let images = [];
+          // Add control image with 40% likelihood
+          if (Math.random() > .6) {
+            imgArray.pop();
 
-          images.push(jsPsych.randomization.sampleWithoutReplacement(fractionObject.congruent, experiment.prototypicalityFreeSortCongruentCount + experiment.prototypicalityFreeSortIncongruentCount));
-
-          return jsPsych.randomization.shuffle(images.flat());
+            // Add control image depending on current time ("randomness")
+            if (new Date().getSeconds() % 2 == 0) {
+              imgArray.push('../attention-checks/800x800se/ofta.png')
+              // console.log("'ofta' attention check")
+            } else {
+              imgArray.push('../attention-checks/800x800se/sällan.png')
+              // console.log("'sällan' attention check")
+            }
+          }
+          
+          return jsPsych.randomization.shuffle(imgArray);
         },
         img_path: function() {
-          return "assets/img/stimuli-800x800-sorted/";
+          return "assets/img/stimuli-1.1-800x800-sorted/";
         },
         arrow_text_left: function() {
           switch (experiment.detectLanguage()) {
@@ -323,63 +369,65 @@ export default function (experiment) {
           fraction: jsPsych.timelineVariable('key')
         },
         on_finish: function(data) {
+          let progressPercentageBasedOnTime = ((new Date().getTime() - experiment.timeLimitSetTime) / experiment.timeLimit);
+          jsPsych.setProgressBar(0.05 + Math.min(1, progressPercentageBasedOnTime) * 0.9);
+
           if (new Date().getTime() - experiment.timeLimitSetTime > experiment.timeLimit) {
             jsPsych.endCurrentTimeline();
-          } else {
-            let progressPercentageBasedOnTime = ((new Date().getTime() - experiment.timeLimitSetTime) / experiment.timeLimit);
-            jsPsych.setProgressBar(0.05 + progressPercentageBasedOnTime * 0.9);
           }
         }
       },
-      {
-        timeline: [{
-          type: HtmlButtonResponsePlugin,
-          stimulus: function() {
-            switch (experiment.detectLanguage()) {
-              case 'en':
-                return `
-                  <p>This screen is an attention check.</p>
-                  <p>Please do not click the button below.<br />The experiment will continue automatically in a few seconds.</p>
-                `;
-              case 'da':
-                return `
-                  <p>Dette skærmbillede er et opmærksomhedstjek.</p>
-                  <p>Vær venlig ikke at klikke på knappen nedenfor.<br />Eksperimentet fortsætter automatisk om nogle sekunder.</p>
-                `;
-              case 'sv':
-                return `
-                  <p>Denna skärmbild är en uppmärksamhetskontroll.</p>
-                  <p>Var vänlig och klicka inte på knappen nedan.<br />Experimentet fortsätter automatiskt om några sekunder.</p>
-                `;
-              default:
-                break;
-            }
-          },
-          choices: function() {
-            switch (experiment.detectLanguage()) {
-              case 'en':
-                return ["Continue"];
-              case 'da':
-                return ["Fortsæt"];
-              case 'sv':
-                return ["Fortsätt"];
-              default:
-                break;
-            }
-          },
-          on_finish: function(data) {
-            if (data.response === 0) {
-              data.attention_check_response = 'Failed attention check! This button should not have been clicked';
-            } else {
-              data.attention_check_response = 'Successful attention check!';
-            }
-          },
-          trial_duration: 6000
-        }],
-        conditional_function: function(){
-          return (Math.random() > .6)
-        }
-      }
+      // {
+      //   timeline: [{
+      //     type: HtmlButtonResponsePlugin,
+      //     stimulus: function() {
+      //       switch (experiment.detectLanguage()) {
+      //         case 'en':
+      //           return `
+      //             <p>This screen is an attention check.</p>
+      //             <p>Please do not click the button below.<br />The experiment will continue automatically in a few seconds.</p>
+      //           `;
+      //         case 'da':
+      //           return `
+      //             <p>Dette skærmbillede er et opmærksomhedstjek.</p>
+      //             <p>Vær venlig ikke at klikke på knappen nedenfor.<br />Eksperimentet fortsætter automatisk om nogle sekunder.</p>
+      //           `;
+      //         case 'sv':
+      //           return `
+      //             <p>Denna skärmbild är en uppmärksamhetskontroll.</p>
+      //             <p>Var vänlig och klicka inte på knappen nedan.<br />Experimentet fortsätter automatiskt om några sekunder.</p>
+      //           `;
+      //         default:
+      //           break;
+      //       }
+      //     },
+      //     choices: function() {
+      //       switch (experiment.detectLanguage()) {
+      //         case 'en':
+      //           return ["Continue"];
+      //         case 'da':
+      //           return ["Fortsæt"];
+      //         case 'sv':
+      //           return ["Fortsätt"];
+      //         default:
+      //           break;
+      //       }
+      //     },
+      //     on_finish: function(data) {
+      //       if (data.response === 0) {
+      //         data.attention_check_response = 'fail';
+      //       } else {
+      //         data.attention_check_response = 'success';
+      //       }
+
+      //       data.attention_check = true;
+      //     },
+      //     trial_duration: 6000
+      //   }],
+      //   conditional_function: function(){
+      //     return (Math.random() > .6)
+      //   }
+      // }
     ],
     timeline_variables: experiment.stimuli.fractions,
     sample: {
