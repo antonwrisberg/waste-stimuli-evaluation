@@ -62,7 +62,7 @@ export async function run({ assetPaths, input = {}, environment, title, version 
       experiment.jsPsych = jsPsych;
       experiment.assetPaths = assetPaths;
       experiment.timeline = [];
-      experiment.requiresDesktop = false;
+      experiment.requiresDesktop = true;
       experiment.stimuli = {};
       experiment.stimuli.items = {};
       experiment.stimuli.items.all = [];
@@ -314,7 +314,7 @@ export async function run({ assetPaths, input = {}, environment, title, version 
   experiment.addTrial(FullScreenTrial);
 
   // Frequency on arrow with timer and learning trial
-  // experiment.addTrial(FrequencyOnArrowTrial);
+  experiment.addTrial(FrequencyOnArrowTrial);
 
   // // Break screen
   // experiment.addTrial(BreakTrial);
@@ -332,7 +332,7 @@ export async function run({ assetPaths, input = {}, environment, title, version 
   // experiment.addTrial(BreakTrial);
 
   // Browser-size dependent categorisation trial - use this one
-  experiment.addTrial(CategorisationDeviceDependentTrial);
+  // experiment.addTrial(CategorisationDeviceDependentTrial);
 
 
   // // Tinder for waste categorisation
