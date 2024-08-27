@@ -8,8 +8,9 @@ export default function (experiment) {
     type: HtmlChoicePlugin,
     html_array: [
       "<div><span>🇸🇪</span><br />Fortsätt på svenska</div>",
-      // "<div><span>🇩🇰</span><br />Fortsæt på dansk</div>",
-      // "<div><span>🏴󠁧󠁢󠁥󠁮󠁧󠁿</span><br />Continue in English</div>"
+      // "<div><span>🏴󠁧󠁢󠁥󠁮󠁧󠁿<!--🇬🇧🇺🇸--></span><br />Continue in English</div>",
+      // "<div><span>🇩🇰</span><br />Fortsæt på dansk</div>"
+      
     ],
     css_classes: ["language-selection"],
     on_finish: function(data) {
@@ -19,11 +20,11 @@ export default function (experiment) {
         });
       } else if (data.response === 1) {
         jsPsych.data.addProperties({
-          lang: "da"
+          lang: "en"
         });
       } else if (data.response === 2) {
         jsPsych.data.addProperties({
-          lang: "en"
+          lang: "da"
         });
       } else {
         jsPsych.endExperiment(
