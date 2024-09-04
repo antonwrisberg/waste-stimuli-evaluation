@@ -11,3 +11,4 @@ assets/*
 
 assets/img/*
 !assets/img/stimuli-rf-sorted/
+!assets/img/stimuli-1.2-800x800-sorted/
