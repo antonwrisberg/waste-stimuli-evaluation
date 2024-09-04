@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>Kanske wellpap</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+        h1 {
+            margin: 20px 0;
+            font-size: 2.5em;
+        }
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+        }
+        .gallery img {
+            width: 25vw;
+            height: auto;
+            border: 2px solid #ddd;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            cursor: pointer;
+        }
+        .gallery div {
+            text-align: center;
+            position: relative;
+        }
+        .gallery p {
+            margin: 5px 0;
+            font-size: 1.2em;
+        }
+        .magnify-icon {
+            cursor: pointer;
+            font-size: 1.2em;
+            margin-left: 10px;
+            color: #333;
+        }
+        /* Style for modal (large image view) */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.8);
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-content {
+            max-width: 80%;
+            max-height: 80%;
+        }
+        .close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            color: #fff;
+            font-size: 2em;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Kanske wellpap</h1>
+    <div class='gallery'><div>
+                        <img src='../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/cardboard that I am not sure if is paper packaging or wellpap/5H5A7398_1200x1200_m60_q10.jpg' alt='Image 1' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/cardboard that I am not sure if is paper packaging or wellpap/5H5A7398_1200x1200_m60_q10.jpg")'>
+                        <p>Image 1 
+                            <span class='magnify-icon' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/cardboard that I am not sure if is paper packaging or wellpap/5H5A7398_1200x1200_m60_q10.jpg")'>&#128269;</span>
+                        </p>
+                      </div><div>
+                        <img src='../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/cardboard that I am not sure if is paper packaging or wellpap/IMG_7908_1200x1200_m60_q10.jpg' alt='Image 2' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/cardboard that I am not sure if is paper packaging or wellpap/IMG_7908_1200x1200_m60_q10.jpg")'>
+                        <p>Image 2 
+                            <span class='magnify-icon' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/cardboard that I am not sure if is paper packaging or wellpap/IMG_7908_1200x1200_m60_q10.jpg")'>&#128269;</span>
+                        </p>
+                      </div><div>
+                        <img src='../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/cardboard that I am not sure if is paper packaging or wellpap/5H5A7400_1200x1200_m60_q10.jpg' alt='Image 3' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/cardboard that I am not sure if is paper packaging or wellpap/5H5A7400_1200x1200_m60_q10.jpg")'>
+                        <p>Image 3 
+                            <span class='magnify-icon' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/cardboard that I am not sure if is paper packaging or wellpap/5H5A7400_1200x1200_m60_q10.jpg")'>&#128269;</span>
+                        </p>
+                      </div><div>
+                        <img src='../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/cardboard that I am not sure if is paper packaging or wellpap/5H5A7346_1200x1200_m60_q10.jpg' alt='Image 4' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/cardboard that I am not sure if is paper packaging or wellpap/5H5A7346_1200x1200_m60_q10.jpg")'>
+                        <p>Image 4 
+                            <span class='magnify-icon' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/cardboard that I am not sure if is paper packaging or wellpap/5H5A7346_1200x1200_m60_q10.jpg")'>&#128269;</span>
+                        </p>
+                      </div><div>
+                        <img src='../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/cardboard that I am not sure if is paper packaging or wellpap/5H5A7399_1200x1200_m60_q10.jpg' alt='Image 5' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/cardboard that I am not sure if is paper packaging or wellpap/5H5A7399_1200x1200_m60_q10.jpg")'>
+                        <p>Image 5 
+                            <span class='magnify-icon' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/cardboard that I am not sure if is paper packaging or wellpap/5H5A7399_1200x1200_m60_q10.jpg")'>&#128269;</span>
+                        </p>
+                      </div><div>
+                        <img src='../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/cardboard that I am not sure if is paper packaging or wellpap/IMG_8727_1200x1200_m60_q10.jpg' alt='Image 6' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/cardboard that I am not sure if is paper packaging or wellpap/IMG_8727_1200x1200_m60_q10.jpg")'>
+                        <p>Image 6 
+                            <span class='magnify-icon' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/cardboard that I am not sure if is paper packaging or wellpap/IMG_8727_1200x1200_m60_q10.jpg")'>&#128269;</span>
+                        </p>
+                      </div><div>
+                        <img src='../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/cardboard that I am not sure if is paper packaging or wellpap/IMG_8504_1200x1200_m60_q10.jpg' alt='Image 7' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/cardboard that I am not sure if is paper packaging or wellpap/IMG_8504_1200x1200_m60_q10.jpg")'>
+                        <p>Image 7 
+                            <span class='magnify-icon' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/cardboard that I am not sure if is paper packaging or wellpap/IMG_8504_1200x1200_m60_q10.jpg")'>&#128269;</span>
+                        </p>
+                      </div><div>
+                        <img src='../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/cardboard that I am not sure if is paper packaging or wellpap/5H5A7383_1200x1200_m60_q10.jpg' alt='Image 8' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/cardboard that I am not sure if is paper packaging or wellpap/5H5A7383_1200x1200_m60_q10.jpg")'>
+                        <p>Image 8 
+                            <span class='magnify-icon' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/cardboard that I am not sure if is paper packaging or wellpap/5H5A7383_1200x1200_m60_q10.jpg")'>&#128269;</span>
+                        </p>
+                      </div><div>
+                        <img src='../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/cardboard that I am not sure if is paper packaging or wellpap/5H5A7345_1200x1200_m60_q10.jpg' alt='Image 9' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/cardboard that I am not sure if is paper packaging or wellpap/5H5A7345_1200x1200_m60_q10.jpg")'>
+                        <p>Image 9 
+                            <span class='magnify-icon' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/cardboard that I am not sure if is paper packaging or wellpap/5H5A7345_1200x1200_m60_q10.jpg")'>&#128269;</span>
+                        </p>
+                      </div>
+    </div>
+
+    <!-- Modal for larger image -->
+    <div id='imageModal' class='modal'>
+        <span class='close' onclick='closeModal()'>&times;</span>
+        <img class='modal-content' id='modalImage'>
+    </div>
+
+    <script>
+        // Open the modal with the larger image
+        function openModal(imageSrc) {
+            document.getElementById('imageModal').style.display = 'flex';
+            document.getElementById('modalImage').src = imageSrc;
+        }
+
+        // Close the modal
+        function closeModal() {
+            document.getElementById('imageModal').style.display = 'none';
+        }
+    </script>
+
+</body>
+</html>

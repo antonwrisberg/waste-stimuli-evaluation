@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>"Resten"</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+        h1 {
+            margin: 20px 0;
+            font-size: 2.5em;
+        }
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+        }
+        .gallery img {
+            width: 25vw;
+            height: auto;
+            border: 2px solid #ddd;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            cursor: pointer;
+        }
+        .gallery div {
+            text-align: center;
+            position: relative;
+        }
+        .gallery p {
+            margin: 5px 0;
+            font-size: 1.2em;
+        }
+        .magnify-icon {
+            cursor: pointer;
+            font-size: 1.2em;
+            margin-left: 10px;
+            color: #333;
+        }
+        /* Style for modal (large image view) */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.8);
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-content {
+            max-width: 80%;
+            max-height: 80%;
+        }
+        .close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            color: #fff;
+            font-size: 2em;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>"Resten"</h1>
+    <div class='gallery'><div>
+                        <img src='../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte//IMG_0197_1200x1200_m60_q10.jpg' alt='Image 1' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte//IMG_0197_1200x1200_m60_q10.jpg")'>
+                        <p>Image 1 
+                            <span class='magnify-icon' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte//IMG_0197_1200x1200_m60_q10.jpg")'>&#128269;</span>
+                        </p>
+                      </div><div>
+                        <img src='../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte//IMG_9070_1200x1200_m60_q10.jpg' alt='Image 2' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte//IMG_9070_1200x1200_m60_q10.jpg")'>
+                        <p>Image 2 
+                            <span class='magnify-icon' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte//IMG_9070_1200x1200_m60_q10.jpg")'>&#128269;</span>
+                        </p>
+                      </div><div>
+                        <img src='../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte//IMG_8412_1200x1200_m60_q10.jpg' alt='Image 3' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte//IMG_8412_1200x1200_m60_q10.jpg")'>
+                        <p>Image 3 
+                            <span class='magnify-icon' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte//IMG_8412_1200x1200_m60_q10.jpg")'>&#128269;</span>
+                        </p>
+                      </div><div>
+                        <img src='../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte//IMG_8507_1200x1200_m60_q10.jpg' alt='Image 4' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte//IMG_8507_1200x1200_m60_q10.jpg")'>
+                        <p>Image 4 
+                            <span class='magnify-icon' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte//IMG_8507_1200x1200_m60_q10.jpg")'>&#128269;</span>
+                        </p>
+                      </div><div>
+                        <img src='../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte//IMG_8583_1200x1200_m60_q10.jpg' alt='Image 5' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte//IMG_8583_1200x1200_m60_q10.jpg")'>
+                        <p>Image 5 
+                            <span class='magnify-icon' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte//IMG_8583_1200x1200_m60_q10.jpg")'>&#128269;</span>
+                        </p>
+                      </div><div>
+                        <img src='../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte//IMG_8181_1200x1200_m60_q10.jpg' alt='Image 6' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte//IMG_8181_1200x1200_m60_q10.jpg")'>
+                        <p>Image 6 
+                            <span class='magnify-icon' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte//IMG_8181_1200x1200_m60_q10.jpg")'>&#128269;</span>
+                        </p>
+                      </div><div>
+                        <img src='../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte//IMG_0195_1200x1200_m60_q10.jpg' alt='Image 7' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte//IMG_0195_1200x1200_m60_q10.jpg")'>
+                        <p>Image 7 
+                            <span class='magnify-icon' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte//IMG_0195_1200x1200_m60_q10.jpg")'>&#128269;</span>
+                        </p>
+                      </div><div>
+                        <img src='../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte//IMG_8784_1200x1200_m60_q10.jpg' alt='Image 8' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte//IMG_8784_1200x1200_m60_q10.jpg")'>
+                        <p>Image 8 
+                            <span class='magnify-icon' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte//IMG_8784_1200x1200_m60_q10.jpg")'>&#128269;</span>
+                        </p>
+                      </div><div>
+                        <img src='../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte//IMG_8559_1200x1200_m60_q10.jpg' alt='Image 9' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte//IMG_8559_1200x1200_m60_q10.jpg")'>
+                        <p>Image 9 
+                            <span class='magnify-icon' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte//IMG_8559_1200x1200_m60_q10.jpg")'>&#128269;</span>
+                        </p>
+                      </div><div>
+                        <img src='../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte//IMG_8183_1200x1200_m60_q10.jpg' alt='Image 10' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte//IMG_8183_1200x1200_m60_q10.jpg")'>
+                        <p>Image 10 
+                            <span class='magnify-icon' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte//IMG_8183_1200x1200_m60_q10.jpg")'>&#128269;</span>
+                        </p>
+                      </div><div>
+                        <img src='../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte//5H5A7802_1200x1200_m60_q10.jpg' alt='Image 11' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte//5H5A7802_1200x1200_m60_q10.jpg")'>
+                        <p>Image 11 
+                            <span class='magnify-icon' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte//5H5A7802_1200x1200_m60_q10.jpg")'>&#128269;</span>
+                        </p>
+                      </div><div>
+                        <img src='../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte//IMG_8408_1200x1200_m60_q10.jpg' alt='Image 12' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte//IMG_8408_1200x1200_m60_q10.jpg")'>
+                        <p>Image 12 
+                            <span class='magnify-icon' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte//IMG_8408_1200x1200_m60_q10.jpg")'>&#128269;</span>
+                        </p>
+                      </div><div>
+                        <img src='../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte//IMG_8565_1200x1200_m60_q10.jpg' alt='Image 13' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte//IMG_8565_1200x1200_m60_q10.jpg")'>
+                        <p>Image 13 
+                            <span class='magnify-icon' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte//IMG_8565_1200x1200_m60_q10.jpg")'>&#128269;</span>
+                        </p>
+                      </div><div>
+                        <img src='../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte//IMG_8416_1200x1200_m60_q10.jpg' alt='Image 14' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte//IMG_8416_1200x1200_m60_q10.jpg")'>
+                        <p>Image 14 
+                            <span class='magnify-icon' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte//IMG_8416_1200x1200_m60_q10.jpg")'>&#128269;</span>
+                        </p>
+                      </div><div>
+                        <img src='../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte//IMG_8623_1200x1200_m60_q10.jpg' alt='Image 15' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte//IMG_8623_1200x1200_m60_q10.jpg")'>
+                        <p>Image 15 
+                            <span class='magnify-icon' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte//IMG_8623_1200x1200_m60_q10.jpg")'>&#128269;</span>
+                        </p>
+                      </div><div>
+                        <img src='../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte//IMG_0199_1200x1200_m60_q10.jpg' alt='Image 16' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte//IMG_0199_1200x1200_m60_q10.jpg")'>
+                        <p>Image 16 
+                            <span class='magnify-icon' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte//IMG_0199_1200x1200_m60_q10.jpg")'>&#128269;</span>
+                        </p>
+                      </div><div>
+                        <img src='../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte//IMG_8984_1200x1200_m60_q10.jpg' alt='Image 17' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte//IMG_8984_1200x1200_m60_q10.jpg")'>
+                        <p>Image 17 
+                            <span class='magnify-icon' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte//IMG_8984_1200x1200_m60_q10.jpg")'>&#128269;</span>
+                        </p>
+                      </div><div>
+                        <img src='../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte//IMG_8393_1200x1200_m60_q10.jpg' alt='Image 18' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte//IMG_8393_1200x1200_m60_q10.jpg")'>
+                        <p>Image 18 
+                            <span class='magnify-icon' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte//IMG_8393_1200x1200_m60_q10.jpg")'>&#128269;</span>
+                        </p>
+                      </div><div>
+                        <img src='../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte//IMG_8600_1200x1200_m60_q10.jpg' alt='Image 19' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte//IMG_8600_1200x1200_m60_q10.jpg")'>
+                        <p>Image 19 
+                            <span class='magnify-icon' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte//IMG_8600_1200x1200_m60_q10.jpg")'>&#128269;</span>
+                        </p>
+                      </div><div>
+                        <img src='../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte//IMG_8739_1200x1200_m60_q10.jpg' alt='Image 20' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte//IMG_8739_1200x1200_m60_q10.jpg")'>
+                        <p>Image 20 
+                            <span class='magnify-icon' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte//IMG_8739_1200x1200_m60_q10.jpg")'>&#128269;</span>
+                        </p>
+                      </div><div>
+                        <img src='../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte//IMG_8313_1200x1200_m60_q10.jpg' alt='Image 21' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte//IMG_8313_1200x1200_m60_q10.jpg")'>
+                        <p>Image 21 
+                            <span class='magnify-icon' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte//IMG_8313_1200x1200_m60_q10.jpg")'>&#128269;</span>
+                        </p>
+                      </div><div>
+                        <img src='../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte//IMG_8439_1200x1200_m60_q10.jpg' alt='Image 22' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte//IMG_8439_1200x1200_m60_q10.jpg")'>
+                        <p>Image 22 
+                            <span class='magnify-icon' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte//IMG_8439_1200x1200_m60_q10.jpg")'>&#128269;</span>
+                        </p>
+                      </div><div>
+                        <img src='../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte//IMG_0198_1200x1200_m60_q10.jpg' alt='Image 23' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte//IMG_0198_1200x1200_m60_q10.jpg")'>
+                        <p>Image 23 
+                            <span class='magnify-icon' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte//IMG_0198_1200x1200_m60_q10.jpg")'>&#128269;</span>
+                        </p>
+                      </div>
+    </div>
+
+    <!-- Modal for larger image -->
+    <div id='imageModal' class='modal'>
+        <span class='close' onclick='closeModal()'>&times;</span>
+        <img class='modal-content' id='modalImage'>
+    </div>
+
+    <script>
+        // Open the modal with the larger image
+        function openModal(imageSrc) {
+            document.getElementById('imageModal').style.display = 'flex';
+            document.getElementById('modalImage').src = imageSrc;
+        }
+
+        // Close the modal
+        function closeModal() {
+            document.getElementById('imageModal').style.display = 'none';
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>Kanske farligt avfall</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+        h1 {
+            margin: 20px 0;
+            font-size: 2.5em;
+        }
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+        }
+        .gallery img {
+            width: 25vw;
+            height: auto;
+            border: 2px solid #ddd;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            cursor: pointer;
+        }
+        .gallery div {
+            text-align: center;
+            position: relative;
+        }
+        .gallery p {
+            margin: 5px 0;
+            font-size: 1.2em;
+        }
+        .magnify-icon {
+            cursor: pointer;
+            font-size: 1.2em;
+            margin-left: 10px;
+            color: #333;
+        }
+        /* Style for modal (large image view) */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.8);
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-content {
+            max-width: 80%;
+            max-height: 80%;
+        }
+        .close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            color: #fff;
+            font-size: 2em;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Kanske farligt avfall</h1>
+    <div class='gallery'><div>
+                        <img src='../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8129_1200x1200_m60_q10.jpg' alt='Image 1' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8129_1200x1200_m60_q10.jpg")'>
+                        <p>Image 1 
+                            <span class='magnify-icon' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8129_1200x1200_m60_q10.jpg")'>&#128269;</span>
+                        </p>
+                      </div><div>
+                        <img src='../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8113_1200x1200_m60_q10.jpg' alt='Image 2' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8113_1200x1200_m60_q10.jpg")'>
+                        <p>Image 2 
+                            <span class='magnify-icon' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8113_1200x1200_m60_q10.jpg")'>&#128269;</span>
+                        </p>
+                      </div><div>
+                        <img src='../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8082_1200x1200_m60_q10.jpg' alt='Image 3' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8082_1200x1200_m60_q10.jpg")'>
+                        <p>Image 3 
+                            <span class='magnify-icon' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8082_1200x1200_m60_q10.jpg")'>&#128269;</span>
+                        </p>
+                      </div><div>
+                        <img src='../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8137_1200x1200_m60_q10.jpg' alt='Image 4' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8137_1200x1200_m60_q10.jpg")'>
+                        <p>Image 4 
+                            <span class='magnify-icon' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8137_1200x1200_m60_q10.jpg")'>&#128269;</span>
+                        </p>
+                      </div><div>
+                        <img src='../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8420_1200x1200_m60_q10.jpg' alt='Image 5' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8420_1200x1200_m60_q10.jpg")'>
+                        <p>Image 5 
+                            <span class='magnify-icon' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8420_1200x1200_m60_q10.jpg")'>&#128269;</span>
+                        </p>
+                      </div><div>
+                        <img src='../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8121_1200x1200_m60_q10.jpg' alt='Image 6' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8121_1200x1200_m60_q10.jpg")'>
+                        <p>Image 6 
+                            <span class='magnify-icon' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8121_1200x1200_m60_q10.jpg")'>&#128269;</span>
+                        </p>
+                      </div><div>
+                        <img src='../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8022_1200x1200_m60_q10.jpg' alt='Image 7' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8022_1200x1200_m60_q10.jpg")'>
+                        <p>Image 7 
+                            <span class='magnify-icon' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8022_1200x1200_m60_q10.jpg")'>&#128269;</span>
+                        </p>
+                      </div><div>
+                        <img src='../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8561_1200x1200_m60_q10.jpg' alt='Image 8' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8561_1200x1200_m60_q10.jpg")'>
+                        <p>Image 8 
+                            <span class='magnify-icon' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8561_1200x1200_m60_q10.jpg")'>&#128269;</span>
+                        </p>
+                      </div><div>
+                        <img src='../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8076_1200x1200_m60_q10.jpg' alt='Image 9' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8076_1200x1200_m60_q10.jpg")'>
+                        <p>Image 9 
+                            <span class='magnify-icon' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8076_1200x1200_m60_q10.jpg")'>&#128269;</span>
+                        </p>
+                      </div><div>
+                        <img src='../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8111_1200x1200_m60_q10.jpg' alt='Image 10' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8111_1200x1200_m60_q10.jpg")'>
+                        <p>Image 10 
+                            <span class='magnify-icon' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8111_1200x1200_m60_q10.jpg")'>&#128269;</span>
+                        </p>
+                      </div><div>
+                        <img src='../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8406_1200x1200_m60_q10.jpg' alt='Image 11' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8406_1200x1200_m60_q10.jpg")'>
+                        <p>Image 11 
+                            <span class='magnify-icon' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8406_1200x1200_m60_q10.jpg")'>&#128269;</span>
+                        </p>
+                      </div><div>
+                        <img src='../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8046_1200x1200_m60_q10.jpg' alt='Image 12' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8046_1200x1200_m60_q10.jpg")'>
+                        <p>Image 12 
+                            <span class='magnify-icon' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8046_1200x1200_m60_q10.jpg")'>&#128269;</span>
+                        </p>
+                      </div><div>
+                        <img src='../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8153_1200x1200_m60_q10.jpg' alt='Image 13' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8153_1200x1200_m60_q10.jpg")'>
+                        <p>Image 13 
+                            <span class='magnify-icon' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8153_1200x1200_m60_q10.jpg")'>&#128269;</span>
+                        </p>
+                      </div><div>
+                        <img src='../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8631_1200x1200_m60_q10.jpg' alt='Image 14' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8631_1200x1200_m60_q10.jpg")'>
+                        <p>Image 14 
+                            <span class='magnify-icon' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8631_1200x1200_m60_q10.jpg")'>&#128269;</span>
+                        </p>
+                      </div><div>
+                        <img src='../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8687_1200x1200_m60_q10.jpg' alt='Image 15' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8687_1200x1200_m60_q10.jpg")'>
+                        <p>Image 15 
+                            <span class='magnify-icon' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8687_1200x1200_m60_q10.jpg")'>&#128269;</span>
+                        </p>
+                      </div><div>
+                        <img src='../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8119_1200x1200_m60_q10.jpg' alt='Image 16' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8119_1200x1200_m60_q10.jpg")'>
+                        <p>Image 16 
+                            <span class='magnify-icon' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8119_1200x1200_m60_q10.jpg")'>&#128269;</span>
+                        </p>
+                      </div><div>
+                        <img src='../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8418_1200x1200_m60_q10.jpg' alt='Image 17' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8418_1200x1200_m60_q10.jpg")'>
+                        <p>Image 17 
+                            <span class='magnify-icon' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8418_1200x1200_m60_q10.jpg")'>&#128269;</span>
+                        </p>
+                      </div><div>
+                        <img src='../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8123_1200x1200_m60_q10.jpg' alt='Image 18' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8123_1200x1200_m60_q10.jpg")'>
+                        <p>Image 18 
+                            <span class='magnify-icon' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8123_1200x1200_m60_q10.jpg")'>&#128269;</span>
+                        </p>
+                      </div><div>
+                        <img src='../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8527_1200x1200_m60_q10.jpg' alt='Image 19' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8527_1200x1200_m60_q10.jpg")'>
+                        <p>Image 19 
+                            <span class='magnify-icon' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8527_1200x1200_m60_q10.jpg")'>&#128269;</span>
+                        </p>
+                      </div><div>
+                        <img src='../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8048_1200x1200_m60_q10.jpg' alt='Image 20' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8048_1200x1200_m60_q10.jpg")'>
+                        <p>Image 20 
+                            <span class='magnify-icon' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8048_1200x1200_m60_q10.jpg")'>&#128269;</span>
+                        </p>
+                      </div><div>
+                        <img src='../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8064_1200x1200_m60_q10.jpg' alt='Image 21' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8064_1200x1200_m60_q10.jpg")'>
+                        <p>Image 21 
+                            <span class='magnify-icon' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8064_1200x1200_m60_q10.jpg")'>&#128269;</span>
+                        </p>
+                      </div><div>
+                        <img src='../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_0185_1200x1200_m60_q10.jpg' alt='Image 22' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_0185_1200x1200_m60_q10.jpg")'>
+                        <p>Image 22 
+                            <span class='magnify-icon' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_0185_1200x1200_m60_q10.jpg")'>&#128269;</span>
+                        </p>
+                      </div><div>
+                        <img src='../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8245_1200x1200_m60_q10.jpg' alt='Image 23' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8245_1200x1200_m60_q10.jpg")'>
+                        <p>Image 23 
+                            <span class='magnify-icon' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8245_1200x1200_m60_q10.jpg")'>&#128269;</span>
+                        </p>
+                      </div><div>
+                        <img src='../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8683_1200x1200_m60_q10.jpg' alt='Image 24' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8683_1200x1200_m60_q10.jpg")'>
+                        <p>Image 24 
+                            <span class='magnify-icon' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8683_1200x1200_m60_q10.jpg")'>&#128269;</span>
+                        </p>
+                      </div><div>
+                        <img src='../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8070_1200x1200_m60_q10.jpg' alt='Image 25' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8070_1200x1200_m60_q10.jpg")'>
+                        <p>Image 25 
+                            <span class='magnify-icon' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8070_1200x1200_m60_q10.jpg")'>&#128269;</span>
+                        </p>
+                      </div><div>
+                        <img src='../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8032_1200x1200_m60_q10.jpg' alt='Image 26' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8032_1200x1200_m60_q10.jpg")'>
+                        <p>Image 26 
+                            <span class='magnify-icon' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8032_1200x1200_m60_q10.jpg")'>&#128269;</span>
+                        </p>
+                      </div><div>
+                        <img src='../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8525_1200x1200_m60_q10.jpg' alt='Image 27' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8525_1200x1200_m60_q10.jpg")'>
+                        <p>Image 27 
+                            <span class='magnify-icon' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8525_1200x1200_m60_q10.jpg")'>&#128269;</span>
+                        </p>
+                      </div><div>
+                        <img src='../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8426_1200x1200_m60_q10.jpg' alt='Image 28' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8426_1200x1200_m60_q10.jpg")'>
+                        <p>Image 28 
+                            <span class='magnify-icon' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8426_1200x1200_m60_q10.jpg")'>&#128269;</span>
+                        </p>
+                      </div><div>
+                        <img src='../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8141_1200x1200_m60_q10.jpg' alt='Image 29' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8141_1200x1200_m60_q10.jpg")'>
+                        <p>Image 29 
+                            <span class='magnify-icon' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8141_1200x1200_m60_q10.jpg")'>&#128269;</span>
+                        </p>
+                      </div><div>
+                        <img src='../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_0187_1200x1200_m60_q10.jpg' alt='Image 30' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_0187_1200x1200_m60_q10.jpg")'>
+                        <p>Image 30 
+                            <span class='magnify-icon' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_0187_1200x1200_m60_q10.jpg")'>&#128269;</span>
+                        </p>
+                      </div><div>
+                        <img src='../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8139_1200x1200_m60_q10.jpg' alt='Image 31' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8139_1200x1200_m60_q10.jpg")'>
+                        <p>Image 31 
+                            <span class='magnify-icon' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8139_1200x1200_m60_q10.jpg")'>&#128269;</span>
+                        </p>
+                      </div><div>
+                        <img src='../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8023_1200x1200_m60_q10.jpg' alt='Image 32' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8023_1200x1200_m60_q10.jpg")'>
+                        <p>Image 32 
+                            <span class='magnify-icon' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8023_1200x1200_m60_q10.jpg")'>&#128269;</span>
+                        </p>
+                      </div><div>
+                        <img src='../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_0188_1200x1200_m60_q10.jpg' alt='Image 33' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_0188_1200x1200_m60_q10.jpg")'>
+                        <p>Image 33 
+                            <span class='magnify-icon' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_0188_1200x1200_m60_q10.jpg")'>&#128269;</span>
+                        </p>
+                      </div><div>
+                        <img src='../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8035_1200x1200_m60_q10.jpg' alt='Image 34' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8035_1200x1200_m60_q10.jpg")'>
+                        <p>Image 34 
+                            <span class='magnify-icon' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8035_1200x1200_m60_q10.jpg")'>&#128269;</span>
+                        </p>
+                      </div><div>
+                        <img src='../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8136_1200x1200_m60_q10.jpg' alt='Image 35' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8136_1200x1200_m60_q10.jpg")'>
+                        <p>Image 35 
+                            <span class='magnify-icon' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8136_1200x1200_m60_q10.jpg")'>&#128269;</span>
+                        </p>
+                      </div><div>
+                        <img src='../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8481_1200x1200_m60_q10.jpg' alt='Image 36' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8481_1200x1200_m60_q10.jpg")'>
+                        <p>Image 36 
+                            <span class='magnify-icon' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8481_1200x1200_m60_q10.jpg")'>&#128269;</span>
+                        </p>
+                      </div><div>
+                        <img src='../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8077_1200x1200_m60_q10.jpg' alt='Image 37' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8077_1200x1200_m60_q10.jpg")'>
+                        <p>Image 37 
+                            <span class='magnify-icon' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8077_1200x1200_m60_q10.jpg")'>&#128269;</span>
+                        </p>
+                      </div><div>
+                        <img src='../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8256_1200x1200_m60_q10.jpg' alt='Image 38' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8256_1200x1200_m60_q10.jpg")'>
+                        <p>Image 38 
+                            <span class='magnify-icon' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8256_1200x1200_m60_q10.jpg")'>&#128269;</span>
+                        </p>
+                      </div><div>
+                        <img src='../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8069_1200x1200_m60_q10.jpg' alt='Image 39' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8069_1200x1200_m60_q10.jpg")'>
+                        <p>Image 39 
+                            <span class='magnify-icon' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8069_1200x1200_m60_q10.jpg")'>&#128269;</span>
+                        </p>
+                      </div><div>
+                        <img src='../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8741_1200x1200_m60_q10.jpg' alt='Image 40' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8741_1200x1200_m60_q10.jpg")'>
+                        <p>Image 40 
+                            <span class='magnify-icon' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8741_1200x1200_m60_q10.jpg")'>&#128269;</span>
+                        </p>
+                      </div><div>
+                        <img src='../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8112_1200x1200_m60_q10.jpg' alt='Image 41' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8112_1200x1200_m60_q10.jpg")'>
+                        <p>Image 41 
+                            <span class='magnify-icon' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8112_1200x1200_m60_q10.jpg")'>&#128269;</span>
+                        </p>
+                      </div><div>
+                        <img src='../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8690_1200x1200_m60_q10.jpg' alt='Image 42' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8690_1200x1200_m60_q10.jpg")'>
+                        <p>Image 42 
+                            <span class='magnify-icon' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8690_1200x1200_m60_q10.jpg")'>&#128269;</span>
+                        </p>
+                      </div><div>
+                        <img src='../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8075_1200x1200_m60_q10.jpg' alt='Image 43' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8075_1200x1200_m60_q10.jpg")'>
+                        <p>Image 43 
+                            <span class='magnify-icon' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8075_1200x1200_m60_q10.jpg")'>&#128269;</span>
+                        </p>
+                      </div><div>
+                        <img src='../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8122_1200x1200_m60_q10.jpg' alt='Image 44' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8122_1200x1200_m60_q10.jpg")'>
+                        <p>Image 44 
+                            <span class='magnify-icon' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8122_1200x1200_m60_q10.jpg")'>&#128269;</span>
+                        </p>
+                      </div><div>
+                        <img src='../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8081_1200x1200_m60_q10.jpg' alt='Image 45' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8081_1200x1200_m60_q10.jpg")'>
+                        <p>Image 45 
+                            <span class='magnify-icon' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8081_1200x1200_m60_q10.jpg")'>&#128269;</span>
+                        </p>
+                      </div><div>
+                        <img src='../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8134_1200x1200_m60_q10.jpg' alt='Image 46' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8134_1200x1200_m60_q10.jpg")'>
+                        <p>Image 46 
+                            <span class='magnify-icon' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8134_1200x1200_m60_q10.jpg")'>&#128269;</span>
+                        </p>
+                      </div><div>
+                        <img src='../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8483_1200x1200_m60_q10.jpg' alt='Image 47' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8483_1200x1200_m60_q10.jpg")'>
+                        <p>Image 47 
+                            <span class='magnify-icon' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8483_1200x1200_m60_q10.jpg")'>&#128269;</span>
+                        </p>
+                      </div><div>
+                        <img src='../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8357_1200x1200_m60_q10.jpg' alt='Image 48' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8357_1200x1200_m60_q10.jpg")'>
+                        <p>Image 48 
+                            <span class='magnify-icon' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8357_1200x1200_m60_q10.jpg")'>&#128269;</span>
+                        </p>
+                      </div><div>
+                        <img src='../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8110_1200x1200_m60_q10.jpg' alt='Image 49' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8110_1200x1200_m60_q10.jpg")'>
+                        <p>Image 49 
+                            <span class='magnify-icon' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8110_1200x1200_m60_q10.jpg")'>&#128269;</span>
+                        </p>
+                      </div><div>
+                        <img src='../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8047_1200x1200_m60_q10.jpg' alt='Image 50' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8047_1200x1200_m60_q10.jpg")'>
+                        <p>Image 50 
+                            <span class='magnify-icon' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8047_1200x1200_m60_q10.jpg")'>&#128269;</span>
+                        </p>
+                      </div><div>
+                        <img src='../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8154_1200x1200_m60_q10.jpg' alt='Image 51' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8154_1200x1200_m60_q10.jpg")'>
+                        <p>Image 51 
+                            <span class='magnify-icon' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8154_1200x1200_m60_q10.jpg")'>&#128269;</span>
+                        </p>
+                      </div><div>
+                        <img src='../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8598_1200x1200_m60_q10.jpg' alt='Image 52' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8598_1200x1200_m60_q10.jpg")'>
+                        <p>Image 52 
+                            <span class='magnify-icon' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8598_1200x1200_m60_q10.jpg")'>&#128269;</span>
+                        </p>
+                      </div><div>
+                        <img src='../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8027_1200x1200_m60_q10.jpg' alt='Image 53' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8027_1200x1200_m60_q10.jpg")'>
+                        <p>Image 53 
+                            <span class='magnify-icon' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8027_1200x1200_m60_q10.jpg")'>&#128269;</span>
+                        </p>
+                      </div><div>
+                        <img src='../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8124_1200x1200_m60_q10.jpg' alt='Image 54' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8124_1200x1200_m60_q10.jpg")'>
+                        <p>Image 54 
+                            <span class='magnify-icon' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8124_1200x1200_m60_q10.jpg")'>&#128269;</span>
+                        </p>
+                      </div><div>
+                        <img src='../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8132_1200x1200_m60_q10.jpg' alt='Image 55' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8132_1200x1200_m60_q10.jpg")'>
+                        <p>Image 55 
+                            <span class='magnify-icon' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8132_1200x1200_m60_q10.jpg")'>&#128269;</span>
+                        </p>
+                      </div><div>
+                        <img src='../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8761_1200x1200_m60_q10.jpg' alt='Image 56' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8761_1200x1200_m60_q10.jpg")'>
+                        <p>Image 56 
+                            <span class='magnify-icon' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8761_1200x1200_m60_q10.jpg")'>&#128269;</span>
+                        </p>
+                      </div><div>
+                        <img src='../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8031_1200x1200_m60_q10.jpg' alt='Image 57' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8031_1200x1200_m60_q10.jpg")'>
+                        <p>Image 57 
+                            <span class='magnify-icon' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8031_1200x1200_m60_q10.jpg")'>&#128269;</span>
+                        </p>
+                      </div><div>
+                        <img src='../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8073_1200x1200_m60_q10.jpg' alt='Image 58' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8073_1200x1200_m60_q10.jpg")'>
+                        <p>Image 58 
+                            <span class='magnify-icon' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8073_1200x1200_m60_q10.jpg")'>&#128269;</span>
+                        </p>
+                      </div><div>
+                        <img src='../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8065_1200x1200_m60_q10.jpg' alt='Image 59' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8065_1200x1200_m60_q10.jpg")'>
+                        <p>Image 59 
+                            <span class='magnify-icon' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8065_1200x1200_m60_q10.jpg")'>&#128269;</span>
+                        </p>
+                      </div><div>
+                        <img src='../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8114_1200x1200_m60_q10.jpg' alt='Image 60' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8114_1200x1200_m60_q10.jpg")'>
+                        <p>Image 60 
+                            <span class='magnify-icon' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8114_1200x1200_m60_q10.jpg")'>&#128269;</span>
+                        </p>
+                      </div><div>
+                        <img src='../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8578_1200x1200_m60_q10.jpg' alt='Image 61' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8578_1200x1200_m60_q10.jpg")'>
+                        <p>Image 61 
+                            <span class='magnify-icon' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8578_1200x1200_m60_q10.jpg")'>&#128269;</span>
+                        </p>
+                      </div><div>
+                        <img src='../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8138_1200x1200_m60_q10.jpg' alt='Image 62' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8138_1200x1200_m60_q10.jpg")'>
+                        <p>Image 62 
+                            <span class='magnify-icon' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8138_1200x1200_m60_q10.jpg")'>&#128269;</span>
+                        </p>
+                      </div><div>
+                        <img src='../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8140_1200x1200_m60_q10.jpg' alt='Image 63' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8140_1200x1200_m60_q10.jpg")'>
+                        <p>Image 63 
+                            <span class='magnify-icon' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8140_1200x1200_m60_q10.jpg")'>&#128269;</span>
+                        </p>
+                      </div><div>
+                        <img src='../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_0186_1200x1200_m60_q10.jpg' alt='Image 64' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_0186_1200x1200_m60_q10.jpg")'>
+                        <p>Image 64 
+                            <span class='magnify-icon' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_0186_1200x1200_m60_q10.jpg")'>&#128269;</span>
+                        </p>
+                      </div><div>
+                        <img src='../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8071_1200x1200_m60_q10.jpg' alt='Image 65' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8071_1200x1200_m60_q10.jpg")'>
+                        <p>Image 65 
+                            <span class='magnify-icon' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8071_1200x1200_m60_q10.jpg")'>&#128269;</span>
+                        </p>
+                      </div><div>
+                        <img src='../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8694_1200x1200_m60_q10.jpg' alt='Image 66' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8694_1200x1200_m60_q10.jpg")'>
+                        <p>Image 66 
+                            <span class='magnify-icon' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8694_1200x1200_m60_q10.jpg")'>&#128269;</span>
+                        </p>
+                      </div><div>
+                        <img src='../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8465_1200x1200_m60_q10.jpg' alt='Image 67' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8465_1200x1200_m60_q10.jpg")'>
+                        <p>Image 67 
+                            <span class='magnify-icon' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8465_1200x1200_m60_q10.jpg")'>&#128269;</span>
+                        </p>
+                      </div><div>
+                        <img src='../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8592_1200x1200_m60_q10.jpg' alt='Image 68' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8592_1200x1200_m60_q10.jpg")'>
+                        <p>Image 68 
+                            <span class='magnify-icon' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8592_1200x1200_m60_q10.jpg")'>&#128269;</span>
+                        </p>
+                      </div><div>
+                        <img src='../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8025_1200x1200_m60_q10.jpg' alt='Image 69' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8025_1200x1200_m60_q10.jpg")'>
+                        <p>Image 69 
+                            <span class='magnify-icon' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8025_1200x1200_m60_q10.jpg")'>&#128269;</span>
+                        </p>
+                      </div><div>
+                        <img src='../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8130_1200x1200_m60_q10.jpg' alt='Image 70' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8130_1200x1200_m60_q10.jpg")'>
+                        <p>Image 70 
+                            <span class='magnify-icon' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8130_1200x1200_m60_q10.jpg")'>&#128269;</span>
+                        </p>
+                      </div><div>
+                        <img src='../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8033_1200x1200_m60_q10.jpg' alt='Image 71' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8033_1200x1200_m60_q10.jpg")'>
+                        <p>Image 71 
+                            <span class='magnify-icon' onclick='openModal("../assets/img/stimuli-1.2-800x800-sorted/zzz vet inte/packaging that is potentially hazardous if not empty/IMG_8033_1200x1200_m60_q10.jpg")'>&#128269;</span>
+                        </p>
+                      </div>
+    </div>
+
+    <!-- Modal for larger image -->
+    <div id='imageModal' class='modal'>
+        <span class='close' onclick='closeModal()'>&times;</span>
+        <img class='modal-content' id='modalImage'>
+    </div>
+
+    <script>
+        // Open the modal with the larger image
+        function openModal(imageSrc) {
+            document.getElementById('imageModal').style.display = 'flex';
+            document.getElementById('modalImage').src = imageSrc;
+        }
+
+        // Close the modal
+        function closeModal() {
+            document.getElementById('imageModal').style.display = 'none';
+        }
+    </script>
+
+</body>
+</html>
