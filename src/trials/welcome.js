@@ -1,8 +1,17 @@
+import PreloadPlugin from "@jspsych/plugin-preload";
 import HtmlButtonResponsePlugin from "@jspsych/plugin-html-button-response"; 
 
 // Break
 export default function (experiment) {
   jsPsych = experiment.jsPsych;
+
+  // Asset load
+  experiment.timeline.push({
+    type: PreloadPlugin,
+    images: [
+      "assets/img/logos/Lunds_universitet_C2r_RGB.png"
+    ]
+  });
   
   experiment.timeline.push({
     type: HtmlButtonResponsePlugin,
