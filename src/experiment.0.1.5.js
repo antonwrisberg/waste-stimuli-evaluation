@@ -163,13 +163,6 @@ export async function run({ assetPaths, input = {}, environment, title, version 
       fraction_da: "restaffald",
       sign_sv: "assets/img/signs_se/restavfall.png"
     },
-    // { PANT DOES NOT HAVE A FRACTION AND A PICTOGRAM
-    //   key: "pant",
-    //   fraction_sv: "pant",
-    //   fraction_en: "refund",
-    //   fraction_da: "pant",
-    //   sign_sv: "assets/img/signs_se/pant.png"
-    // },
     {
       key: "matavfall",
       fraction_sv: "matavfall",
@@ -213,8 +206,8 @@ export async function run({ assetPaths, input = {}, environment, title, version 
     experiment.stimuli.fractionCounts.push(experiment.stimuli.items.inFractions[val.key].length)
   })
 
-  // console.log(experiment.stimuli.fractions);
-  // console.log(experiment.stimuli.fractionCounts);
+  console.log(experiment.stimuli.fractions);
+  console.log(experiment.stimuli.fractionCounts);
 
   experiment.stimuliCounts = {};
   experiment.stimuliCounts.congruent = Math.min(...experiment.stimuli.fractionCounts);
@@ -301,7 +294,7 @@ export async function run({ assetPaths, input = {}, environment, title, version 
   experiment.addTrial(BrowserCheckTrial);
 
   // Welcome screen
-  experiment.addTrial(WelcomeTrial);
+  // experiment.addTrial(WelcomeTrial);
 
   // Sorting for internal categorisation
   // experiment.addTrial(CategorisationForSortingTrial)
@@ -311,7 +304,7 @@ export async function run({ assetPaths, input = {}, environment, title, version 
   // // experiment.addTrial(AttentionCheckButtonTrial);
 
   // // Switch to full screen
-  experiment.addTrial(FullScreenTrial);
+  // experiment.addTrial(FullScreenTrial);
 
   // Frequency on arrow with timer and learning trial
   experiment.addTrial(FrequencyOnArrowTrial);
