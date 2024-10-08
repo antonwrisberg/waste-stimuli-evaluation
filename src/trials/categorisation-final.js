@@ -8,6 +8,15 @@ export default function (experiment) {
   let jsPsych = experiment.jsPsych;
   let jIsCorrect = (Math.random() > .5);
 
+  // Preload attention checks
+  experiment.timeline.push({
+    type: PreloadPlugin,
+    images: [
+      "assets/img/attention-checks/800x800se/tinified/tillhor.png",
+      "assets/img/attention-checks/800x800se/tinified/intetillhor.png"
+    ]
+  });
+
   // Intro
   experiment.timeline.push({
     timeline: [ // Encompassing timeline
