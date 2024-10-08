@@ -1,7 +1,7 @@
 /**
- * @title Waste Stimuli Evaluation - categorisation
+ * @title PFM: Waste Stimuli Evaluation - Categorisation
  * @description An experiment to evaluate waste items for later sorting experiments
- * @version 0.1.6
+ * @version 0.1.6-categorisation
  *
  * @assets assets/img/stimuli-1.2-800x800-sorted/,assets/img/signs_se/tinified/,assets/img/logos,assets/img/screendumps/tinified/,assets/img/attention-checks/800x800se/tinified/
  */
@@ -232,9 +232,9 @@ export async function run({ assetPaths, input = {}, environment, title, version 
     {
       stimulus: function() {
         if (new Date().getSeconds() % 2 == 0) {
-          return "<img src='assets/img/attention-checks/800x800se/tinified/tillhör.png'>";
+          return "<img src='assets/img/attention-checks/800x800se/tinified/tillhor.png'>";
         } else {
-          return "<img src='assets/img/attention-checks/800x800se/tinified/intetillhör.png'>";
+          return "<img src='assets/img/attention-checks/800x800se/tinified/intetillhor.png'>";
         }
       },
       condition: function() {
@@ -246,9 +246,9 @@ export async function run({ assetPaths, input = {}, environment, title, version 
       },
       item: function() {
         if (new Date().getSeconds() % 2 == 0) {
-          return "attention-checks/800x800se/tinified/tillhör.png";
+          return "attention-checks/800x800se/tinified/tillhor.png";
         } else {
-          return "attention-checks/800x800se/tinified/intetillhör.png";
+          return "attention-checks/800x800se/tinified/intetillhor.png";
         }
       }
     }
