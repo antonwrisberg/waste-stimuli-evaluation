@@ -14,11 +14,11 @@ export default function (experiment) {
       "assets/img/screendumps/tinified/part2_sv.png",
       "assets/img/screendumps/tinified/part2.2_sv.png",
       "assets/img/stimuli-1.2-800x800-sorted/farligt_avfall/IMG_8019_1200x1200_m60_q10.jpg", //Paint bucket
-      "assets/img/stimuli-1.2-800x800-sorted/glasforpackningar_fargade/5h5a7414_1200x1200_m60_q10.jpg", // Wine bottle
-      "assets/img/stimuli-1.2-800x800-sorted/metallforpackningar/5h5a7447_1200x1200_m60_q10.jpg", // mackarel
-      "assets/img/stimuli-1.2-800x800-sorted/matavfall/5h5a7781_1200x1200_m60_q10.jpg", // Orange
+      "assets/img/stimuli-1.2-800x800-sorted/glasforpackningar_fargade/5H5A7414_1200x1200_m60_q10.jpg", // Wine bottle
+      "assets/img/stimuli-1.2-800x800-sorted/metallforpackningar/5H5A7447_1200x1200_m60_q10.jpg", // mackarel
+      "assets/img/stimuli-1.2-800x800-sorted/matavfall/5H5A7781_1200x1200_m60_q10.jpg", // Orange
       "assets/img/attention-checks/800x800se/tinified/gott.png",
-      "assets/img/attention-checks/800x800se/tinified/dåligt.png"
+      "assets/img/attention-checks/800x800se/tinified/daligt.png"
     ]
   });
 
@@ -85,9 +85,9 @@ export default function (experiment) {
         type: ImagesLineSortPlugin,
         img_array: [
           "farligt_avfall/IMG_8019_1200x1200_m60_q10.jpg", //Paint bucket
-          "glasforpackningar_fargade/5h5a7414_1200x1200_m60_q10.jpg", // Wine bottle
-          "metallforpackningar/5h5a7447_1200x1200_m60_q10.jpg", // mackarel
-          "matavfall/5h5a7781_1200x1200_m60_q10.jpg" // Orange
+          "glasforpackningar_fargade/5H5A7414_1200x1200_m60_q10.jpg", // Wine bottle
+          "metallforpackningar/5H5A7447_1200x1200_m60_q10.jpg", // mackarel
+          "matavfall/5H5A7781_1200x1200_m60_q10.jpg" // Orange
         ],
         img_path: function() {
           return "assets/img/stimuli-1.2-800x800-sorted/";
@@ -189,13 +189,13 @@ export default function (experiment) {
                 case 'IMG_8019_1200x1200_m60_q10.jpg':
                   responses.paint = val.relative_location_on_arrow
                   break;
-                case '5h5a7414_1200x1200_m60_q10.jpg':
+                case '5H5A7414_1200x1200_m60_q10.jpg':
                   responses.wine = val.relative_location_on_arrow
                   break;
-                case '5h5a7447_1200x1200_m60_q10.jpg':
+                case '5H5A7447_1200x1200_m60_q10.jpg':
                   responses.fish = val.relative_location_on_arrow
                   break;
-                case '5h5a7781_1200x1200_m60_q10.jpg':
+                case '5H5A7781_1200x1200_m60_q10.jpg':
                   responses.orange = val.relative_location_on_arrow
                   break;
               }
@@ -312,7 +312,7 @@ export default function (experiment) {
               imgArray.push('../attention-checks/800x800se/tinified/gott.png')
               // console.log("'good' attention check")
             } else {
-              imgArray.push('../attention-checks/800x800se/tinified/dåligt.png')
+              imgArray.push('../attention-checks/800x800se/tinified/daligt.png')
               // console.log("'bad' attention check")
             }
           }
