@@ -61,7 +61,7 @@ table {
   border-spacing: 0px;
 }
 
-table tr:nth-of-type(odd) td {
+table tr td {
   padding-top: 3rem;
 }
 
@@ -79,6 +79,10 @@ table tr td:first-of-type {
   width: 30vw;
   padding-right: 20px;
   vertical-align: top;
+}
+
+table tr td.feedback {
+  padding-top: 0;
 }
 
 table tr td:first-of-type.feedback {
@@ -274,12 +278,12 @@ pre {
         if (isDanish) {
           cell2.innerHTML = `
             <h3>${imageSrc[fractionKey].fraction_da.charAt(0).toUpperCase() + imageSrc[fractionKey].fraction_da.slice(1)}</h3>
-            <p>Du sorterede ${correctlySorted} ud af 30 (${percentageCorrect}%) stykker affald korrekt for <em>${imageSrc[fractionKey].fraction_da}</em>.</p>
+            <p>Du sorterede ${correctlySorted} ud af 30 (${percentageCorrect}%) stykker affald korrekt for <em>${imageSrc[fractionKey].fraction_da}</em>.${(percentageCorrect == 100 ? " <strong>Flot!</strong>" : "")}</p>
           `;
         } else {
           cell2.innerHTML = `
             <h3>${imageSrc[fractionKey].fraction_en.charAt(0).toUpperCase() + imageSrc[fractionKey].fraction_en.slice(1)}</h3>
-            <p>You sorted ${correctlySorted} out of 30 (${percentageCorrect}%) items correctly for <em>${imageSrc[fractionKey].fraction_en}</em>.</p>
+            <p>You sorted ${correctlySorted} out of 30 (${percentageCorrect}%) items correctly for <em>${imageSrc[fractionKey].fraction_en}</em>.${(percentageCorrect == 100 ? " <strong>Well done!</strong>" : "")}</p>
           `;
         }
 
