@@ -371,7 +371,7 @@ pre {
 
           addRow(
             el[0], // Fraction key
-            el[1].correct - (el[1].correct + el[1].wrong - wrongAttentionCheck > 30 ? 1 : 0), // Items sorted correctly
+            (el[0] == "residual" ? el[1].correct - (el[1].correct + el[1].wrong - wrongAttentionCheck > 40 ? 1 : 0) : el[1].correct - (el[1].correct + el[1].wrong - wrongAttentionCheck > 20 ? 1 : 0)), // Items sorted correctly
             el[1].wrong - wrongAttentionCheck, // Items sorted wrongly
             el[1].wrongs, // Items sorted wrongly
             el[1].normallyWrongs, // Items sorted correctly but which would normally be wrong
