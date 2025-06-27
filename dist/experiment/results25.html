@@ -276,15 +276,21 @@ pre {
 
         // Set the content for the second cell (text)
         if (isDanish) {
-          cell2.innerHTML = `
-            <h3>${imageSrc[fractionKey].fraction_da.charAt(0).toUpperCase() + imageSrc[fractionKey].fraction_da.slice(1)}</h3>
-            <p>Du sorterede ${correctlySorted} ud af 30 (${percentageCorrect}%) stykker affald korrekt for <em>${imageSrc[fractionKey].fraction_da}</em>.${(percentageCorrect == 100 ? " <strong>Flot!</strong>" : "")}</p>
-          `;
+          cell2.innerHTML += `<h3>${imageSrc[fractionKey].fraction_da.charAt(0).toUpperCase() + imageSrc[fractionKey].fraction_da.slice(1)}</h3>`;
+
+          if (fractionKey != "residual") {
+            cell2.innerHTML += `<p>Du sorterede ${correctlySorted} ud af 20 (${percentageCorrect}%) stykker affald korrekt for <em>${imageSrc[fractionKey].fraction_da}</em>.${(percentageCorrect == 100 ? " <strong>Flot!</strong>" : "")}</p>`;
+          } else {
+            cell2.innerHTML += `<p>Du sorterede ${correctlySorted} ud af 40 (${percentageCorrect}%) stykker affald korrekt for <em>${imageSrc[fractionKey].fraction_da}</em>.${(percentageCorrect == 100 ? " <strong>Flot!</strong>" : "")}</p>`;
+          }
         } else {
-          cell2.innerHTML = `
-            <h3>${imageSrc[fractionKey].fraction_en.charAt(0).toUpperCase() + imageSrc[fractionKey].fraction_en.slice(1)}</h3>
-            <p>You sorted ${correctlySorted} out of 30 (${percentageCorrect}%) items correctly for <em>${imageSrc[fractionKey].fraction_en}</em>.${(percentageCorrect == 100 ? " <strong>Well done!</strong>" : "")}</p>
-          `;
+          cell2.innerHTML = `<h3>${imageSrc[fractionKey].fraction_en.charAt(0).toUpperCase() + imageSrc[fractionKey].fraction_en.slice(1)}</h3>`;
+
+          if (fractionKey != "residual") {
+            cell2.innerHTML += `<p>You sorted ${correctlySorted} out of 20 (${percentageCorrect}%) items correctly for <em>${imageSrc[fractionKey].fraction_en}</em>.${(percentageCorrect == 100 ? " <strong>Well done!</strong>" : "")}</p>`;
+          } else {
+            cell2.innerHTML += `<p>You sorted ${correctlySorted} out of 40 (${percentageCorrect}%) items correctly for <em>${imageSrc[fractionKey].fraction_en}</em>.${(percentageCorrect == 100 ? " <strong>Well done!</strong>" : "")}</p>`;
+          }
         }
 
         if (wronglySorted == 0) {
@@ -352,32 +358,32 @@ pre {
       var totalWrong = 0;
 
       if (results) {
-          Object.entries(results).forEach(function(el) {
-            
-            let wrongAttentionCheck = false;
-            el[1].wrongs.forEach(function(item) {
-              if (item.substring(0, item.indexOf("/")) == "attention_checks") {
-                wrongAttentionCheck = true;
-              }
-            })
+        Object.entries(results).forEach(function(el) {
+          
+          let wrongAttentionCheck = false;
+          el[1].wrongs.forEach(function(item) {
+            if (item.substring(0, item.indexOf("/")) == "attention_checks") {
+              wrongAttentionCheck = true;
+            }
+          })
 
-            // console.log(wrongAttentionCheck);
+          // console.log(wrongAttentionCheck);
 
-            addRow(
-              el[0], // Fraction key
-              el[1].correct - (el[1].correct + el[1].wrong - wrongAttentionCheck > 30 ? 1 : 0), // Items sorted correctly
-              el[1].wrong - wrongAttentionCheck, // Items sorted wrongly
-              el[1].wrongs, // Items sorted wrongly
-              el[1].normallyWrongs, // Items sorted correctly but which would normally be wrong
+          addRow(
+            el[0], // Fraction key
+            el[1].correct - (el[1].correct + el[1].wrong - wrongAttentionCheck > 30 ? 1 : 0), // Items sorted correctly
+            el[1].wrong - wrongAttentionCheck, // Items sorted wrongly
+            el[1].wrongs, // Items sorted wrongly
+            el[1].normallyWrongs, // Items sorted correctly but which would normally be wrong
 
-              new URLSearchParams(window.location.search).get("isDanish")
-            );
+            new URLSearchParams(window.location.search).get("isDanish")
+          );
 
-            totalCorrect += el[1].correct - (el[1].correct + el[1].wrong - wrongAttentionCheck > 30 ? 1 : 0);
-            totalWrong += el[1].wrong - wrongAttentionCheck;
+          totalCorrect += el[1].correct - (el[1].correct + el[1].wrong - wrongAttentionCheck > 30 ? 1 : 0);
+          totalWrong += el[1].wrong - wrongAttentionCheck;
 
-            // console.log(el);
-          });
+          // console.log(el);
+        });
       } else {
           alert ("Something went wrong. This is on us. Not on you. Sorry for the problem. We will try and sort it out as quickly as possible. Try reloading this page tomorrow to get your results. Your results are saved, but for some reason, we are unable to display them right now.")
       }
@@ -386,7 +392,7 @@ pre {
           document.getElementById('heading').innerHTML = `Tak for at spille med!`;
           document.getElementById('success-message').innerHTML = `Dine svar er nu gemt og her kan se dine resultater.</p><p>Tak for din tid og for at hjælpe os med at forbedre affaldssorteringen på festivalen 🧡`;
 
-          document.getElementById('results').innerHTML = `Du sorterede<br /><strong>${totalCorrect} ud af 120 (${((totalCorrect / (totalCorrect + totalWrong)) * 100).toFixed(0)}%)</strong><br />stykker affald korrekt`;
+          document.getElementById('results').innerHTML = `Du sorterede<br /><strong>${totalCorrect} ud af 100 (${((totalCorrect / (totalCorrect + totalWrong)) * 100).toFixed(0)}%)</strong><br />stykker affald korrekt`;
 
           document.getElementById('questions-heading').innerHTML = `Spørgsmål`;
           document.getElementById('questions-text').innerHTML = `Hvis du har spørgsmål til spillet, dine resultater, eller hvordan de bruges til forskning, er du velkommen til at kontakte Anton Wrisberg, ph.d.-studerende ved Lunds Universitet, på <a href="mailto:anton.wrisberg@lucs.lu.se">anton.wrisberg@lucs.lu.se</a>.`;
@@ -394,7 +400,7 @@ pre {
           document.getElementById('heading').innerHTML = `Thank you for playing!`;
           document.getElementById('success-message').innerHTML = `Your responses have now been saved and here you can see your results.</p></p>Thank you for your time and for helping us improve waste sorting at the festival 🧡`;
 
-          document.getElementById('results').innerHTML = `You sorted<br /><strong>${totalCorrect} out of 120 (${((totalCorrect / (totalCorrect + totalWrong)) * 100).toFixed(0)}%)</strong><br /> waste items correctly`;
+          document.getElementById('results').innerHTML = `You sorted<br /><strong>${totalCorrect} out of 100 (${((totalCorrect / (totalCorrect + totalWrong)) * 100).toFixed(0)}%)</strong><br /> waste items correctly`;
 
           document.getElementById('questions-heading').innerHTML = `Questions`;
           document.getElementById('questions-text').innerHTML = `If you have any questions about the game, your results, or how they are used for research, please contact Anton Wrisberg, PhD student at Lund University, at <a href="mailto:anton.wrisberg@lucs.lu.se">anton.wrisberg@lucs.lu.se</a>.`;
