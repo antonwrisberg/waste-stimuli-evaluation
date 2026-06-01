@@ -1,0 +1,453 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Sorting Results</title>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link href="css/main.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/gh/pieroxy/lz-string/libs/lz-string.js"></script>
+
+    <script type="text/javascript">
+      // setTimeout(function() {
+      //   window.location.reload();
+      // }, 10000)
+    </script>
+
+    <style>
+@font-face {
+  font-family: 'Roskilde-4000-VF';
+  font-style: normal;
+  font-weight: 300 1000;
+  /* src: url(/assets/fonts/Roskilde4000VF.woff2) format("woff2") */
+  /* src: url(/assets/fonts/Roskilde4000VF.008559bb.ttf) format("ttf") */
+  src: url(https://www.roskilde-festival.dk/_next/static/media/Roskilde4000VF.008559bb.woff2) format("woff2");
+  /* src: url(/assets/fonts/roskilde4000vf.008559bb-webfont.woff2) format("woff2") */
+}
+
+body {
+font-family: "Roskilde-4000-VF", sans-serif !important;
+font-variation-settings: 'slnt' 0, 'wdth' 30;
+text-align: center;
+font-size: 18px;
+}
+
+h1 {
+text-transform: uppercase;
+color: rgb(55, 180, 75);
+font-size: 4rem;
+line-height: 100%;
+font-weight: 1000;
+
+margin-block-start: 1em;
+}
+
+p,
+input,
+select {
+font-variation-settings: 'slnt' 0, 'wdth' 20;
+line-height: 1.4em;
+
+&.small {
+  font-size: .8em;
+  line-height: 1em;
+  font-variation-settings: 'slnt' 0, 'wdth' 12;
+}
+}
+
+
+
+table {
+  border-spacing: 0px;
+}
+
+table tr td {
+  padding-top: 3rem;
+}
+
+table tr,
+table td {
+  padding: 0;
+}
+
+table td {
+/* padding-bottom: 5vw; */
+text-align: left;
+}
+
+table tr td:first-of-type {
+  width: 30vw;
+  padding-right: 20px;
+  vertical-align: top;
+}
+
+table tr td.feedback {
+  padding-top: 0;
+}
+
+table tr td:first-of-type.feedback {
+  padding-right: 0;
+}
+
+h3 {
+  margin-top: 1rem;
+  margin-bottom: .2rem;
+  color: rgb(55, 180, 75);
+  text-transform: uppercase;
+  font-weight: 1000;
+}
+
+h3#questions-heading {
+  margin-top: 2rem;
+}
+
+p {
+  margin-top: 0;
+  margin-bottom: .5rem;
+}
+
+img.sign {
+  box-shadow: 10px 10px 0 black;
+}
+
+#results {
+  background: rgb(55, 180, 75);
+  color: white;
+  font-size: 2rem;
+  padding: 10vw 10vw;
+  /* margin-top: 8vw; */
+  /* margin-bottom: 8vw; */
+  text-align: center;
+  position: relative;
+}
+
+#results::before,
+#results::after {
+  /* content: "🎉"; */
+  position: absolute;
+  top: 50%;
+  margin-top: -4vw;
+  font-size: 8vw;
+  height: 8vw;
+  line-height: 8vw;
+}
+
+#results::before {
+  left: 2vw;
+}
+
+#results::after {
+  right: 2vw;
+}
+
+/* td.feedback {
+
+} */
+
+td.feedback img {
+  width: 22%;
+  margin-right: 3%;
+  margin-bottom: 1.5%;
+  display: inline-block;
+}
+
+pre {
+  border: 1px #999 solid;
+  background: #dedede;
+  color: #666;
+  padding: 5px;
+  overflow: scroll;
+}
+    </style>
+  </head>
+  <body>
+    <!-- <h1 id="heading">Thank you for playing!</h1> -->
+
+    <!-- <p id="success-message">Your responses have now been saved and you can safely exit this window.<br />Thank you for yout time and for supporting ongoing science.</p> -->
+
+    <p id="results">Loading results …</p>
+
+    <table id="resultsTable"></table>
+
+    <h3 id="questions-heading">Questions</h3>
+    <p id="questions-text">If you have any questions about the game, your results, or how they are used for research, plesae contact Anton Wrisberg, PhD student at Lund University, at <a href="mailto:anton.wrisberg@lucs.lu.se">anton.wrisberg@lucs.lu.se</a>.</p>
+
+    <pre id="rawData"></pre>
+
+    <script>
+      // A bit of internationalisation
+      let imageSrc = {
+        glass: {
+          fraction_en: "glass",
+          fraction_da: "glas",
+          sign_da: "assets/img/signs_da/GLAS_cmyk_300dpi.jpg",
+          sign_en: "assets/img/signs_en/GLASS_cmyk_300dpi.jpg"
+        },
+        metal: {
+          fraction_en: "metal",
+          fraction_da: "metal",
+          sign_da: "assets/img/signs_da/METAL_cmyk_300dpi.jpg",
+          sign_en: "assets/img/signs_en/METAL_cmyk_300dpi.jpg"
+        },
+        plasticsfoodcontainers: {
+          fraction_en: "plastics / food- and beverage cartons",
+          fraction_da: "plast / mad- og drikkekartoner",
+          sign_da: "assets/img/signs_da/PLAST_MAD_DRIKKEKARTON_cmyk_300dpi.jpg",
+          sign_en: "assets/img/signs_en/PLASTICS_FOOD_CARTONS_cmyk_300dpi.jpg"
+        },
+        residual: {
+          fraction_en: "residual waste",
+          fraction_da: "restaffald",
+          sign_da: "assets/img/signs_da/RESTAFFALD_cmyk_300dpi.jpg",
+          sign_en: "assets/img/signs_en/RESIDUAL_WASTE_cmyk_300dpi.jpg"
+        },
+
+
+        cardboard: {
+          fraction_en: "cardboard</em> – you will find that fraction at the nearest <em>sorting area",
+          fraction_da: "pap</em> – dén fraktion finder du på den nærmeste <em>sorteringsplads"
+        },
+        food: {
+          fraction_en: "food waste</em>, but we do not separate that at this year's festical, so instead, you can sort it as <em>residual waste",
+          fraction_da: "madaffald</em>, men det sorterer vi ikke separat på årets festival, så i stedet kan du sortere det som <em>restaffald"
+        },
+        hazardous: {
+          fraction_en: "hazardous waste</em> – you will find that fraction at the nearest <em>sorting area",
+          fraction_da: "farligt affald</em> – dén fraktion finder du på den nærmeste <em>sorteringsplads"
+        },
+        paper: {
+          fraction_en: "paper</em>, but we do not separate that at this year's festical, so instead, you can sort it as <em>residual waste",
+          fraction_da: "papir</em>, men det sorterer vi ikke separat på årets festival, så i stedet kan du sortere det som <em>restaffald"
+        },
+        electronics: {
+          fraction_en: "electronics</em> – you will find that fraction at the nearest <em>sorting area",
+          fraction_da: "elektronik</em> – dén fraktion finder du på den nærmeste <em>sorteringsplads"
+        },
+        textile: {
+          fraction_en: "textile waste</em>, but we do not separate that at this year's festical, so instead, you can sort it as <em>residual waste",
+          fraction_da: "tekstilaffald</em>, men det sorterer vi ikke separat på årets festival, så i stedet kan du sortere det som <em>restaffald"
+        },
+        refund_metal: {
+          fraction_en: "refund",
+          fraction_da: "pant"
+        }
+      }
+
+      // Define path to image resources on JATOS server
+      let jatosPath = '' //Insert absolute path to JATOS assets directory here
+
+      // Get results string from URL
+      let results = JSON.parse(LZString.decompressFromEncodedURIComponent(new URLSearchParams(window.location.search).get("results")));
+
+      // console.log(results);
+
+      let isDanish = new URLSearchParams(window.location.search).get("isDanish");
+
+      // Function to add results per fraction
+      function addRow(fractionKey, correctlySorted, corrects, wronglySorted, wrongs, normallyWrongs, isDanish = false) {
+         
+        // Calculate the total number of sorted items
+        const itemsSorted = correctlySorted + wronglySorted;
+
+        // Calculate the percentage of correctly sorted items
+        const percentageCorrect = ((correctlySorted / itemsSorted) * 100).toFixed(0);
+
+        // Remove potential dash from fractionKey value
+        fractionKey = fractionKey.replaceAll('-', '');
+
+        // Create table row and cells
+        const table = document.getElementById("resultsTable");
+        const row = table.insertRow();
+        
+        const cell1 = row.insertCell(0);
+        const cell2 = row.insertCell(1);
+
+        let rowFeedback = table.insertRow();
+        let cell3 = rowFeedback.insertCell(0);
+            cell3.colSpan = 2;
+            cell3.classList.add("feedback");
+
+        // Set the content for the first cell (image)
+        if (isDanish) {
+          cell1.innerHTML = `<img src="${jatosPath + imageSrc[fractionKey].sign_da}" alt="Piktorgram for fraktionen ${imageSrc[fractionKey].fraction_da}" class="sign">`;
+        } else {
+          cell1.innerHTML = `<img src="${jatosPath + imageSrc[fractionKey].sign_en}" alt="Icon for the fraction ${imageSrc[fractionKey].fraction_en}" class="sign">`;
+        }
+
+        // Set the content for the second cell (text)
+        if (isDanish) {
+          cell2.innerHTML += `<h3>${imageSrc[fractionKey].fraction_da.charAt(0).toUpperCase() + imageSrc[fractionKey].fraction_da.slice(1)}</h3>`;
+          cell2.innerHTML += `<p>Du sorterede ${correctlySorted} ud af 15 (${percentageCorrect}%) stykker affald korrekt for <em>${imageSrc[fractionKey].fraction_da}</em>.${(percentageCorrect == 100 ? " <strong>Flot!</strong>" : "")}</p>`;
+        } else {
+          cell2.innerHTML = `<h3>${imageSrc[fractionKey].fraction_en.charAt(0).toUpperCase() + imageSrc[fractionKey].fraction_en.slice(1)}</h3>`;
+          cell2.innerHTML += `<p>You sorted ${correctlySorted} out of 15 (${percentageCorrect}%) items correctly for <em>${imageSrc[fractionKey].fraction_en}</em>.${(percentageCorrect == 100 ? " <strong>Well done!</strong>" : "")}</p>`;
+        }
+
+        if (correctlySorted != 0) {
+          if (isDanish) {
+            cell3.innerHTML += `<h3>Det her sorterede du rigtigt</h3>`;
+          } else {
+            cell3.innerHTML += `<h3>These, you sorted correctly</h3>`;
+          }
+
+          correctsOrganised = {};
+
+          corrects.forEach(function(value) {
+            let fraction = value.substring(0, value.indexOf("/")).replaceAll("-", "");
+
+            if (correctsOrganised[fraction] === undefined) {
+              correctsOrganised[fraction] = []
+            }
+
+            correctsOrganised[fraction].push(value)
+          });
+
+          if (correctsOrganised[fractionKey] !== undefined) {
+            if (isDanish) {
+              cell3.innerHTML += `<p>Det her hører rigtigt nok til i <em>${imageSrc[fractionKey].fraction_da}</em>:</p>`;
+            } else {
+              cell3.innerHTML += `<p>This does indeed belong into <em>${imageSrc[fractionKey].fraction_en}</em>:</p>`;
+            }
+
+            correctsOrganised[fractionKey].forEach(function(image) {
+              cell3.innerHTML += `<img src="assets/img/stimuli-rf-sorted/${image}">`;
+            })
+          }
+
+          for (const [key, value] of Object.entries(correctsOrganised)) {
+            if (key != fractionKey) {
+              // if (key == "refund_metal" && fractionKey == "metal") {
+              //   if (isDanish) {
+              //     cell3.innerHTML += `<p>Det her hører rigtigt nok ikke til i <em>${imageSrc[fractionKey].fraction_da}</em>, det er nemlig <em>${imageSrc[key].fraction_da}</em>:</p>`;
+              //   } else {
+              //     cell3.innerHTML += `<p>This does indeed not belong to <em>${imageSrc[fractionKey].fraction_en}</em>, as it is <em>${imageSrc[key].fraction_en}</em>:</p>`;
+              //   }
+
+              //   correctsOrganised[key].forEach(function(image) {
+              //     cell3.innerHTML += `<img src="assets/img/stimuli-rf-sorted/${image}">`;
+              //   })
+              // } else {
+                if (isDanish) {
+                  cell3.innerHTML += `<p>Det her hører rigtigt nok ikke til i <em>${imageSrc[fractionKey].fraction_da}</em>, det er nemlig <em>${imageSrc[key].fraction_da}</em>:</p>`;
+                } else {
+                  cell3.innerHTML += `<p>This does indeed not belong to <em>${imageSrc[fractionKey].fraction_en}</em>, as it is <em>${imageSrc[key].fraction_en}</em>:</p>`;
+                }
+
+                correctsOrganised[key].forEach(function(image) {
+                  cell3.innerHTML += `<img src="assets/img/stimuli-rf-sorted/${image}">`;
+                })
+              // }
+            }
+          }
+        }
+
+        if (wronglySorted != 0) {
+          if (isDanish) {
+            cell3.innerHTML += `<h3>Sorter bedre næste gang</h3>`;
+          } else {
+            cell3.innerHTML += `<h3>Improve your sorting</h3>`;
+          }
+
+          wrongsOrganised = {};
+
+          wrongs.forEach(function(value) {
+            let fraction = value.substring(0, value.indexOf("/")).replaceAll("-", "");
+
+            if (wrongsOrganised[fraction] === undefined) {
+              wrongsOrganised[fraction] = []
+            }
+
+            wrongsOrganised[fraction].push(value)
+          });
+          
+          if (wrongsOrganised[fractionKey] !== undefined) {
+            if (isDanish) {
+              cell3.innerHTML += `<p>Det her skulle egentlig også have været i <em>${imageSrc[fractionKey].fraction_da}</em>:</p>`;
+            } else {
+              cell3.innerHTML += `<p>This should also have been sorted as <em>${imageSrc[fractionKey].fraction_en}</em>:</p>`;
+            }
+
+            wrongsOrganised[fractionKey].forEach(function(image) {
+              cell3.innerHTML += `<img src="assets/img/stimuli-rf-sorted/${image}">`;
+            })
+          }
+
+          for (const [key, value] of Object.entries(wrongsOrganised)) {
+            if (key != fractionKey && key != "attention_checks") {
+              if (key == "refund_metal" && fractionKey == "metal") {
+                if (isDanish) {
+                  cell3.innerHTML += `<p>De her <em>kan</em> rigtignok sorterest som <em>metal</em>, men mon ikke der er nogen, der vil sætte pris på dem i stedet?:</p>`;
+                } else {
+                  cell3.innerHTML += `<p>These might <em>indeed</em> be sorted as <em>metal</em>, but maybe someone might prefer to collect them as refund?:</p>`;
+                }
+
+                wrongsOrganised[key].forEach(function(image) {
+                  cell3.innerHTML += `<img src="assets/img/stimuli-rf-sorted/${image}">`;
+                })
+              } else {
+                if (isDanish) {
+                  cell3.innerHTML += `<p>Det her sorteres i stedet som <em>${imageSrc[key].fraction_da}</em>:</p>`;
+                } else {
+                  cell3.innerHTML += `<p>This should instead be sorted as <em>${imageSrc[key].fraction_en}</em>:</p>`;
+                }
+
+                wrongsOrganised[key].forEach(function(image) {
+                  cell3.innerHTML += `<img src="assets/img/stimuli-rf-sorted/${image}">`;
+                })
+              }
+            }
+          }
+        }
+      }
+      
+      var totalCorrect = 0;
+      var totalWrong = 0;
+
+      if (results) {
+        console.log(results)
+
+        Object.entries(results).forEach(function(el) {
+          addRow(
+            el[0], // Fraction key
+            el[1].correct, // Items sorted correctly
+            el[1].corrects, // Items sorted correctly
+            el[1].wrong, // Items sorted wrongly
+            el[1].wrongs, // Items sorted wrongly
+            el[1].normallyWrongs, // Items sorted correctly but which would normally be wrong
+
+            new URLSearchParams(window.location.search).get("isDanish")
+          );
+
+          totalCorrect += el[1].correct;
+          totalWrong += el[1].wrong;
+
+          // console.log(el);
+        });
+      } else {
+          alert ("Something went wrong. This is on us. Not on you. Sorry for the problem. We will try and sort it out as quickly as possible. Try reloading this page tomorrow to get your results. Your results are saved, but for some reason, we are unable to display them right now.")
+      }
+
+      if (isDanish) {
+          // document.getElementById('heading').innerHTML = `Tak for at spille med!`;
+          // document.getElementById('heading').innerHTML = `Sådan!`;
+          // document.getElementById('success-message').innerHTML = `Dine svar er nu gemt og her kan se dine resultater.</p><p>Tak for din tid og for at hjælpe os med at forbedre affaldssorteringen på festivalen 🧡`;
+
+          document.getElementById('results').innerHTML = `Du sorterede<br /><strong>${totalCorrect} ud af 60 (${((totalCorrect / (totalCorrect + totalWrong)) * 100).toFixed(0)}%)</strong><br />stykker affald korrekt`;
+
+          document.getElementById('questions-heading').innerHTML = `Spørgsmål`;
+          document.getElementById('questions-text').innerHTML = `Hvis du har spørgsmål til spillet, dine resultater, eller hvordan de bruges til forskning, er du velkommen til at kontakte Anton Prip Wrisberg, ph.d.-studerende ved Lunds Universitet, på <a href="mailto:anton.wrisberg@lucs.lu.se">anton.wrisberg@lucs.lu.se</a>.`;
+      } else {
+          // document.getElementById('heading').innerHTML = `Thank you for playing!`;
+          // document.getElementById('heading').innerHTML = `All done!`;
+          // document.getElementById('success-message').innerHTML = `Your responses have now been saved and here you can see your results.</p></p>Thank you for your time and for helping us improve waste sorting at the festival 🧡`;
+
+          document.getElementById('results').innerHTML = `You sorted<br /><strong>${totalCorrect} out of 60 (${((totalCorrect / (totalCorrect + totalWrong)) * 100).toFixed(0)}%)</strong><br /> waste items correctly`;
+
+          document.getElementById('questions-heading').innerHTML = `Questions`;
+          document.getElementById('questions-text').innerHTML = `If you have any questions about the game, your results, or how they are used for research, please contact Anton Prip Wrisberg, PhD student at Lund University, at <a href="mailto:anton.wrisberg@lucs.lu.se">anton.wrisberg@lucs.lu.se</a>.`;
+      }
+
+      document.getElementById('rawData').innerHTML = JSON.stringify(results);
+    </script>
+  </body>
+</html>
